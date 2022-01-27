@@ -20,7 +20,7 @@ class ProductosSeeder extends Seeder
                                     'meta_title' => 'Hosting Persona',
                                     'meta_description' => 'Hosting Persona' ,
                                     'meta_key' => 'Hosting' ,
-                                    'precio' => 69800,
+                                    'precio' => 5900,
                                     'subcategoria_id' => 1,
                                     'tipo_producto_id' => 1]);
 
@@ -52,7 +52,7 @@ class ProductosSeeder extends Seeder
                                     'meta_title' => 'Hosting Emprendedor',
                                     'meta_description' => 'Hosting Emprendedor' ,
                                     'meta_key' => 'Hosting' ,
-                                    'precio' => 120000,
+                                    'precio' => 10000,
                                     'subcategoria_id' => 1,
                                     'tipo_producto_id' => 1]);
 
@@ -84,7 +84,7 @@ class ProductosSeeder extends Seeder
                                     'meta_title' => 'Hosting Wordpress 5G',
                                     'meta_description' => 'Hosting Wordpress 5G' ,
                                     'meta_key' => 'Hosting, wordpress' ,
-                                    'precio' => 20000,
+                                    'precio' => 15000,
                                     'subcategoria_id' => 4,
                                     'tipo_producto_id' => 1]);
 
@@ -114,7 +114,7 @@ class ProductosSeeder extends Seeder
          'meta_title' => 'Hosting Wordpress 10G',
          'meta_description' => 'Hosting Wordpress 10G' ,
          'meta_key' => 'Hosting, wordpress' ,
-         'precio' => 40000,
+         'precio' => 20000,
          'subcategoria_id' => 4,
          'tipo_producto_id' => 1]);
 

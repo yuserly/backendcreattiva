@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
         $this->call(SistemaOperativoSeeder::class);
         $this->call(VersionSistemaSeeder::class);
         $this->call(PrecioDominiosSeeder::class);
-
+        $this->call(PeriodosSeeder::class);
 
     }
 }
