@@ -474,5 +474,16 @@ class ProductosSeeder extends Seeder
             ]);
         }
 
+
+        $producto = Productos::create(['nombre'=> 'Registro de dominios',
+        'slug' => 'registro-dominios',
+        'meta_title' => 'Registro de dominios',
+        'meta_description' => 'Registro de dominios' ,
+        'meta_key' => '.com, .net, .org' ,
+        'precio' => 0,
+        'subcategoria_id' => 26,
+        'tipo_producto_id' => 3]);
+
+
     }
 }
