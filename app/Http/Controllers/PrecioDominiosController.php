@@ -77,7 +77,7 @@ class PrecioDominiosController extends Controller
 
                 if($ext == $value1["extension"]){
 
-                    $dominiosarray["data"]["results"][$key]["precio_bd"] = number_format($value1["precio"], 0, ',', '.');
+                    $dominiosarray["data"]["results"][$key]["precio_bd"] = $value1["precio"];
                 }
 
 
