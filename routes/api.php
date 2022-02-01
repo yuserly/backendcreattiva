@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoriasController;
 use App\Http\Controllers\PrecioDominiosController;
 use App\Http\Controllers\ProductosController;
+use App\Http\Controllers\SistemaOperativoController;
 use App\Http\Controllers\SubcategoriasController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -29,4 +30,4 @@ Route::get('getperiodo/{id}',[ProductosController::class,'periodosproducto']);
 Route::get('getperiodo/{id}/{id_periodo}',[ProductosController::class,'periodoproducto']);
 Route::get('dominios/{dominio}/{extension}',[PrecioDominiosController::class,'dominios']);
 Route::get('preciodominios',[PrecioDominiosController::class,'preciodominios']);
-
+Route::get('getos',[SistemaOperativoController::class,'show']);
