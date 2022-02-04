@@ -484,6 +484,87 @@ class ProductosSeeder extends Seeder
         'subcategoria_id' => 26,
         'tipo_producto_id' => 3]);
 
+        $producto = Productos::create(['nombre'=> 'cPanel Admin 5',
+        'slug' => 'cpanel-admin-5',
+        'meta_title' => 'cPanel Admin 5',
+        'meta_description' => 'cPanel Admin 5' ,
+        'meta_key' => 'cpanel' ,
+        'precio' => 7000,
+        'subcategoria_id' => 24,
+        'tipo_producto_id' => 4]);
+
+        $producto = Productos::create(['nombre'=> 'cPanel Pro 30',
+        'slug' => 'cpanel-pro-30',
+        'meta_title' => 'cPanel Pro 30',
+        'meta_description' => 'cPanel Pro 30' ,
+        'meta_key' => 'cpanel' ,
+        'precio' => 10000,
+        'subcategoria_id' => 24,
+        'tipo_producto_id' => 4]);
+
+        $producto = Productos::create(['nombre'=> 'cPanel Premiere 100',
+        'slug' => 'cpanel-premiere-100',
+        'meta_title' => 'cPanel Premiere 100',
+        'meta_description' => 'cPanel Premiere 100' ,
+        'meta_key' => 'cpanel' ,
+        'precio' => 15000,
+        'subcategoria_id' => 24,
+        'tipo_producto_id' => 4]);
+
+        $producto = Productos::create(['nombre'=> 'cPanel Premiere 125',
+        'slug' => 'cpanel-premiere-125',
+        'meta_title' => 'cPanel Premiere 125',
+        'meta_description' => 'cPanel Premiere 125' ,
+        'meta_key' => 'cpanel' ,
+        'precio' => 20000,
+        'subcategoria_id' => 24,
+        'tipo_producto_id' => 4]);
+
+        $producto = Productos::create(['nombre'=> 'cPanel Premiere 150',
+        'slug' => 'cpanel-premiere-150',
+        'meta_title' => 'cPanel Premiere 150',
+        'meta_description' => 'cPanel Premiere 150' ,
+        'meta_key' => 'cpanel' ,
+        'precio' => 25000,
+        'subcategoria_id' => 24,
+        'tipo_producto_id' => 4]);
+
+        $producto = Productos::create(['nombre'=> 'cPanel Premiere 175',
+        'slug' => 'cpanel-premiere-175',
+        'meta_title' => 'cPanel Premiere 175',
+        'meta_description' => 'cPanel Premiere 175' ,
+        'meta_key' => 'cpanel' ,
+        'precio' => 30000,
+        'subcategoria_id' => 24,
+        'tipo_producto_id' => 4]);
+
+        $producto = Productos::create(['nombre'=> 'cPanel Premiere 200',
+        'slug' => 'cpanel-premiere-200',
+        'meta_title' => 'cPanel Premiere 200',
+        'meta_description' => 'cPanel Premiere 200' ,
+        'meta_key' => 'cpanel' ,
+        'precio' => 35000,
+        'subcategoria_id' => 24,
+        'tipo_producto_id' => 4]);
+
+        $producto = Productos::create(['nombre'=> 'cPanel Premiere 225',
+        'slug' => 'cpanel-premiere-225',
+        'meta_title' => 'cPanel Premiere 225',
+        'meta_description' => 'cPanel Premiere 225' ,
+        'meta_key' => 'cpanel' ,
+        'precio' => 40000,
+        'subcategoria_id' => 24,
+        'tipo_producto_id' => 4]);
+
+        $producto = Productos::create(['nombre'=> 'cPanel Premiere 250',
+        'slug' => 'cpanel-premiere-250',
+        'meta_title' => 'cPanel Premiere 250',
+        'meta_description' => 'cPanel Premiere 250' ,
+        'meta_key' => 'cpanel' ,
+        'precio' => 45000,
+        'subcategoria_id' => 24,
+        'tipo_producto_id' => 4]);
+
 
     }
 }
