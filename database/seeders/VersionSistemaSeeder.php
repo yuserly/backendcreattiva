@@ -24,5 +24,11 @@ class VersionSistemaSeeder extends Seeder
 
         VersionSistema::create(['version'=> 'Ubuntu 12' ,'os_id' => 3]);
         VersionSistema::create(['version'=> 'Ubuntu 10' ,'os_id' => 3]);
+
+        VersionSistema::create(['version'=> 'Windows 12' ,'os_id' => 4]);
+        VersionSistema::create(['version'=> 'Windows 10' ,'os_id' => 4]);
+        VersionSistema::create(['version'=> 'Windows 12' ,'os_id' => 5]);
+        VersionSistema::create(['version'=> 'Windows 10' ,'os_id' => 5]);
+
     }
 }

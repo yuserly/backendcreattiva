@@ -17,5 +17,8 @@ class SistemaOperativoSeeder extends Seeder
         SistemaOperativo::create(['nombre'=> 'Centos' ,'icono' => 'fab fa-centos', 'tipo' => 'linux']);
         SistemaOperativo::create(['nombre'=> 'Debian' ,'icono' => 'fab fa-deviantart', 'tipo' => 'linux']);
         SistemaOperativo::create(['nombre'=> 'Ubuntu' ,'icono' => 'fab fa-ubuntu', 'tipo' => 'linux']);
+        SistemaOperativo::create(['nombre'=> 'Standard SPLA 1Proc' ,'icono' => 'fab fa-windows', 'tipo' => 'windows']);
+        SistemaOperativo::create(['nombre'=> 'DataCenter SPLA 1Proc' ,'icono' => 'fab fa-windows', 'tipo' => 'windows']);
+
     }
 }

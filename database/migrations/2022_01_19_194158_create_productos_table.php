@@ -21,6 +21,7 @@ class CreateProductosTable extends Migration
             $table->string('meta_description');
             $table->string('meta_key');
             $table->integer('precio');
+            $table->integer('visible')->nullable()->default(1);
             $table->unsignedBigInteger('subcategoria_id');
             $table->foreign('subcategoria_id')->references('id_subcategoria')->on('subcategorias');
             $table->unsignedBigInteger('tipo_producto_id');

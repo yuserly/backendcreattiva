@@ -31,3 +31,4 @@ Route::get('getperiodo/{id}/{id_periodo}',[ProductosController::class,'periodopr
 Route::get('dominios/{dominio}/{extension}',[PrecioDominiosController::class,'dominios']);
 Route::get('preciodominios',[PrecioDominiosController::class,'preciodominios']);
 Route::get('getos/{tipo}',[SistemaOperativoController::class,'show']);
+Route::get('getproductosxtipo/{id}/{tipo}',[ProductosController::class,'showxtipo']);

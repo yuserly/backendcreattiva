@@ -32,6 +32,29 @@ class ProductosController extends Controller
        return $productos;
     }
 
+    public function showxtipo ($id, $tipo){
+        $productos =  Productos::where([['subcategoria_id',$id],['tipo_producto_id', $tipo]])->with('caracteristicas','subcategoria.categoria')->get();
+
+         // 4 es el periodo trienal
+
+        $periodo = Periodos::where('id_periodo',4)->first();
+
+        foreach ($productos as $key => $value) {
+
+             $descuento = (($value["precio"] * $periodo["meses"]) * $periodo["descuento"]  ) / 100;
+
+             $precio_con_descuento = round(($value["precio"] * $periodo["meses"]) - $descuento);
+
+             $productos[$key]["precio_trienal"]  = $precio_con_descuento;
+
+             $productos[$key]["descuento"]  = $periodo["descuento"];
+
+             $productos[$key]["ahorro"]  = round(($value["precio"] * $periodo["meses"]) - $precio_con_descuento);
+        }
+
+        return $productos;
+     }
+
     public function periodosproducto($id){
 
         $producto = Productos::where('id_producto', $id)->first();

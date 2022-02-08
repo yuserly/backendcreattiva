@@ -21,5 +21,6 @@ class TipoProductoSeeder extends Seeder
         TipoProducto::create(['tipo'     => 'streaming radio']);
         TipoProducto::create(['tipo'     => 'servidores dedicado hp']);
         TipoProducto::create(['tipo'     => 'servidores dedicado dell']);
+        TipoProducto::create(['tipo'     => 'licencias microsoft']);
     }
 }

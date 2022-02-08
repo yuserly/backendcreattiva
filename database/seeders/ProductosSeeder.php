@@ -677,6 +677,35 @@ class ProductosSeeder extends Seeder
         'subcategoria_id' => 15,
         'tipo_producto_id' => 5]);
 
+        $producto = Productos::create(['nombre'=> 'SQLSvrStdCore ALNG LicSAPk MVL  4 Cores',
+        'slug' => 'sqlsvrstdcore-alng-licsapk mvl  4 Cores',
+        'meta_title' => 'SQLSvrStdCore ALNG LicSAPk MVL  4 Cores',
+        'meta_description' => 'SQLSvrStdCore ALNG LicSAPk MVL  4 Cores' ,
+        'meta_key' => 'sql,sqlserver' ,
+        'precio' => 5000,
+        'subcategoria_id' => 19,
+        'tipo_producto_id' => 8]);
+
+        $producto = Productos::create(['nombre'=> 'SQLSvrEntCore ALNG LicSAPk MVL  4 Cores',
+        'slug' => 'sqlsvrentcore-alng-licsapk mvl  4 Cores',
+        'meta_title' => 'SQLSvrEntCore ALNG LicSAPk MVL  4 Cores',
+        'meta_description' => 'SQLSvrEntCore ALNG LicSAPk MVL  4 Cores' ,
+        'meta_key' => 'sql,sqlserver' ,
+        'precio' => 7000,
+        'subcategoria_id' => 19,
+        'tipo_producto_id' => 8]);
+
+
+        $producto = Productos::create(['nombre'=> 'SQLSvrWebCore ALNG LicSAPk MVL  4 Cores',
+        'slug' => 'sqlsvrwebcore-alng-licsapk mvl  4 Cores',
+        'meta_title' => 'SQLSvrWebCore ALNG LicSAPk MVL  4 Cores',
+        'meta_description' => 'SQLSvrWebCore ALNG LicSAPk MVL  4 Cores' ,
+        'meta_key' => 'sql,sqlserver' ,
+        'precio' => 8000,
+        'subcategoria_id' => 19,
+        'tipo_producto_id' => 8]);
+
+
 
     }
 }
