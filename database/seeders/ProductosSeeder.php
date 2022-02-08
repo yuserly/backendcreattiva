@@ -419,7 +419,6 @@ class ProductosSeeder extends Seeder
         }
 
 
-
         $producto = Productos::create(['nombre'=> 'Servidor VPS Linux 2 GB',
                                         'slug' => 'servidor-vps-linux-2gb',
                                         'meta_title' => 'Servidor VPS Linux 2 GB',
@@ -446,6 +445,7 @@ class ProductosSeeder extends Seeder
                 'producto_id' => $producto->id_producto
             ]);
         }
+
 
          $producto = Productos::create(['nombre'=> 'Servidor VPS Linux 4 GB',
                                         'slug' => 'servidor-vps-linux-4gb',
@@ -474,7 +474,7 @@ class ProductosSeeder extends Seeder
             ]);
         }
 
-
+        // dominios
         $producto = Productos::create(['nombre'=> 'Registro de dominios',
         'slug' => 'registro-dominios',
         'meta_title' => 'Registro de dominios',
@@ -483,6 +483,8 @@ class ProductosSeeder extends Seeder
         'precio' => 0,
         'subcategoria_id' => 26,
         'tipo_producto_id' => 3]);
+
+        // licencias cpanel
 
         $producto = Productos::create(['nombre'=> 'cPanel Admin 5',
         'slug' => 'cpanel-admin-5',
@@ -564,6 +566,116 @@ class ProductosSeeder extends Seeder
         'precio' => 45000,
         'subcategoria_id' => 24,
         'tipo_producto_id' => 4]);
+
+        // servidores dedicado hp
+
+        $producto = Productos::create(['nombre'=> 'HPE ProLiant DL20 Gen10',
+        'slug' => 'hpe-proliant-dl20-gen10',
+        'meta_title' => 'HPE ProLiant DL20 Gen10',
+        'meta_description' => 'HPE ProLiant DL20 Gen10' ,
+        'meta_key' => 'hp,gen10' ,
+        'precio' => 5000,
+        'subcategoria_id' => 12,
+        'tipo_producto_id' => 6]);
+
+        $caracteristicas = [
+            ["nombre" => 'Memoria RAM', "capacidad" => '16 GB']
+        ];
+
+        foreach ($caracteristicas as $key => $value) {
+
+            CarateristicassProductos::create([
+                'nombre' => $value["nombre"],
+                'capacidad' => $value["capacidad"],
+                'producto_id' => $producto->id_producto
+            ]);
+        }
+
+        $producto = Productos::create(['nombre'=> 'HPE ProLiant DL360 Gen10',
+        'slug' => 'hpe-proliant-dl360-gen10',
+        'meta_title' => 'HPE ProLiant DL360 Gen10',
+        'meta_description' => 'HPE ProLiant DL360 Gen10' ,
+        'meta_key' => 'hp,gen10' ,
+        'precio' => 10000,
+        'subcategoria_id' => 12,
+        'tipo_producto_id' => 6]);
+
+        $caracteristicas = [
+            ["nombre" => 'Memoria RAM', "capacidad" => '16 GB']
+        ];
+
+        foreach ($caracteristicas as $key => $value) {
+
+            CarateristicassProductos::create([
+                'nombre' => $value["nombre"],
+                'capacidad' => $value["capacidad"],
+                'producto_id' => $producto->id_producto
+            ]);
+        }
+
+        // servidores Dell
+
+        $producto = Productos::create(['nombre'=> 'PowerEdge R440',
+        'slug' => 'poweredge-r440',
+        'meta_title' => 'PowerEdge R440',
+        'meta_description' => 'PowerEdge R440' ,
+        'meta_key' => 'dell' ,
+        'precio' => 10000,
+        'subcategoria_id' => 13,
+        'tipo_producto_id' => 7]);
+
+        $caracteristicas = [
+            ["nombre" => 'Memoria RAM', "capacidad" => '8 GB'],
+            ["nombre" => 'Core', "capacidad" => '2'],
+            ["nombre" => 'Almacenamiento', "capacidad" => '2 TB']
+        ];
+
+        foreach ($caracteristicas as $key => $value) {
+
+            CarateristicassProductos::create([
+                'nombre' => $value["nombre"],
+                'capacidad' => $value["capacidad"],
+                'producto_id' => $producto->id_producto
+            ]);
+        }
+
+        // radios
+
+        $producto = Productos::create(['nombre'=> 'Streaming Radio 128',
+        'slug' => 'streaming-radio-128',
+        'meta_title' => 'Streaming Radio 128',
+        'meta_description' => 'Streaming Radio 128' ,
+        'meta_key' => 'streaming,radio' ,
+        'precio' => 5000,
+        'subcategoria_id' => 15,
+        'tipo_producto_id' => 5]);
+
+        $producto = Productos::create(['nombre'=> 'Streaming Radio 512',
+        'slug' => 'streaming-radio-512',
+        'meta_title' => 'Streaming Radio 512',
+        'meta_description' => 'Streaming Radio 512' ,
+        'meta_key' => 'streaming,radio' ,
+        'precio' => 6000,
+        'subcategoria_id' => 15,
+        'tipo_producto_id' => 5]);
+
+        $producto = Productos::create(['nombre'=> 'Streaming Radio 768',
+        'slug' => 'streaming-radio-768',
+        'meta_title' => 'Streaming Radio 768',
+        'meta_description' => 'Streaming Radio 768' ,
+        'meta_key' => 'streaming,radio' ,
+        'precio' => 7000,
+        'subcategoria_id' => 15,
+        'tipo_producto_id' => 5]);
+
+        $producto = Productos::create(['nombre'=> 'Streaming Radio 1024',
+        'slug' => 'streaming-radio-1024',
+        'meta_title' => 'Streaming Radio 1024',
+        'meta_description' => 'Streaming Radio 1024' ,
+        'meta_key' => 'streaming,radio' ,
+        'precio' => 8000,
+        'subcategoria_id' => 15,
+        'tipo_producto_id' => 5]);
 
 
     }

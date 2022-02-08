@@ -18,5 +18,8 @@ class TipoProductoSeeder extends Seeder
         TipoProducto::create(['tipo'     => 'vps']);
         TipoProducto::create(['tipo'     => 'dominio']);
         TipoProducto::create(['tipo'     => 'licencias cpanel']);
+        TipoProducto::create(['tipo'     => 'streaming radio']);
+        TipoProducto::create(['tipo'     => 'servidores dedicado hp']);
+        TipoProducto::create(['tipo'     => 'servidores dedicado dell']);
     }
 }
