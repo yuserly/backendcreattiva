@@ -62,24 +62,16 @@ class ProductosController extends Controller
 
         foreach ($periodos as $key => $value) {
 
-            if($id == 17){
 
-                $year = $value["meses"]/ 12;
+            $descuento = (($producto["precio"] * $value["meses"]) * $value["descuento"]) / 100;
 
-            }else{
-                $year = $value["meses"];
-            }
+            $periodos[$key]["precio_descuento"] = round(($producto["precio"] * $value["meses"]) - $descuento);
 
-
-            $descuento = (($producto["precio"] * $year) * $value["descuento"]) / 100;
-
-            $periodos[$key]["precio_descuento"] = round(($producto["precio"] * $year) - $descuento);
-
-            $periodos[$key]["precio"] = ($producto["precio"] * $year);
+            $periodos[$key]["precio"] = ($producto["precio"] * $value["meses"]);
 
             $periodos[$key]["precio_mensual"] = $producto["precio"];
 
-            $periodos[$key]["ahorro"] = ($producto["precio"] * $year) - round(($producto["precio"] * $year) - $descuento);
+            $periodos[$key]["ahorro"] = ($producto["precio"] * $value["meses"]) - round(($producto["precio"] * $value["meses"]) - $descuento);
 
 
         }

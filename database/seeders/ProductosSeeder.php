@@ -475,12 +475,57 @@ class ProductosSeeder extends Seeder
         }
 
         // dominios
-        $producto = Productos::create(['nombre'=> 'Registro de dominios',
-        'slug' => 'registro-dominios',
-        'meta_title' => 'Registro de dominios',
-        'meta_description' => 'Registro de dominios' ,
+        $producto = Productos::create(['nombre'=> 'Registro de dominios com',
+        'slug' => 'registro-dominios-com',
+        'meta_title' => 'Registro de dominios com',
+        'meta_description' => 'Registro de dominios com' ,
         'meta_key' => '.com, .net, .org' ,
-        'precio' => 0,
+        'precio' => 100,
+        'subcategoria_id' => 26,
+        'tipo_producto_id' => 3]);
+
+        $producto = Productos::create(['nombre'=> 'Registro de dominios net',
+        'slug' => 'registro-dominios-net',
+        'meta_title' => 'Registro de dominios net',
+        'meta_description' => 'Registro de dominios net' ,
+        'meta_key' => '.com, .net, .org' ,
+        'precio' => 200,
+        'subcategoria_id' => 26,
+        'tipo_producto_id' => 3]);
+
+        $producto = Productos::create(['nombre'=> 'Registro de dominios org',
+        'slug' => 'registro-dominios-org',
+        'meta_title' => 'Registro de dominios org',
+        'meta_description' => 'Registro de dominios org' ,
+        'meta_key' => '.com, .net, .org' ,
+        'precio' => 300,
+        'subcategoria_id' => 26,
+        'tipo_producto_id' => 3]);
+
+        $producto = Productos::create(['nombre'=> 'Registro de dominios store',
+        'slug' => 'registro-dominios-store',
+        'meta_title' => 'Registro de dominios store',
+        'meta_description' => 'Registro de dominios store' ,
+        'meta_key' => '.com, .net, .org' ,
+        'precio' => 400,
+        'subcategoria_id' => 26,
+        'tipo_producto_id' => 3]);
+
+        $producto = Productos::create(['nombre'=> 'Registro de dominios digital',
+        'slug' => 'registro-dominios-digital',
+        'meta_title' => 'Registro de dominios digital',
+        'meta_description' => 'Registro de dominios digital' ,
+        'meta_key' => '.com, .net, .org' ,
+        'precio' => 500,
+        'subcategoria_id' => 26,
+        'tipo_producto_id' => 3]);
+
+        $producto = Productos::create(['nombre'=> 'Registro de dominios cl',
+        'slug' => 'registro-dominios-cl',
+        'meta_title' => 'Registro de dominios cl',
+        'meta_description' => 'Registro de dominios cl' ,
+        'meta_key' => '.com, .net, .org' ,
+        'precio' => 600,
         'subcategoria_id' => 26,
         'tipo_producto_id' => 3]);
 
