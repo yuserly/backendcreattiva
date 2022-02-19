@@ -16,6 +16,7 @@ class EstadosSeeder extends Seeder
     {
         Estados::create(['estado'=> 'no pagado']);
         Estados::create(['estado'=> 'pagado']);
+        Estados::create(['estado'=> 'pago rechazado']);
         Estados::create(['estado'=> 'activo']);
         Estados::create(['estado'=> 'suspendido']);
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ServiciosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::match(['get','post'],'/return/token',[ServiciosController::class,'validarrpago']);
+Route::get('returnsuccess/paypal',[ServiciosController::class,'successTransaction']);
+Route::get('returncancel/paypal',[ServiciosController::class,'cancelTransaction']);
+

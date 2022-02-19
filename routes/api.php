@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoriasController;
 use App\Http\Controllers\EmpresasController;
 use App\Http\Controllers\PrecioDominiosController;
 use App\Http\Controllers\ProductosController;
+use App\Http\Controllers\ServiciosController;
 use App\Http\Controllers\SistemaOperativoController;
 use App\Http\Controllers\SubcategoriasController;
 use Illuminate\Http\Request;
@@ -43,5 +44,9 @@ Route::get('getproductosxtipo/{id}/{tipo}',[ProductosController::class,'showxtip
 // empresa
 Route::post('crearempresa',[EmpresasController::class,'store']);
 Route::get('empresa/{email}',[EmpresasController::class,'showone']);
+
+// generar order de compra
+
+Route::post('generarorder',[ServiciosController::class,'crearservicio']);
 
 

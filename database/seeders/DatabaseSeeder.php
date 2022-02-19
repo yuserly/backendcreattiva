@@ -23,8 +23,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PeriodosSeeder::class);
         $this->call(EstadosSeeder::class);
         $this->call(ComunaTableSeeder::class);
-
-
+        $this->call(DolarSeeder::class);
 
     }
 }
