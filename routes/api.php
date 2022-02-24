@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoriasController;
 use App\Http\Controllers\EmpresasController;
 use App\Http\Controllers\PrecioDominiosController;
@@ -44,9 +45,29 @@ Route::get('getproductosxtipo/{id}/{tipo}',[ProductosController::class,'showxtip
 // empresa
 Route::post('crearempresa',[EmpresasController::class,'store']);
 Route::get('empresa/{email}',[EmpresasController::class,'showone']);
+Route::get('empresascliente/{email}',[EmpresasController::class,'showall']);
+Route::get('empresa/xid/{id}',[EmpresasController::class,'showxid']);
+Route::post('validarrut',[EmpresasController::class,'validarrut']);
 
 // generar order de compra
 
 Route::post('generarorder',[ServiciosController::class,'crearservicio']);
+
+// generar codigo de acceso rapido
+Route::post('/solicitudcodigo', [AuthController::class,'enviarcodigorapido']);
+
+
+// login
+
+Route::post('/login', [AuthController::class,'login']);
+Route::post('/logincode', [AuthController::class,'logincode']);
+
+
+Route::middleware('auth:sanctum')->group(function(){
+
+    Route::get('/validartoken', [AuthController::class,'validartoken']);
+
+});
+
 
 

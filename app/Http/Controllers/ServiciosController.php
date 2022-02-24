@@ -227,7 +227,7 @@ class ServiciosController extends Controller
         }
 
 
-        $empresa = Empresas::updateOrCreate(['user_id'=>$user_id],
+        $empresa = Empresas::updateOrCreate(['rut'=>$request->rut],
                                             [
                                                 'nombre' => filter_var($request->nombre, FILTER_SANITIZE_STRING),
                                                 'tipo' => $tipo,

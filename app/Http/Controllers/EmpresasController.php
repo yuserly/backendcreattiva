@@ -18,6 +18,28 @@ class EmpresasController extends Controller
         return $this->successResponse($empresa, 'Consulta realizada exitosamente', true);
 
     }
+
+    public function showall($email){
+
+        $empresa = Empresas::where('email', $email)->get();
+
+        return $this->successResponse($empresa, 'Consulta realizada exitosamente', true);
+
+    }
+    public function showxid($id){
+
+        $empresa = Empresas::where('id_empresa', $id)->first();
+
+        return $this->successResponse($empresa, 'Consulta realizada exitosamente', true);
+
+    }
+
+    public function validarrut(Request $request){
+
+        $empresa = Empresas::where('rut', $request->rut)->first();
+        return $this->successResponse($empresa, 'Rut existe', true);
+
+    }
     public function store(Request $request){
 
         $user = User::where('email',$request->email)->first();
@@ -30,7 +52,7 @@ class EmpresasController extends Controller
 
             $user = User::create([
                 'email' => filter_var($request->email, FILTER_SANITIZE_EMAIL),
-                'password' => Hash::make($random)
+                'password' => Hash::make('12345678')
             ]);
 
             $user_id = $user->id;
@@ -44,8 +66,9 @@ class EmpresasController extends Controller
             $tipo = 0;
         }
 
+        if(isset($request->rut)){
 
-        $empresa = Empresas::updateOrCreate(['user_id'=>$user_id],
+            $empresa = Empresas::updateOrCreate(['rut'=>$request->rut],
                                             [
                                                 'nombre' => filter_var($request->nombre, FILTER_SANITIZE_STRING),
                                                 'tipo' => $tipo,
@@ -63,10 +86,11 @@ class EmpresasController extends Controller
                                                 'user_id' => $user_id
                                             ]);
 
-        if($empresa){
-            return $this->successResponse($empresa, 'Empresa creado exitosamente', true);
-        }else{
-            return $this->successResponse($empresa, 'Error al crear al Empresa', false);
+            if($empresa){
+                return $this->successResponse($empresa, 'Empresa creado exitosamente', true);
+            }else{
+                return $this->successResponse($empresa, 'Error al crear al Empresa', false);
+            }
         }
 
     }
