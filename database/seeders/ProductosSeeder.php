@@ -474,6 +474,149 @@ class ProductosSeeder extends Seeder
             ]);
         }
 
+        //VPS Linux Administrador
+
+        $producto = Productos::create(['nombre'=> 'VPS Linux Administrado 2GB RAM 30GB en disco',
+                                        'slug' => 'vps-linux-administrador-2gb-ram',
+                                        'meta_title' => 'VPS Linux Administrado 2GB RAM 30GB en disco',
+                                        'meta_description' => 'VPS Linux Administrado 2GB RAM 30GB en disco' ,
+                                        'meta_key' => 'servidor, vps, Linux, administrado' ,
+                                        'precio' => 37000,
+                                        'subcategoria_id' => 9,
+                                        'tipo_producto_id' => 2]);
+
+        $caracteristicas = [
+            ["nombre" => 'Memoria RAM', "capacidad" => '2 GB'],
+            ["nombre" => 'Enlace Nacional', "capacidad" => '1 Gbps'],
+            ["nombre" => 'CPU', "capacidad" => '1 Core'],
+            ["nombre" => 'Enlace Internacional', "capacidad" => '50 MB'],
+            ["nombre" => 'Transferencia Mensual', "capacidad" => 'Ilimitado'],
+            ["nombre" => 'Acceso ROOT', "capacidad" => 'Si']
+        ];
+
+        foreach ($caracteristicas as $key => $value) {
+
+            CarateristicassProductos::create([
+                'nombre' => $value["nombre"],
+                'capacidad' => $value["capacidad"],
+                'producto_id' => $producto->id_producto
+            ]);
+        }
+
+        $producto = Productos::create(['nombre'=> 'VPS Linux Administrado 4GB RAM 50GB en disco',
+                                        'slug' => 'vps-linux-administrador-4gb-ram',
+                                        'meta_title' => 'VPS Linux Administrado 4GB RAM 50GB en disco',
+                                        'meta_description' => 'VPS Linux Administrado 4GB RAM 50GB en disco' ,
+                                        'meta_key' => 'servidor, vps, Linux, administrado' ,
+                                        'precio' => 39000,
+                                        'subcategoria_id' => 9,
+                                        'tipo_producto_id' => 2]);
+
+        $caracteristicas = [
+            ["nombre" => 'Memoria RAM', "capacidad" => '4 GB'],
+            ["nombre" => 'Enlace Nacional', "capacidad" => '1 Gbps'],
+            ["nombre" => 'CPU', "capacidad" => '2 Core'],
+            ["nombre" => 'Enlace Internacional', "capacidad" => '50 MB'],
+            ["nombre" => 'Transferencia Mensual', "capacidad" => 'Ilimitado'],
+            ["nombre" => 'Acceso ROOT', "capacidad" => 'Si']
+        ];
+
+        foreach ($caracteristicas as $key => $value) {
+
+            CarateristicassProductos::create([
+                'nombre' => $value["nombre"],
+                'capacidad' => $value["capacidad"],
+                'producto_id' => $producto->id_producto
+            ]);
+        }
+
+        //********************** */
+
+        //VPS Amazon Windows
+
+        $producto = Productos::create(['nombre'=> 'VPS Windows en Amazon 1GB RAM',
+                                        'slug' => 'vps-windows-amazon-1gb-ram',
+                                        'meta_title' => 'VPS Windows en Amazon 1GB RAM',
+                                        'meta_description' => 'VPS Windows en Amazon 1GB RAM' ,
+                                        'meta_key' => 'servidor, vps, windows, amazon' ,
+                                        'precio' => 39700,
+                                        'subcategoria_id' => 10,
+                                        'tipo_producto_id' => 2]);
+
+        $caracteristicas = [
+            ["nombre" => 'Memoria RAM', "capacidad" => '1 GB'],
+            ["nombre" => 'Licencia', "capacidad" => 'Windows Server'],
+            ["nombre" => 'CPU', "capacidad" => '1 Core'],
+            ["nombre" => 'Administración', "capacidad" => 'Si'],
+            ["nombre" => 'Transferencia Mensual', "capacidad" => '2 TB'],
+            ["nombre" => 'Acceso ROOT', "capacidad" => 'Si']
+        ];
+
+        foreach ($caracteristicas as $key => $value) {
+
+            CarateristicassProductos::create([
+                'nombre' => $value["nombre"],
+                'capacidad' => $value["capacidad"],
+                'producto_id' => $producto->id_producto
+            ]);
+        }
+
+        $producto = Productos::create(['nombre'=> 'VPS Windows en Amazon 4GB RAM',
+                                        'slug' => 'vps-windows-amazon-4gb-ram',
+                                        'meta_title' => 'VPS Windows en Amazon 4GB RAM',
+                                        'meta_description' => 'VPS Windows en Amazon 4GB RAM' ,
+                                        'meta_key' => 'servidor, vps, windows, amazon' ,
+                                        'precio' => 42000,
+                                        'subcategoria_id' => 10,
+                                        'tipo_producto_id' => 2]);
+
+        $caracteristicas = [
+            ["nombre" => 'Memoria RAM', "capacidad" => '4 GB'],
+            ["nombre" => 'Licencia', "capacidad" => 'Windows Server'],
+            ["nombre" => 'CPU', "capacidad" => '2 Core'],
+            ["nombre" => 'Administración', "capacidad" => 'Si'],
+            ["nombre" => 'Transferencia Mensual', "capacidad" => '4 TB'],
+            ["nombre" => 'Acceso ROOT', "capacidad" => 'Si']
+        ];
+
+        foreach ($caracteristicas as $key => $value) {
+
+            CarateristicassProductos::create([
+                'nombre' => $value["nombre"],
+                'capacidad' => $value["capacidad"],
+                'producto_id' => $producto->id_producto
+            ]);
+        }
+
+        //********************** */
+
+        //Administración para VPS
+
+        $producto = Productos::create(['nombre'=> 'Administracion para VPS Linux',
+                                        'slug' => 'administracion-para-vps-linux',
+                                        'meta_title' => 'Administracion para VPS Linux',
+                                        'meta_description' => 'Administracion para VPS Linux' ,
+                                        'meta_key' => 'servidor, vps, linux, administracion' ,
+                                        'precio' => 30000,
+                                        'subcategoria_id' => 11,
+                                        'tipo_producto_id' => 2]);
+
+        $caracteristicas = [
+            ["nombre" => 'Soporte técnico', "capacidad" => '24/7'],
+            ["nombre" => 'Asistencia', "capacidad" => 'Asistencia por correo electrónico y por teléfono todos los días durante las 24 horas']
+        ];
+
+        foreach ($caracteristicas as $key => $value) {
+
+            CarateristicassProductos::create([
+                'nombre' => $value["nombre"],
+                'capacidad' => $value["capacidad"],
+                'producto_id' => $producto->id_producto
+            ]);
+        }
+
+        //********************** */
+
         // dominios
         $producto = Productos::create(['nombre'=> 'Registro de dominios com',
         'slug' => 'registro-dominios-com',
@@ -684,6 +827,36 @@ class ProductosSeeder extends Seeder
             ]);
         }
 
+        //Administración por evento
+
+        $producto = Productos::create(['nombre'=> 'Administracion por Evento Servidor en Arriendo',
+                                        'slug' => 'administracion-por-evento-servidor-en-arriendo',
+                                        'meta_title' => 'Administracion por Evento Servidor en Arriendo',
+                                        'meta_description' => 'Administracion por Evento Servidor en Arriendo' ,
+                                        'meta_key' => 'administracio,servidor,arriendo' ,
+                                        'precio' => 60000,
+                                        'subcategoria_id' => 14,
+                                        'tipo_producto_id' => 6]);
+
+        $caracteristicas = [
+            ["nombre" => '1', "capacidad" => 'Asistencia y administración del servidor'],
+            ["nombre" => '2', "capacidad" => 'Asistencia y administración del hosting'],
+            ["nombre" => '2', "capacidad" => 'Backup diario, semanal y mensual.'],
+            ["nombre" => '2', "capacidad" => 'Monitorización del sistema y archivo de registros'],
+            ["nombre" => '2', "capacidad" => 'Soporte técnico 24/7']
+        ];
+
+        foreach ($caracteristicas as $key => $value) {
+
+            CarateristicassProductos::create([
+                'nombre' => $value["nombre"],
+                'capacidad' => $value["capacidad"],
+                'producto_id' => $producto->id_producto
+            ]);
+        }
+
+        //********************** */
+
         // radios
 
         $producto = Productos::create(['nombre'=> 'Streaming Radio 128',
@@ -749,6 +922,307 @@ class ProductosSeeder extends Seeder
         'precio' => 8000,
         'subcategoria_id' => 19,
         'tipo_producto_id' => 8]);
+
+        //Migración Google Workspace
+
+        $producto = Productos::create(['nombre'=> '(Migracion Workspace) 1GB a 12GB',
+                                        'slug' => 'migracion-workspace-1gb-a-12gb',
+                                        'meta_title' => '(Migracion Workspace) 1GB a 12GB',
+                                        'meta_description' => '(Migracion Workspace) 1GB a 12GB' ,
+                                        'meta_key' => 'migracion,google,workspace' ,
+                                        'precio' => 35990,
+                                        'subcategoria_id' => 16,
+                                        'tipo_producto_id' => 9]);
+
+        $caracteristicas = [
+            ["nombre" => '1', "capacidad" => 'El tiempo de migración será de máximo 72 horas. '],
+            ["nombre" => '2', "capacidad" => 'Migración de correos a través de IMAP.'],
+            ["nombre" => '3', "capacidad" => 'Transferencia sin pérdida de datos.']
+        ];
+
+        foreach ($caracteristicas as $key => $value) {
+
+            CarateristicassProductos::create([
+                'nombre' => $value["nombre"],
+                'capacidad' => $value["capacidad"],
+                'producto_id' => $producto->id_producto
+            ]);
+        }
+
+        $producto = Productos::create(['nombre'=> '(Migracion Workspace) 12GB a 25GB',
+                                        'slug' => 'migracion-workspace-12gb-a-25gb',
+                                        'meta_title' => '(Migracion Workspace) 12GB a 25GB',
+                                        'meta_description' => '(Migracion Workspace) 12GB a 25GB' ,
+                                        'meta_key' => 'migracion,google,workspace' ,
+                                        'precio' => 85990,
+                                        'subcategoria_id' => 16,
+                                        'tipo_producto_id' => 9]);
+
+        $caracteristicas = [
+            ["nombre" => '1', "capacidad" => 'El tiempo de migración será de máximo 72 horas. '],
+            ["nombre" => '2', "capacidad" => 'Migración de correos a través de IMAP.'],
+            ["nombre" => '3', "capacidad" => 'Transferencia sin pérdida de datos.']
+        ];
+
+        foreach ($caracteristicas as $key => $value) {
+
+            CarateristicassProductos::create([
+                'nombre' => $value["nombre"],
+                'capacidad' => $value["capacidad"],
+                'producto_id' => $producto->id_producto
+            ]);
+        }
+
+        //********************** */
+
+        //Google Workspace
+
+        $producto = Productos::create(['nombre'=> 'Google Workspace Business Starter',
+                                        'slug' => 'google-workspace-business-starter',
+                                        'meta_title' => 'Google Workspace Business',
+                                        'meta_description' => 'Google Workspace Business' ,
+                                        'meta_key' => 'licencia,google,workspace' ,
+                                        'precio' => 50000,
+                                        'subcategoria_id' => 17,
+                                        'tipo_producto_id' => 9]);
+
+        $caracteristicas = [
+            ["nombre" => '1', "capacidad" => 'Correo electrónico de nivel empresarial, personalizado y seguro'],
+            ["nombre" => '2', "capacidad" => '30 GB de espacio en la nube por usuario (Google Drive y Gmail)'],
+            ["nombre" => '3', "capacidad" => 'Videollamadas de hasta 100 usuarios'],
+            ["nombre" => '4', "capacidad" => 'Cifrado de datos en tránsito y reposo'],
+            ["nombre" => '5', "capacidad" => 'Programa de protección avanzada']
+        ];
+
+        foreach ($caracteristicas as $key => $value) {
+
+            CarateristicassProductos::create([
+                'nombre' => $value["nombre"],
+                'capacidad' => $value["capacidad"],
+                'producto_id' => $producto->id_producto
+            ]);
+        }
+
+        $producto = Productos::create(['nombre'=> 'Google Workspace Business Standard',
+                                        'slug' => 'google-workspace-business-standard',
+                                        'meta_title' => 'Google Workspace Business Standard',
+                                        'meta_description' => 'Google Workspace Business Standard' ,
+                                        'meta_key' => 'licencia,google,workspace' ,
+                                        'precio' => 85990,
+                                        'subcategoria_id' => 17,
+                                        'tipo_producto_id' => 9]);
+
+        $caracteristicas = [
+            ["nombre" => '1', "capacidad" => 'Correo electrónico de nivel empresarial, personalizado y seguro'],
+            ["nombre" => '2', "capacidad" => '2 TB de espacio en la nube por usuario (Google Drive y Gmail)'],
+            ["nombre" => '3', "capacidad" => 'Videollamadas de hasta 100 usuarios'],
+            ["nombre" => '4', "capacidad" => 'Cifrado de datos en tránsito y reposo'],
+            ["nombre" => '5', "capacidad" => 'Programa de protección avanzada']
+        ];
+
+        foreach ($caracteristicas as $key => $value) {
+
+            CarateristicassProductos::create([
+                'nombre' => $value["nombre"],
+                'capacidad' => $value["capacidad"],
+                'producto_id' => $producto->id_producto
+            ]);
+        }
+
+        //********************** */
+
+        //Google Ads
+
+        $producto = Productos::create(['nombre'=> 'Google Ads',
+                                        'slug' => 'google-ads',
+                                        'meta_title' => 'Google Ads',
+                                        'meta_description' => 'Google Ads' ,
+                                        'meta_key' => 'ads,google,workspace' ,
+                                        'precio' => 19000,
+                                        'subcategoria_id' => 18,
+                                        'tipo_producto_id' => 9]);
+
+        $caracteristicas = [
+            ["nombre" => '1', "capacidad" => 'Selección de palabras clave o keywords'],
+            ["nombre" => '2', "capacidad" => 'Atención personalizada con experto certificado en Google Ads'],
+            ["nombre" => '3', "capacidad" => 'Creación de anuncios'],
+            ["nombre" => '4', "capacidad" => 'Extensiones de anuncios'],
+            ["nombre" => '5', "capacidad" => 'Informe periódico de estadísticas	']
+        ];
+
+        foreach ($caracteristicas as $key => $value) {
+
+            CarateristicassProductos::create([
+                'nombre' => $value["nombre"],
+                'capacidad' => $value["capacidad"],
+                'producto_id' => $producto->id_producto
+            ]);
+        }
+
+        //********************** */
+
+        //Soporte Microsoft 365
+
+        $producto = Productos::create(['nombre'=> 'Configuracion Inicial Microsoft 365',
+                                        'slug' => 'configuracion-inicial-microsoft-365',
+                                        'meta_title' => 'Configuracion Inicial Microsoft 365',
+                                        'meta_description' => 'Configuracion Inicial Microsoft 365' ,
+                                        'meta_key' => 'configuracion,microsoft,365' ,
+                                        'precio' => 45000,
+                                        'subcategoria_id' => 21,
+                                        'tipo_producto_id' => 8]);
+
+
+
+        //********************** */
+
+        //Almacenamiento adicional Google Workspace
+
+        $producto = Productos::create(['nombre'=> 'Google Drive 20GB',
+                                        'slug' => 'google-drive-20gb',
+                                        'meta_title' => 'Google Drive 20GB',
+                                        'meta_description' => 'Google Drive 20GB' ,
+                                        'meta_key' => 'google,workspace,drive' ,
+                                        'precio' => 8500,
+                                        'subcategoria_id' => 22,
+                                        'tipo_producto_id' => 9]);
+
+        $producto = Productos::create(['nombre'=> 'Google Drive 50GB',
+        'slug' => 'google-drive-50gb',
+        'meta_title' => 'Google Drive 50GB',
+        'meta_description' => 'Google Drive 50GB' ,
+        'meta_key' => 'google,workspace,drive' ,
+        'precio' => 9500,
+        'subcategoria_id' => 22,
+        'tipo_producto_id' => 9]);
+
+        //********************** */
+
+        //Housing
+
+        $producto = Productos::create(['nombre'=> 'Housing DATACENTER TIER II',
+                                        'slug' => 'housing-datacenter-tier-ii',
+                                        'meta_title' => 'Housing DATACENTER TIER II',
+                                        'meta_description' => 'Housing DATACENTER TIER II' ,
+                                        'meta_key' => 'housing,datacenter,tier,ii' ,
+                                        'precio' => 165000,
+                                        'subcategoria_id' => 23,
+                                        'tipo_producto_id' => 10]);
+
+        $caracteristicas = [
+            ["nombre" => 'TIPO', "capacidad" => 'PROFESIONAL'],
+            ["nombre" => 'ADMINISTRACIÓN', "capacidad" => 'REMOTA PARA CLIENTES'],
+            ["nombre" => 'FORMATO SERVIDOR', "capacidad" => 'TOWER - 1U Y 2U'],
+            ["nombre" => 'SISTEMAS UPS', "capacidad" => 'UNA UPS POR RACK'],
+            ["nombre" => 'ENLACE NACIONAL', "capacidad" => '1 Gbps'],
+            ["nombre" => 'ENLACE INTERNACIONAL', "capacidad" => '100 MB']
+        ];
+
+        foreach ($caracteristicas as $key => $value) {
+
+            CarateristicassProductos::create([
+                'nombre' => $value["nombre"],
+                'capacidad' => $value["capacidad"],
+                'producto_id' => $producto->id_producto
+            ]);
+        }
+
+        $producto = Productos::create(['nombre'=> 'Housing DATACENTER TIER III',
+                                        'slug' => 'housing-datacenter-tier-iii',
+                                        'meta_title' => 'Housing DATACENTER TIER III',
+                                        'meta_description' => 'Housing DATACENTER TIER III' ,
+                                        'meta_key' => 'housing,datacenter,tier,iii' ,
+                                        'precio' => 360000,
+                                        'subcategoria_id' => 23,
+                                        'tipo_producto_id' => 10]);
+
+        $caracteristicas = [
+            ["nombre" => 'FORMATO SERVIDOR', "capacidad" => '1U Y 2U'],
+            ["nombre" => 'SISTEMAS UPS', "capacidad" => 'REDUNDANCIA N + 1'],
+            ["nombre" => 'ADMINISTRACIÓN', "capacidad" => 'REMOTA PARA CLIENTES'],
+            ["nombre" => 'TIPO', "capacidad" => 'WORLD CLASS'],
+            ["nombre" => 'ENLACE NACIONAL', "capacidad" => '1 Gbps'],
+            ["nombre" => 'ENLACE INTERNACIONAL', "capacidad" => '100 MB']
+        ];
+
+        foreach ($caracteristicas as $key => $value) {
+
+            CarateristicassProductos::create([
+                'nombre' => $value["nombre"],
+                'capacidad' => $value["capacidad"],
+                'producto_id' => $producto->id_producto
+            ]);
+        }
+
+        //********************** */
+
+        //Licencias Imunify360
+
+        $producto = Productos::create(['nombre'=> 'Licencia Imunify360 Ilimitada',
+                                        'slug' => 'licencia-imunify360-ilimitada',
+                                        'meta_title' => 'Licencia Imunify360 Ilimitada',
+                                        'meta_description' => 'Licencia Imunify360 Ilimitada' ,
+                                        'meta_key' => 'licencia,imunify360' ,
+                                        'precio' => 38000,
+                                        'subcategoria_id' => 25,
+                                        'tipo_producto_id' => 11]);
+
+        $caracteristicas = [
+            ["nombre" => '1', "capacidad" => 'Usuarios ilimitados'],
+            ["nombre" => '2', "capacidad" => 'Firewall avanzado'],
+            ["nombre" => '3', "capacidad" => 'Detección de intrusos'],
+            ["nombre" => '4', "capacidad" => 'Detección de malware'],
+            ["nombre" => '5', "capacidad" => 'Defensa proactiva']
+        ];
+
+        foreach ($caracteristicas as $key => $value) {
+
+            CarateristicassProductos::create([
+                'nombre' => $value["nombre"],
+                'capacidad' => $value["capacidad"],
+                'producto_id' => $producto->id_producto
+            ]);
+        }
+
+        $producto = Productos::create(['nombre'=> 'Licencia Imunify AV+',
+                                        'slug' => 'licencia-imunify360-avplus',
+                                        'meta_title' => 'Licencia Imunify AV+',
+                                        'meta_description' => 'Licencia Imunify AV+' ,
+                                        'meta_key' => 'licencia,imunify360' ,
+                                        'precio' => 24000,
+                                        'subcategoria_id' => 25,
+                                        'tipo_producto_id' => 11]);
+
+        $caracteristicas = [
+            ["nombre" => '1', "capacidad" => 'Limpieza de malware con un clic'],
+            ["nombre" => '2', "capacidad" => 'Eliminación intuitiva de malware'],
+            ["nombre" => '3', "capacidad" => 'Protección a nivel de sistema de archivos'],
+            ["nombre" => '4', "capacidad" => 'Detección de malware']
+        ];
+
+        foreach ($caracteristicas as $key => $value) {
+
+            CarateristicassProductos::create([
+                'nombre' => $value["nombre"],
+                'capacidad' => $value["capacidad"],
+                'producto_id' => $producto->id_producto
+            ]);
+        }
+
+        //********************** */
+
+         //Backup recovery
+
+         $producto = Productos::create(['nombre'=> 'Backup Recovery 50GB',
+         'slug' => 'backup-recovery-50gb',
+         'meta_title' => 'Backup Recovery 50GB',
+         'meta_description' => 'Backup Recovery 50GB' ,
+         'meta_key' => 'backup,recovery' ,
+         'precio' => 29900,
+         'subcategoria_id' => 28,
+         'tipo_producto_id' => 2]);
+
+        //********************** */
 
 
 

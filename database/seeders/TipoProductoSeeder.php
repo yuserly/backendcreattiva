@@ -22,5 +22,8 @@ class TipoProductoSeeder extends Seeder
         TipoProducto::create(['tipo'     => 'servidores dedicado hp']);
         TipoProducto::create(['tipo'     => 'servidores dedicado dell']);
         TipoProducto::create(['tipo'     => 'licencias microsoft']);
+        TipoProducto::create(['tipo'     => 'google workspace']);
+        TipoProducto::create(['tipo'     => 'housing']);
+        TipoProducto::create(['tipo'     => 'licencias imunify360']);
     }
 }
