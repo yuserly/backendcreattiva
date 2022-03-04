@@ -15,8 +15,6 @@ class Servicios extends Model
             'glosa',
             'cantidad',
             'producto_id',
-            'producto_id',
-            'periodo_id',
             'periodo_id',
             'os_id',
             'version_id',
@@ -28,4 +26,19 @@ class Servicios extends Model
             'fecha_renovacion',
             'empresa_id'
     ];
+
+    public function detalleventa(){
+
+        return $this->hasMany(DetalleVentas::class,'servicio_id','id_servicio');
+    }
+
+    public function periodo(){
+
+        return $this->hasOne(Periodos::class,'id_periodo','periodo_id');
+    }
+
+    public function productos(){
+
+        return $this->hasOne(Productos::class,'id_producto','producto_id');
+    }
 }

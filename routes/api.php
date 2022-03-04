@@ -34,6 +34,7 @@ Route::get('getregiones',[CategoriasController::class,'showregiones']);
 // informacion del productos
 Route::get('getcomunas/{id}',[CategoriasController::class,'showcomunas']);
 Route::get('getsubcategorias/{id}',[SubcategoriasController::class,'show']);
+Route::get('getsubcategoriaslug/{slug}',[SubcategoriasController::class,'showslug']);
 Route::get('getproductos/{id}',[ProductosController::class,'show']);
 Route::get('getperiodo/{id}',[ProductosController::class,'periodosproducto']);
 Route::get('getperiodo/{id}/{id_periodo}',[ProductosController::class,'periodoproducto']);
@@ -56,6 +57,9 @@ Route::post('generarorder',[ServiciosController::class,'crearservicio']);
 // generar codigo de acceso rapido
 Route::post('/solicitudcodigo', [AuthController::class,'enviarcodigorapido']);
 
+// servicios
+Route::get('getserviciospendpago/{id}',[ServiciosController::class,'showpendpago']);
+Route::get('getservicios/{id}/{subcategoria}',[ServiciosController::class,'show']);
 
 // login
 

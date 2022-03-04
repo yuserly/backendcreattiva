@@ -21,6 +21,25 @@ date_default_timezone_set("America/Santiago");
 
 class ServiciosController extends Controller
 {
+    public function showpendpago($id){
+        return Servicios::where([['empresa_id',$id], ['estado_id', 1]])->with('detalleventa','detalleventa.venta', 'periodo')->get();
+    }
+
+    public function show($id, $subcategoria){
+
+        $serviciossub = [];
+        $servicios = Servicios::where([['empresa_id',$id], ['estado_id', '!=' ,1]])->with('detalleventa','detalleventa.venta', 'periodo', 'productos','productos.subcategoria')->get();
+        if(!empty($servicios)){
+            foreach ($servicios as $key => $value) {
+                if($value["productos"]["subcategoria"]["slug"] == $subcategoria){
+                    array_push($serviciossub, $value);
+                }
+            }
+        }
+
+        return $serviciossub;
+
+    }
     public function crearservicio(Request $request){
 
         $empresa = Empresas::where('email', $request->datos["email"])->first();
