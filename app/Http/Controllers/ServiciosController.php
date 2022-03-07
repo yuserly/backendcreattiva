@@ -173,14 +173,26 @@ class ServiciosController extends Controller
 
                 $glosa = $value["producto"]["nombre"].' '.$value["dominio"];
 
+                if($value["sistemaoperativo"] == 0){
+                    $sis = null;
+                }else{
+                    $sis = $value["sistemaoperativo"];
+                }
+
+                if($value["versionsistema"] == 0){
+                    $version = null;
+                }else{
+                    $version = $value["versionsistema"];
+                }
+
                 $servicio = Servicios::create([
                                     'codigo_venta' => $venta->codigo,
                                     'glosa' => $glosa,
                                     'cantidad' => 1,
                                     'producto_id' => $value["producto"]["id_producto"],
                                     'periodo_id' => $value["periodo"],
-                                    'os_id' => $value["sistemaoperativo"],
-                                    'version_id' => $value["versionsistema"],
+                                    'os_id' => $sis,
+                                    'version_id' => $version,
                                     'administrado' => $value["administrar"],
                                     'ip' => $value["ip"],
                                     'dominio' => $value["dominio"],
