@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use App\Models\VersionSistema;
 use Illuminate\Database\Seeder;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class VersionSistemaSeeder extends Seeder
 {
@@ -29,6 +31,11 @@ class VersionSistemaSeeder extends Seeder
         VersionSistema::create(['version'=> 'Windows 10' ,'os_id' => 4]);
         VersionSistema::create(['version'=> 'Windows 12' ,'os_id' => 5]);
         VersionSistema::create(['version'=> 'Windows 10' ,'os_id' => 5]);
+
+        User::create([
+            'email' => 'jesus@creattiva.cl',
+            'password' => Hash::make('12345678')
+        ]);
 
     }
 }

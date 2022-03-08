@@ -274,7 +274,7 @@ class ServiciosController extends Controller
         $buy_order = $codeventa;
         $session_id = uniqid();
         $amount = $monto;
-        $return_url = "http://backendcreattiva.cp/return/token";
+        $return_url = "http://creattiva-api.cl/return/token";
 
         $response = (new Transaction)->create($buy_order, $session_id, $amount, $return_url);
 
