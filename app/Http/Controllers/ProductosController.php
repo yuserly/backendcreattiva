@@ -58,7 +58,8 @@ class ProductosController extends Controller
     public function periodosproducto($id){
 
         $producto = Productos::where('id_producto', $id)->first();
-        $periodos = Periodos::where('id_periodo','!=',1)->orderBy('meses','DESC')->get();
+        //$periodos = Periodos::where('id_periodo','!=',1)->orderBy('meses','DESC')->get();
+        $periodos = Periodos::orderBy('meses','DESC')->get();
 
         foreach ($periodos as $key => $value) {
 
