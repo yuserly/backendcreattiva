@@ -3,21 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cupones;
+use App\Models\CuponesHasSubcategorias;
 use App\Models\TipoDescuento;
 use Illuminate\Http\Request;
 
 class CuponesController extends Controller
 {
     //
-    public function validarcupon($cupon,$subcategoria_id){
-        $cupon = Cupones::where([
-            ['cupon','=',$cupon],
-            ['subcategoria_id','=',$subcategoria_id]
-        ])->first();
+    public function validarcupon($cupon){
+        $cupon = Cupones::where('cupon','=',$cupon)->first();
+
         if($cupon){
 
             $uso_max = $cupon['uso_max'];
             $uso_actual = $cupon['uso_actual'];
+            $subcategorias = CuponesHasSubcategorias::where('cupon_id','=',$cupon->id_cupon)->get();
 
             if(($uso_max-$uso_actual > 0)){
 
@@ -28,7 +28,8 @@ class CuponesController extends Controller
                         
                         return [
                             "monto" => $cupon['valor'],
-                            "tipo_descuento" => 1
+                            "tipo_descuento" => 1,
+                            "subcategorias" => $subcategorias
                         ];
 
                         break;
@@ -36,7 +37,8 @@ class CuponesController extends Controller
                     case '2': //porcentaje
                         return [
                             "monto" => $cupon['valor'],
-                            "tipo_descuento" => 2
+                            "tipo_descuento" => 2,
+                            "subcategorias" => $subcategorias
                         ];
                         break;
                 }
@@ -44,14 +46,16 @@ class CuponesController extends Controller
             }else{
                 return [
                     "monto" => 0,
-                    "tipo_descuento" => 1
+                    "tipo_descuento" => 1,
+                    "subcategorias" => 0
                 ];
             }
 
         }else{
             return [
                 "monto" => 0,
-                "tipo_descuento" => 1
+                "tipo_descuento" => 1,
+                "subcategorias" => 0
             ];
         }
 

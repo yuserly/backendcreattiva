@@ -28,7 +28,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 //cupones
-Route::get('validarcupon/{cupon}/{subcategoria_id}',[CuponesController::class,'validarcupon']);
+Route::get('validarcupon/{cupon}',[CuponesController::class,'validarcupon']);
 
 Route::get('getcategorias',[CategoriasController::class,'show']);
 // regiones

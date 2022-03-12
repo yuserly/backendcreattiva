@@ -34,9 +34,13 @@ class CreateCuponesTable extends Migration
 
             $table->foreign('servicio_id')->references('id_servicio')->on('servicios');
 
+            
+            /*
             $table->unsignedBigInteger('subcategoria_id');
 
             $table->foreign('subcategoria_id')->references('id_subcategoria')->on('subcategorias');
+
+            */
 
             $table->integer('uso_max');
 

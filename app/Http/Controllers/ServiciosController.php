@@ -128,6 +128,7 @@ class ServiciosController extends Controller
             $iva = 0;
             $total = 0;
             $descuento = 0;
+            $cupondescuento = 0;
 
             foreach ($request->carro as $key => $value) {
                 $producto = Productos::where('id_producto', $value["producto"]["id_producto"])->first();
@@ -141,9 +142,15 @@ class ServiciosController extends Controller
                 $precio_mensual = $producto["precio"];
 
                 $neto = $neto + $precio_descuento;
+
                 $descuento = round($descuento + $descuentof);
+
+                if($value["cupon_descuento"]>0){
+                    $cupondescuento = round($value["cupon_descuento"]*-1);
+                }
             }
 
+            $neto = $neto + $cupondescuento;
             $iva = round($neto * 0.19);
             $total = $neto + $iva;
             $total_usd = round($total/$dolar->precio);
