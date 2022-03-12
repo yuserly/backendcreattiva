@@ -69,7 +69,7 @@ Route::get('getservicios/{id}/{subcategoria}',[ServiciosController::class,'show'
 
 Route::post('/login', [AuthController::class,'login']);
 Route::post('/logincode', [AuthController::class,'logincode']);
-
+Route::get('/solicitudcambiopass/{email}', [AuthController::class,'solicitudrecuperarpassword']);
 
 Route::middleware('auth:sanctum')->group(function(){
 

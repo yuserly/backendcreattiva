@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\CodigoAccesoRapido;
+use App\Mail\RecuperarPassword;
 use App\Models\Empresas;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -128,5 +129,49 @@ class AuthController extends Controller
             $randomString .= $characters[rand(0, $charactersLength - 1)];
         }
         return $randomString;
+    }
+
+    public function solicitudrecuperarpassword($email){
+
+        $user = User::where('email',$email)->first();
+
+        if($user){
+
+            $codigo = uniqid();
+
+            $upt = $user->update([
+                'codigo_recuperar'=> $codigo
+            ]);
+
+            if(isset($upt)){
+                $empresa = Empresas::where('user_id', $user->id)->first();
+                $nombre = $empresa->nombre;
+                $url = 'http://localhost:4200/recuperar-password/'.$codigo;
+
+                Mail::to($email)->send(new RecuperarPassword($nombre,$url));
+                $response = [
+                    'ok' => true
+                ];
+
+                return $this->successResponse($response, 'codigo enviado', true);
+
+            }else{
+                $response = [
+                    'ok' => false
+                ];
+
+                return $this->successResponse($response, 'error al actualizar codigo', true);
+
+            }
+        }else{
+
+            $response = [
+                'ok' => false
+            ];
+
+            return $this->successResponse($response, 'Email no existe', true);
+
+        }
+
     }
 }
