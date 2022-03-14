@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->integer('codigo_rapido')->nullable();
+            $table->string('codigo_recuperar')->nullable();
             $table->dateTime('fecha_codigo_rapido')->nullable();
             $table->rememberToken();
             $table->timestamps();

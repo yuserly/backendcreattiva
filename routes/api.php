@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\ServiciosController;
 use App\Http\Controllers\SistemaOperativoController;
 use App\Http\Controllers\SubcategoriasController;
+use App\Http\Controllers\CuponesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -26,6 +27,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+//cupones
+Route::get('validarcupon/{cupon}/{subcategoria_id}',[CuponesController::class,'validarcupon']);
+
 Route::get('getcategorias',[CategoriasController::class,'show']);
 // regiones
 Route::get('getregiones',[CategoriasController::class,'showregiones']);
@@ -34,6 +38,7 @@ Route::get('getregiones',[CategoriasController::class,'showregiones']);
 // informacion del productos
 Route::get('getcomunas/{id}',[CategoriasController::class,'showcomunas']);
 Route::get('getsubcategorias/{id}',[SubcategoriasController::class,'show']);
+Route::get('getsubcategoriaslug/{slug}',[SubcategoriasController::class,'showslug']);
 Route::get('getproductos/{id}',[ProductosController::class,'show']);
 Route::get('getperiodo/{id}',[ProductosController::class,'periodosproducto']);
 Route::get('getperiodo/{id}/{id_periodo}',[ProductosController::class,'periodoproducto']);
@@ -56,12 +61,15 @@ Route::post('generarorder',[ServiciosController::class,'crearservicio']);
 // generar codigo de acceso rapido
 Route::post('/solicitudcodigo', [AuthController::class,'enviarcodigorapido']);
 
+// servicios
+Route::get('getserviciospendpago/{id}',[ServiciosController::class,'showpendpago']);
+Route::get('getservicios/{id}/{subcategoria}',[ServiciosController::class,'show']);
 
 // login
 
 Route::post('/login', [AuthController::class,'login']);
 Route::post('/logincode', [AuthController::class,'logincode']);
-
+Route::get('/solicitudcambiopass/{email}', [AuthController::class,'solicitudrecuperarpassword']);
 
 Route::middleware('auth:sanctum')->group(function(){
 

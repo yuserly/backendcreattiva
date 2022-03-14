@@ -26,8 +26,8 @@ class CreateEmpresasTable extends Migration
             $table->string('giro')->nullable();
             $table->string('direccion')->nullable();
             $table->string('pais')->nullable();
-            $table->integer('region')->nullable();
-            $table->integer('comuna')->nullable();
+            $table->string('region')->nullable();
+            $table->string('comuna')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();

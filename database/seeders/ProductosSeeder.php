@@ -15,6 +15,8 @@ class ProductosSeeder extends Seeder
      */
     public function run()
     {
+
+        //Hosting SSD
        $producto = Productos::create(['nombre'=> 'Hosting Persona',
                                     'slug' => 'hosting-persona',
                                     'meta_title' => 'Hosting Persona',
@@ -45,7 +47,6 @@ class ProductosSeeder extends Seeder
             ]);
         }
 
-        // producto 2
 
         $producto = Productos::create(['nombre'=> 'Hosting Emprendedor',
                                     'slug' => 'hosting-emprendedor',
@@ -77,7 +78,10 @@ class ProductosSeeder extends Seeder
             ]);
         }
 
-        // producto 3
+        //*************
+
+
+        // Hosting Wordpress
 
         $producto = Productos::create(['nombre'=> 'Hosting Wordpress 5G',
                                     'slug' => 'hosting-wordpress-5G',
@@ -107,8 +111,6 @@ class ProductosSeeder extends Seeder
             ]);
         }
 
-         // producto 4
-
          $producto = Productos::create(['nombre'=> 'Hosting Wordpress 10G',
          'slug' => 'hosting-wordpressIlimitado0g',
          'meta_title' => 'Hosting Wordpress 10G',
@@ -137,7 +139,11 @@ class ProductosSeeder extends Seeder
             ]);
         }
 
-        // producto 5
+        //************************
+
+
+
+        // Hosting Amazon
 
         $producto = Productos::create(['nombre'=> 'Hosting en Amazon 16GB SSD',
         'slug' => 'hosting-en-amazonIlimitado6gb-ssd',
@@ -194,7 +200,9 @@ class ProductosSeeder extends Seeder
           ]);
       }
 
-       // producto 7
+      //**************
+
+       // Hosting Windows
 
        $producto = Productos::create(['nombre'=> 'Hosting Windows Persona',
        'slug' => 'hosting-windows-persona',
@@ -223,7 +231,6 @@ class ProductosSeeder extends Seeder
           ]);
       }
 
-      // producto 8
 
       $producto = Productos::create(['nombre'=> 'Hosting Windows Emprendedor',
       'slug' => 'hosting-windows-emprendedor',
@@ -252,7 +259,9 @@ class ProductosSeeder extends Seeder
          ]);
      }
 
-     // producto 9
+     //***************
+
+     //Hosting Reseller
 
      $producto = Productos::create(['nombre'=> 'Hosting Reseller Developer',
      'slug' => 'hosting-reseller-developer',
@@ -280,7 +289,6 @@ class ProductosSeeder extends Seeder
         ]);
     }
 
-    // producto 10
 
     $producto = Productos::create(['nombre'=> 'Hosting Reseller Emprendedor',
     'slug' => 'hosting-reseller-emprendedor',
@@ -308,7 +316,207 @@ class ProductosSeeder extends Seeder
        ]);
    }
 
-    //    servidores
+   //***************
+
+   // Tienda Online
+
+   $producto = Productos::create(['nombre'=> 'Ecommerce Plus',
+     'slug' => 'ecommerce-plus',
+     'meta_title' => 'Ecommerce Plus',
+     'meta_description' => 'Ecommerce Plus' ,
+     'meta_key' => 'Hosting, ecommerce' ,
+     'precio' => 43900,
+     'subcategoria_id' => 6,
+     'tipo_producto_id' => 1]);
+
+    $caracteristicas = [
+    ["nombre" => 'Cuentas de Hosting', "capacidad" => '25'],
+    ["nombre" => 'Espacio web cuentas de hosting', "capacidad" => '50 GB'],
+    ["nombre" => 'Transferencia de Datos Mensuales', "capacidad" => '500 GB'],
+    ["nombre" => 'IP Dedicada Incluida para la cuenta principal', "capacidad" => ''],
+    ["nombre" => 'Backup adicionales', "capacidad" => '150GB']
+    ];
+
+    foreach ($caracteristicas as $key => $value) {
+
+        CarateristicassProductos::create([
+            'nombre' => $value["nombre"],
+            'capacidad' => $value["capacidad"],
+            'producto_id' => $producto->id_producto
+        ]);
+    }
+
+    $producto = Productos::create(['nombre'=> 'Ecommerce Pro',
+     'slug' => 'ecommerce-pro',
+     'meta_title' => 'Ecommerce Pro',
+     'meta_description' => 'Ecommerce Pro' ,
+     'meta_key' => 'Hosting, ecommerce' ,
+     'precio' => 46900,
+     'subcategoria_id' => 6,
+     'tipo_producto_id' => 1]);
+
+    $caracteristicas = [
+    ["nombre" => 'Cuentas de Hosting', "capacidad" => '25'],
+    ["nombre" => 'Espacio web cuentas de hosting', "capacidad" => '50 GB'],
+    ["nombre" => 'Transferencia de Datos Mensuales', "capacidad" => '500 GB'],
+    ["nombre" => 'IP Dedicada Incluida para la cuenta principal', "capacidad" => ''],
+    ["nombre" => 'Backup adicionales', "capacidad" => '150GB']
+    ];
+
+    foreach ($caracteristicas as $key => $value) {
+
+        CarateristicassProductos::create([
+            'nombre' => $value["nombre"],
+            'capacidad' => $value["capacidad"],
+            'producto_id' => $producto->id_producto
+        ]);
+    }
+
+    $producto = Productos::create(['nombre'=> 'Ecommerce Premium',
+     'slug' => 'ecommerce-premium',
+     'meta_title' => 'Ecommerce Premium',
+     'meta_description' => 'Ecommerce Premium' ,
+     'meta_key' => 'Hosting, ecommerce' ,
+     'precio' => 56900,
+     'subcategoria_id' => 6,
+     'tipo_producto_id' => 1]);
+
+    $caracteristicas = [
+    ["nombre" => 'Cuentas de Hosting', "capacidad" => '25'],
+    ["nombre" => 'Espacio web cuentas de hosting', "capacidad" => '50 GB'],
+    ["nombre" => 'Transferencia de Datos Mensuales', "capacidad" => '500 GB'],
+    ["nombre" => 'IP Dedicada Incluida para la cuenta principal', "capacidad" => ''],
+    ["nombre" => 'Backup adicionales', "capacidad" => '150GB']
+    ];
+
+    foreach ($caracteristicas as $key => $value) {
+
+        CarateristicassProductos::create([
+            'nombre' => $value["nombre"],
+            'capacidad' => $value["capacidad"],
+            'producto_id' => $producto->id_producto
+        ]);
+    }
+
+
+   //***************
+
+
+    //Certificado SSL
+
+
+    $producto = Productos::create(['nombre'=> 'Sectigo Positive SSL Certificate',
+     'slug' => 'sectigo-positive-ssl-certificate',
+     'meta_title' => 'Sectigo Positive SSL Certificate',
+     'meta_description' => 'Sectigo Positive SSL Certificate' ,
+     'meta_key' => 'Certificado, ssl' ,
+     'precio' => 12500,
+     'subcategoria_id' => 7,
+     'tipo_producto_id' => 1]);
+
+    $caracteristicas = [
+    ["nombre" => 'Cuentas de Hosting', "capacidad" => '25'],
+    ["nombre" => 'Espacio web cuentas de hosting', "capacidad" => '50 GB'],
+    ["nombre" => 'Transferencia de Datos Mensuales', "capacidad" => '500 GB'],
+    ["nombre" => 'IP Dedicada Incluida para la cuenta principal', "capacidad" => ''],
+    ["nombre" => 'Backup adicionales', "capacidad" => '150GB']
+    ];
+
+    foreach ($caracteristicas as $key => $value) {
+
+        CarateristicassProductos::create([
+            'nombre' => $value["nombre"],
+            'capacidad' => $value["capacidad"],
+            'producto_id' => $producto->id_producto
+        ]);
+    }
+
+     $producto = Productos::create(['nombre'=> 'Sectigo SSL',
+     'slug' => 'sectigo-ssl',
+     'meta_title' => 'Sectigo SSL',
+     'meta_description' => 'Sectigo SSL' ,
+     'meta_key' => 'Certificado, ssl' ,
+     'precio' => 11500,
+     'subcategoria_id' => 7,
+     'tipo_producto_id' => 1]);
+
+    $caracteristicas = [
+    ["nombre" => 'Cuentas de Hosting', "capacidad" => '25'],
+    ["nombre" => 'Espacio web cuentas de hosting', "capacidad" => '50 GB'],
+    ["nombre" => 'Transferencia de Datos Mensuales', "capacidad" => '500 GB'],
+    ["nombre" => 'IP Dedicada Incluida para la cuenta principal', "capacidad" => ''],
+    ["nombre" => 'Backup adicionales', "capacidad" => '150GB']
+    ];
+
+    foreach ($caracteristicas as $key => $value) {
+
+        CarateristicassProductos::create([
+            'nombre' => $value["nombre"],
+            'capacidad' => $value["capacidad"],
+            'producto_id' => $producto->id_producto
+        ]);
+    }
+
+    //**************
+
+    //Instalación Certificado SSL
+
+    $producto = Productos::create(['nombre'=> 'Instalacion de certificado ssl - Servidores Linux externos',
+     'slug' => 'instalacion-certificado-ssl-servidores-linux-externos',
+     'meta_title' => 'Instalacion de certificado ssl - Servidores Linux externos',
+     'meta_description' => 'Instalacion de certificado ssl - Servidores Linux externos' ,
+     'meta_key' => 'Certificado, ssl' ,
+     'precio' => 14500,
+     'subcategoria_id' => 8,
+     'tipo_producto_id' => 1]);
+
+    $caracteristicas = [
+    ["nombre" => 'Cuentas de Hosting', "capacidad" => '25'],
+    ["nombre" => 'Espacio web cuentas de hosting', "capacidad" => '50 GB'],
+    ["nombre" => 'Transferencia de Datos Mensuales', "capacidad" => '500 GB'],
+    ["nombre" => 'IP Dedicada Incluida para la cuenta principal', "capacidad" => ''],
+    ["nombre" => 'Backup adicionales', "capacidad" => '150GB']
+    ];
+
+    foreach ($caracteristicas as $key => $value) {
+
+        CarateristicassProductos::create([
+            'nombre' => $value["nombre"],
+            'capacidad' => $value["capacidad"],
+            'producto_id' => $producto->id_producto
+        ]);
+    }
+
+    $producto = Productos::create(['nombre'=> 'Instalacion de certificado ssl - Servidores Windows externos',
+     'slug' => 'instalacion-certificado-ssl-servidores-windows-externos',
+     'meta_title' => 'Instalacion de certificado ssl - Servidores Windows externos',
+     'meta_description' => 'Instalacion de certificado ssl - Servidores Windows externos' ,
+     'meta_key' => 'Certificado, ssl' ,
+     'precio' => 12500,
+     'subcategoria_id' => 8,
+     'tipo_producto_id' => 1]);
+
+    $caracteristicas = [
+    ["nombre" => 'Cuentas de Hosting', "capacidad" => '25'],
+    ["nombre" => 'Espacio web cuentas de hosting', "capacidad" => '50 GB'],
+    ["nombre" => 'Transferencia de Datos Mensuales', "capacidad" => '500 GB'],
+    ["nombre" => 'IP Dedicada Incluida para la cuenta principal', "capacidad" => ''],
+    ["nombre" => 'Backup adicionales', "capacidad" => '150GB']
+    ];
+
+    foreach ($caracteristicas as $key => $value) {
+
+        CarateristicassProductos::create([
+            'nombre' => $value["nombre"],
+            'capacidad' => $value["capacidad"],
+            'producto_id' => $producto->id_producto
+        ]);
+    }
+
+    //***************************
+
+
+    // Servidor VPS en Chile
 
     $producto = Productos::create(['nombre'=> 'Servidor VPS Linux 1 GB',
     'slug' => 'servidor-vps-linuxIlimitadogb',
@@ -316,7 +524,7 @@ class ProductosSeeder extends Seeder
     'meta_description' => 'Servidor VPS Linux 1 GB' ,
     'meta_key' => 'servidor, vps, linux' ,
     'precio' => 50000,
-    'subcategoria_id' => 6,
+    'subcategoria_id' => 9,
     'tipo_producto_id' => 2]);
 
         $caracteristicas = [
@@ -343,7 +551,7 @@ class ProductosSeeder extends Seeder
                                         'meta_description' => 'Servidor VPS Linux 2 GB' ,
                                         'meta_key' => 'servidor, vps, linux' ,
                                         'precio' => 50000,
-                                        'subcategoria_id' => 6,
+                                        'subcategoria_id' => 9,
                                         'tipo_producto_id' => 2]);
 
         $caracteristicas = [
@@ -364,13 +572,17 @@ class ProductosSeeder extends Seeder
             ]);
         }
 
+    //**************
+
+    //Servidor VPS Windows
+
         $producto = Productos::create(['nombre'=> 'Servidor VPS Windows 2 GB',
                                         'slug' => 'servidor-vps-windows-2gb',
                                         'meta_title' => 'Servidor VPS Windows 2 GB',
                                         'meta_description' => 'Servidor VPS Windows 2 GB' ,
                                         'meta_key' => 'servidor, vps, Windows' ,
                                         'precio' => 50000,
-                                        'subcategoria_id' => 7,
+                                        'subcategoria_id' => 10,
                                         'tipo_producto_id' => 2]);
 
         $caracteristicas = [
@@ -397,7 +609,7 @@ class ProductosSeeder extends Seeder
                                         'meta_description' => 'Servidor VPS Windows 4 GB' ,
                                         'meta_key' => 'servidor, vps, Windows' ,
                                         'precio' => 50000,
-                                        'subcategoria_id' => 7,
+                                        'subcategoria_id' => 10,
                                         'tipo_producto_id' => 2]);
 
         $caracteristicas = [
@@ -418,14 +630,16 @@ class ProductosSeeder extends Seeder
             ]);
         }
 
+    //***********
 
+    //Servidor VPS Linux Amazon
         $producto = Productos::create(['nombre'=> 'Servidor VPS Linux 2 GB',
                                         'slug' => 'servidor-vps-linux-2gb',
                                         'meta_title' => 'Servidor VPS Linux 2 GB',
                                         'meta_description' => 'Servidor VPS Linux 2 GB' ,
                                         'meta_key' => 'servidor, vps, Linux' ,
                                         'precio' => 50000,
-                                        'subcategoria_id' => 8,
+                                        'subcategoria_id' => 11,
                                         'tipo_producto_id' => 2]);
 
         $caracteristicas = [
@@ -453,7 +667,7 @@ class ProductosSeeder extends Seeder
                                         'meta_description' => 'Servidor VPS Linux 4 GB' ,
                                         'meta_key' => 'servidor, vps, Linux' ,
                                         'precio' => 50000,
-                                        'subcategoria_id' => 8,
+                                        'subcategoria_id' => 11,
                                         'tipo_producto_id' => 2]);
 
         $caracteristicas = [
@@ -474,6 +688,8 @@ class ProductosSeeder extends Seeder
             ]);
         }
 
+    //************
+
         //VPS Linux Administrador
 
         $producto = Productos::create(['nombre'=> 'VPS Linux Administrado 2GB RAM 30GB en disco',
@@ -482,7 +698,7 @@ class ProductosSeeder extends Seeder
                                         'meta_description' => 'VPS Linux Administrado 2GB RAM 30GB en disco' ,
                                         'meta_key' => 'servidor, vps, Linux, administrado' ,
                                         'precio' => 37000,
-                                        'subcategoria_id' => 9,
+                                        'subcategoria_id' => 12,
                                         'tipo_producto_id' => 2]);
 
         $caracteristicas = [
@@ -509,7 +725,7 @@ class ProductosSeeder extends Seeder
                                         'meta_description' => 'VPS Linux Administrado 4GB RAM 50GB en disco' ,
                                         'meta_key' => 'servidor, vps, Linux, administrado' ,
                                         'precio' => 39000,
-                                        'subcategoria_id' => 9,
+                                        'subcategoria_id' => 12,
                                         'tipo_producto_id' => 2]);
 
         $caracteristicas = [
@@ -540,7 +756,7 @@ class ProductosSeeder extends Seeder
                                         'meta_description' => 'VPS Windows en Amazon 1GB RAM' ,
                                         'meta_key' => 'servidor, vps, windows, amazon' ,
                                         'precio' => 39700,
-                                        'subcategoria_id' => 10,
+                                        'subcategoria_id' => 13,
                                         'tipo_producto_id' => 2]);
 
         $caracteristicas = [
@@ -567,7 +783,7 @@ class ProductosSeeder extends Seeder
                                         'meta_description' => 'VPS Windows en Amazon 4GB RAM' ,
                                         'meta_key' => 'servidor, vps, windows, amazon' ,
                                         'precio' => 42000,
-                                        'subcategoria_id' => 10,
+                                        'subcategoria_id' => 13,
                                         'tipo_producto_id' => 2]);
 
         $caracteristicas = [
@@ -598,7 +814,7 @@ class ProductosSeeder extends Seeder
                                         'meta_description' => 'Administracion para VPS Linux' ,
                                         'meta_key' => 'servidor, vps, linux, administracion' ,
                                         'precio' => 30000,
-                                        'subcategoria_id' => 11,
+                                        'subcategoria_id' => 14,
                                         'tipo_producto_id' => 2]);
 
         $caracteristicas = [
@@ -617,6 +833,57 @@ class ProductosSeeder extends Seeder
 
         //********************** */
 
+        //Migracion VPS
+
+        $producto = Productos::create(['nombre'=> 'Migracion de Servidor VPS en horario de oficina',
+                                        'slug' => 'migracion-vps-horario-oficina',
+                                        'meta_title' => 'Migracion de Servidor VPS en horario de oficina',
+                                        'meta_description' => 'Migracion de Servidor VPS en horario de oficina' ,
+                                        'meta_key' => 'servidor, vps, linux, administracion' ,
+                                        'precio' => 30000,
+                                        'subcategoria_id' => 15,
+                                        'tipo_producto_id' => 2]);
+
+        $caracteristicas = [
+            ["nombre" => 'Soporte técnico', "capacidad" => '24/7'],
+            ["nombre" => 'Asistencia', "capacidad" => 'Asistencia por correo electrónico y por teléfono todos los días durante las 24 horas']
+        ];
+
+        foreach ($caracteristicas as $key => $value) {
+
+            CarateristicassProductos::create([
+                'nombre' => $value["nombre"],
+                'capacidad' => $value["capacidad"],
+                'producto_id' => $producto->id_producto
+            ]);
+        }
+
+        $producto = Productos::create(['nombre'=> 'Migracion de Servidor VPS fuera del horario de oficina',
+                                        'slug' => 'migracion-vps-fuera-horario-oficina',
+                                        'meta_title' => 'Migracion de Servidor VPS fuera del horario de oficina',
+                                        'meta_description' => 'Migracion de Servidor VPS fuera del horario de oficina' ,
+                                        'meta_key' => 'servidor, vps, linux, administracion' ,
+                                        'precio' => 40000,
+                                        'subcategoria_id' => 15,
+                                        'tipo_producto_id' => 2]);
+
+        $caracteristicas = [
+            ["nombre" => 'Soporte técnico', "capacidad" => '24/7'],
+            ["nombre" => 'Asistencia', "capacidad" => 'Asistencia por correo electrónico y por teléfono todos los días durante las 24 horas']
+        ];
+
+        foreach ($caracteristicas as $key => $value) {
+
+            CarateristicassProductos::create([
+                'nombre' => $value["nombre"],
+                'capacidad' => $value["capacidad"],
+                'producto_id' => $producto->id_producto
+            ]);
+        }
+        //***************
+
+
+
         // dominios
         $producto = Productos::create(['nombre'=> 'Registro de dominios com',
         'slug' => 'registro-dominios-com',
@@ -624,7 +891,7 @@ class ProductosSeeder extends Seeder
         'meta_description' => 'Registro de dominios com' ,
         'meta_key' => '.com, .net, .org' ,
         'precio' => 100,
-        'subcategoria_id' => 26,
+        'subcategoria_id' => 31,
         'tipo_producto_id' => 3]);
 
         $producto = Productos::create(['nombre'=> 'Registro de dominios net',
@@ -633,7 +900,7 @@ class ProductosSeeder extends Seeder
         'meta_description' => 'Registro de dominios net' ,
         'meta_key' => '.com, .net, .org' ,
         'precio' => 200,
-        'subcategoria_id' => 26,
+        'subcategoria_id' => 31,
         'tipo_producto_id' => 3]);
 
         $producto = Productos::create(['nombre'=> 'Registro de dominios org',
@@ -642,7 +909,7 @@ class ProductosSeeder extends Seeder
         'meta_description' => 'Registro de dominios org' ,
         'meta_key' => '.com, .net, .org' ,
         'precio' => 300,
-        'subcategoria_id' => 26,
+        'subcategoria_id' => 31,
         'tipo_producto_id' => 3]);
 
         $producto = Productos::create(['nombre'=> 'Registro de dominios store',
@@ -651,7 +918,7 @@ class ProductosSeeder extends Seeder
         'meta_description' => 'Registro de dominios store' ,
         'meta_key' => '.com, .net, .org' ,
         'precio' => 400,
-        'subcategoria_id' => 26,
+        'subcategoria_id' => 31,
         'tipo_producto_id' => 3]);
 
         $producto = Productos::create(['nombre'=> 'Registro de dominios digital',
@@ -660,7 +927,7 @@ class ProductosSeeder extends Seeder
         'meta_description' => 'Registro de dominios digital' ,
         'meta_key' => '.com, .net, .org' ,
         'precio' => 500,
-        'subcategoria_id' => 26,
+        'subcategoria_id' => 31,
         'tipo_producto_id' => 3]);
 
         $producto = Productos::create(['nombre'=> 'Registro de dominios cl',
@@ -669,7 +936,7 @@ class ProductosSeeder extends Seeder
         'meta_description' => 'Registro de dominios cl' ,
         'meta_key' => '.com, .net, .org' ,
         'precio' => 600,
-        'subcategoria_id' => 26,
+        'subcategoria_id' => 31,
         'tipo_producto_id' => 3]);
 
         // licencias cpanel
@@ -677,10 +944,10 @@ class ProductosSeeder extends Seeder
         $producto = Productos::create(['nombre'=> 'cPanel Admin 5',
         'slug' => 'cpanel-admin-5',
         'meta_title' => 'cPanel Admin 5',
-        'meta_description' => 'cPanel Admin 5' ,
-        'meta_key' => 'cpanel' ,
+        'meta_description' => 'cPanel Admin 5',
+        'meta_key' => 'cpanel',
         'precio' => 7000,
-        'subcategoria_id' => 25,
+        'subcategoria_id' => 29,
         'tipo_producto_id' => 4]);
 
         $producto = Productos::create(['nombre'=> 'cPanel Pro 30',
@@ -689,7 +956,7 @@ class ProductosSeeder extends Seeder
         'meta_description' => 'cPanel Pro 30' ,
         'meta_key' => 'cpanel' ,
         'precio' => 10000,
-        'subcategoria_id' => 25,
+        'subcategoria_id' => 29,
         'tipo_producto_id' => 4]);
 
         $producto = Productos::create(['nombre'=> 'cPanel Premiere 100',
@@ -698,7 +965,7 @@ class ProductosSeeder extends Seeder
         'meta_description' => 'cPanel Premiere 100' ,
         'meta_key' => 'cpanel' ,
         'precio' => 15000,
-        'subcategoria_id' => 25,
+        'subcategoria_id' => 29,
         'tipo_producto_id' => 4]);
 
         $producto = Productos::create(['nombre'=> 'cPanel Premiere 125',
@@ -707,7 +974,7 @@ class ProductosSeeder extends Seeder
         'meta_description' => 'cPanel Premiere 125' ,
         'meta_key' => 'cpanel' ,
         'precio' => 20000,
-        'subcategoria_id' => 25,
+        'subcategoria_id' => 29,
         'tipo_producto_id' => 4]);
 
         $producto = Productos::create(['nombre'=> 'cPanel Premiere 150',
@@ -716,7 +983,7 @@ class ProductosSeeder extends Seeder
         'meta_description' => 'cPanel Premiere 150' ,
         'meta_key' => 'cpanel' ,
         'precio' => 25000,
-        'subcategoria_id' => 25,
+        'subcategoria_id' => 29,
         'tipo_producto_id' => 4]);
 
         $producto = Productos::create(['nombre'=> 'cPanel Premiere 175',
@@ -725,7 +992,7 @@ class ProductosSeeder extends Seeder
         'meta_description' => 'cPanel Premiere 175' ,
         'meta_key' => 'cpanel' ,
         'precio' => 30000,
-        'subcategoria_id' => 25,
+        'subcategoria_id' => 29,
         'tipo_producto_id' => 4]);
 
         $producto = Productos::create(['nombre'=> 'cPanel Premiere 200',
@@ -734,7 +1001,7 @@ class ProductosSeeder extends Seeder
         'meta_description' => 'cPanel Premiere 200' ,
         'meta_key' => 'cpanel' ,
         'precio' => 35000,
-        'subcategoria_id' => 25,
+        'subcategoria_id' => 29,
         'tipo_producto_id' => 4]);
 
         $producto = Productos::create(['nombre'=> 'cPanel Premiere 225',
@@ -743,7 +1010,7 @@ class ProductosSeeder extends Seeder
         'meta_description' => 'cPanel Premiere 225' ,
         'meta_key' => 'cpanel' ,
         'precio' => 40000,
-        'subcategoria_id' => 25,
+        'subcategoria_id' => 29,
         'tipo_producto_id' => 4]);
 
         $producto = Productos::create(['nombre'=> 'cPanel Premiere 250',
@@ -752,7 +1019,7 @@ class ProductosSeeder extends Seeder
         'meta_description' => 'cPanel Premiere 250' ,
         'meta_key' => 'cpanel' ,
         'precio' => 45000,
-        'subcategoria_id' => 25,
+        'subcategoria_id' => 29,
         'tipo_producto_id' => 4]);
 
         // servidores dedicado hp
@@ -763,7 +1030,7 @@ class ProductosSeeder extends Seeder
         'meta_description' => 'HPE ProLiant DL20 Gen10' ,
         'meta_key' => 'hp,gen10' ,
         'precio' => 5000,
-        'subcategoria_id' => 12,
+        'subcategoria_id' => 16,
         'tipo_producto_id' => 6]);
 
         $caracteristicas = [
@@ -785,7 +1052,7 @@ class ProductosSeeder extends Seeder
         'meta_description' => 'HPE ProLiant DL360 Gen10' ,
         'meta_key' => 'hp,gen10' ,
         'precio' => 10000,
-        'subcategoria_id' => 12,
+        'subcategoria_id' => 16,
         'tipo_producto_id' => 6]);
 
         $caracteristicas = [
@@ -801,6 +1068,8 @@ class ProductosSeeder extends Seeder
             ]);
         }
 
+        //***************
+
         // servidores Dell
 
         $producto = Productos::create(['nombre'=> 'PowerEdge R440',
@@ -809,7 +1078,7 @@ class ProductosSeeder extends Seeder
         'meta_description' => 'PowerEdge R440' ,
         'meta_key' => 'dell' ,
         'precio' => 10000,
-        'subcategoria_id' => 13,
+        'subcategoria_id' => 17,
         'tipo_producto_id' => 7]);
 
         $caracteristicas = [
@@ -827,6 +1096,8 @@ class ProductosSeeder extends Seeder
             ]);
         }
 
+        //*************************
+
         //Administración por evento
 
         $producto = Productos::create(['nombre'=> 'Administracion por Evento Servidor en Arriendo',
@@ -835,7 +1106,7 @@ class ProductosSeeder extends Seeder
                                         'meta_description' => 'Administracion por Evento Servidor en Arriendo' ,
                                         'meta_key' => 'administracio,servidor,arriendo' ,
                                         'precio' => 60000,
-                                        'subcategoria_id' => 14,
+                                        'subcategoria_id' => 18,
                                         'tipo_producto_id' => 6]);
 
         $caracteristicas = [
@@ -865,7 +1136,7 @@ class ProductosSeeder extends Seeder
         'meta_description' => 'Streaming Radio 128' ,
         'meta_key' => 'streaming,radio' ,
         'precio' => 5000,
-        'subcategoria_id' => 15,
+        'subcategoria_id' => 19,
         'tipo_producto_id' => 5]);
 
         $producto = Productos::create(['nombre'=> 'Streaming Radio 512',
@@ -874,7 +1145,7 @@ class ProductosSeeder extends Seeder
         'meta_description' => 'Streaming Radio 512' ,
         'meta_key' => 'streaming,radio' ,
         'precio' => 6000,
-        'subcategoria_id' => 15,
+        'subcategoria_id' => 19,
         'tipo_producto_id' => 5]);
 
         $producto = Productos::create(['nombre'=> 'Streaming Radio 768',
@@ -883,7 +1154,7 @@ class ProductosSeeder extends Seeder
         'meta_description' => 'Streaming Radio 768' ,
         'meta_key' => 'streaming,radio' ,
         'precio' => 7000,
-        'subcategoria_id' => 15,
+        'subcategoria_id' => 19,
         'tipo_producto_id' => 5]);
 
         $producto = Productos::create(['nombre'=> 'Streaming Radio 1024',
@@ -892,8 +1163,13 @@ class ProductosSeeder extends Seeder
         'meta_description' => 'Streaming Radio 1024' ,
         'meta_key' => 'streaming,radio' ,
         'precio' => 8000,
-        'subcategoria_id' => 15,
+        'subcategoria_id' => 19,
         'tipo_producto_id' => 5]);
+
+        //********************
+
+
+        //Licencias Microsoft
 
         $producto = Productos::create(['nombre'=> 'SQLSvrStdCore ALNG LicSAPk MVL  4 Cores',
         'slug' => 'sqlsvrstdcore-alng-licsapk mvl  4 Cores',
@@ -901,7 +1177,7 @@ class ProductosSeeder extends Seeder
         'meta_description' => 'SQLSvrStdCore ALNG LicSAPk MVL  4 Cores' ,
         'meta_key' => 'sql,sqlserver' ,
         'precio' => 5000,
-        'subcategoria_id' => 19,
+        'subcategoria_id' => 23,
         'tipo_producto_id' => 8]);
 
         $producto = Productos::create(['nombre'=> 'SQLSvrEntCore ALNG LicSAPk MVL  4 Cores',
@@ -910,7 +1186,7 @@ class ProductosSeeder extends Seeder
         'meta_description' => 'SQLSvrEntCore ALNG LicSAPk MVL  4 Cores' ,
         'meta_key' => 'sql,sqlserver' ,
         'precio' => 7000,
-        'subcategoria_id' => 19,
+        'subcategoria_id' => 23,
         'tipo_producto_id' => 8]);
 
 
@@ -920,8 +1196,10 @@ class ProductosSeeder extends Seeder
         'meta_description' => 'SQLSvrWebCore ALNG LicSAPk MVL  4 Cores' ,
         'meta_key' => 'sql,sqlserver' ,
         'precio' => 8000,
-        'subcategoria_id' => 19,
+        'subcategoria_id' => 23,
         'tipo_producto_id' => 8]);
+
+        //*****************************
 
         //Migración Google Workspace
 
@@ -931,7 +1209,7 @@ class ProductosSeeder extends Seeder
                                         'meta_description' => '(Migracion Workspace) 1GB a 12GB' ,
                                         'meta_key' => 'migracion,google,workspace' ,
                                         'precio' => 35990,
-                                        'subcategoria_id' => 16,
+                                        'subcategoria_id' => 21,
                                         'tipo_producto_id' => 9]);
 
         $caracteristicas = [
@@ -955,7 +1233,7 @@ class ProductosSeeder extends Seeder
                                         'meta_description' => '(Migracion Workspace) 12GB a 25GB' ,
                                         'meta_key' => 'migracion,google,workspace' ,
                                         'precio' => 85990,
-                                        'subcategoria_id' => 16,
+                                        'subcategoria_id' => 21,
                                         'tipo_producto_id' => 9]);
 
         $caracteristicas = [
@@ -983,7 +1261,7 @@ class ProductosSeeder extends Seeder
                                         'meta_description' => 'Google Workspace Business' ,
                                         'meta_key' => 'licencia,google,workspace' ,
                                         'precio' => 50000,
-                                        'subcategoria_id' => 17,
+                                        'subcategoria_id' => 20,
                                         'tipo_producto_id' => 9]);
 
         $caracteristicas = [
@@ -1009,7 +1287,7 @@ class ProductosSeeder extends Seeder
                                         'meta_description' => 'Google Workspace Business Standard' ,
                                         'meta_key' => 'licencia,google,workspace' ,
                                         'precio' => 85990,
-                                        'subcategoria_id' => 17,
+                                        'subcategoria_id' => 20,
                                         'tipo_producto_id' => 9]);
 
         $caracteristicas = [
@@ -1039,7 +1317,7 @@ class ProductosSeeder extends Seeder
                                         'meta_description' => 'Google Ads' ,
                                         'meta_key' => 'ads,google,workspace' ,
                                         'precio' => 19000,
-                                        'subcategoria_id' => 18,
+                                        'subcategoria_id' => 22,
                                         'tipo_producto_id' => 9]);
 
         $caracteristicas = [
@@ -1061,48 +1339,23 @@ class ProductosSeeder extends Seeder
 
         //********************** */
 
-        //Licencias Microsoft
-        $producto = Productos::create(['nombre'=> 'Microsoft Windows 10 Pro SNGL OLP NL Legalization GetGenuine',
-                                        'slug' => 'microsoft-windows-10-pro-sngl-olp-nl-legalization-getgenuine',
-                                        'meta_title' => 'Microsoft Windows 10 Pro SNGL OLP NL Legalization GetGenuine',
-                                        'meta_description' => 'Microsoft Windows 10 Pro SNGL OLP NL Legalization GetGenuine' ,
-                                        'meta_key' => 'microsoft,licencias' ,
-                                        'precio' => 25000,
-                                        'subcategoria_id' => 19,
-                                        'tipo_producto_id' => 8]);
-
-        $producto = Productos::create(['nombre'=> 'OfficeProPlus 2019 SNGL OLP NL',
-                                        'slug' => 'officeproplus-2019-sngl-olp-nl',
-                                        'meta_title' => 'Microsoft Windows 10 Pro SNGL OLP NL Legalization GetGenuine',
-                                        'meta_description' => 'Microsoft Windows 10 Pro SNGL OLP NL Legalization GetGenuine' ,
-                                        'meta_key' => 'microsoft,licencias' ,
-                                        'precio' => 25000,
-                                        'subcategoria_id' => 19,
-                                        'tipo_producto_id' => 8]);
-
-
-        //Microsoft 365
+        //Licencias Microsoft 365
 
         $producto = Productos::create(['nombre'=> 'Microsoft 365 Empresa Básico',
                                         'slug' => 'microsoft-365-empresa-basico',
                                         'meta_title' => 'Microsoft 365 Empresa Básico',
                                         'meta_description' => 'Microsoft 365 Empresa Básico' ,
-                                        'meta_key' => 'licencia, microsoft, 365' ,
-                                        'precio' => 8500,
-                                        'subcategoria_id' => 20,
+                                        'meta_key' => 'licencia,google,workspace' ,
+                                        'precio' => 12600,
+                                        'subcategoria_id' => 24,
                                         'tipo_producto_id' => 8]);
 
         $caracteristicas = [
-            ["nombre" => 'Correos', "capacidad" => 'Correo electrónico con 50 GB'],
-            ["nombre" => 'Almacenamiento', "capacidad" => '1 TB de almacenamiento en la nube de OneDrive'],
-            ["nombre" => 'Usuarios', "capacidad" => 'N° máximo de usuarios: 300.
-
-
-'],
-            ["nombre" => 'Disp. por licencia', "capacidad" => 'Sin dispositivos por licencia'],
-            ["nombre" => 'Uso', "capacidad" => 'Licencia para uso comercial.
-
-']
+            ["nombre" => '1', "capacidad" => 'Correo electrónico de nivel empresarial, personalizado y seguro'],
+            ["nombre" => '2', "capacidad" => '2 TB de espacio en la nube por usuario (Google Drive y Gmail)'],
+            ["nombre" => '3', "capacidad" => 'Videollamadas de hasta 100 usuarios'],
+            ["nombre" => '4', "capacidad" => 'Cifrado de datos en tránsito y reposo'],
+            ["nombre" => '5', "capacidad" => 'Programa de protección avanzada']
         ];
 
         foreach ($caracteristicas as $key => $value) {
@@ -1114,26 +1367,21 @@ class ProductosSeeder extends Seeder
             ]);
         }
 
-        $producto = Productos::create(['nombre'=> 'Microsoft 365 Empresa Estándar',
+        $producto = Productos::create(['nombre'=> 'Microsoft 365 Empresa Estandar',
                                         'slug' => 'microsoft-365-empresa-estandar',
-                                        'meta_title' => 'Microsoft 365 Empresa Empresa Estándar',
-                                        'meta_description' => 'Microsoft 365 Empresa Empresa Estándar' ,
-                                        'meta_key' => 'licencia, microsoft, 365' ,
-                                        'precio' => 8500,
-                                        'subcategoria_id' => 20,
+                                        'meta_title' => 'Microsoft 365 Empresa Estandar',
+                                        'meta_description' => 'Microsoft 365 Empresa Estandar' ,
+                                        'meta_key' => 'licencia,google,workspace' ,
+                                        'precio' => 15600,
+                                        'subcategoria_id' => 24,
                                         'tipo_producto_id' => 8]);
 
         $caracteristicas = [
-            ["nombre" => 'Correos', "capacidad" => 'Correo electrónico con 50 GB'],
-            ["nombre" => 'Almacenamiento', "capacidad" => '1 TB de almacenamiento en la nube de OneDrive'],
-            ["nombre" => 'Usuarios', "capacidad" => 'N° máximo de usuarios: 300.
-
-
-'],
-            ["nombre" => 'Disp. por licencia', "capacidad" => '5 PC o MAC, 5 tablets y 5dispositivos móviles.'],
-            ["nombre" => 'Uso', "capacidad" => 'Licencia para uso comercial.
-
-']
+            ["nombre" => '1', "capacidad" => 'Correo electrónico de nivel empresarial, personalizado y seguro'],
+            ["nombre" => '2', "capacidad" => '2 TB de espacio en la nube por usuario (Google Drive y Gmail)'],
+            ["nombre" => '3', "capacidad" => 'Videollamadas de hasta 100 usuarios'],
+            ["nombre" => '4', "capacidad" => 'Cifrado de datos en tránsito y reposo'],
+            ["nombre" => '5', "capacidad" => 'Programa de protección avanzada']
         ];
 
         foreach ($caracteristicas as $key => $value) {
@@ -1145,36 +1393,8 @@ class ProductosSeeder extends Seeder
             ]);
         }
 
-        //********************** */
 
-        //Housing
-
-        $producto = Productos::create(['nombre'=> 'Housing DATACENTER TIER II',
-                                        'slug' => 'housing-datacenter-tier-ii',
-                                        'meta_title' => 'Housing DATACENTER TIER II',
-                                        'meta_description' => 'Housing DATACENTER TIER II' ,
-                                        'meta_key' => 'housing,datacenter,tier,ii' ,
-                                        'precio' => 165000,
-                                        'subcategoria_id' => 23,
-                                        'tipo_producto_id' => 10]);
-
-        $caracteristicas = [
-            ["nombre" => 'TIPO', "capacidad" => 'PROFESIONAL'],
-            ["nombre" => 'ADMINISTRACIÓN', "capacidad" => 'REMOTA PARA CLIENTES'],
-            ["nombre" => 'FORMATO SERVIDOR', "capacidad" => 'TOWER - 1U Y 2U'],
-            ["nombre" => 'SISTEMAS UPS', "capacidad" => 'UNA UPS POR RACK'],
-            ["nombre" => 'ENLACE NACIONAL', "capacidad" => '1 Gbps'],
-            ["nombre" => 'ENLACE INTERNACIONAL', "capacidad" => '100 MB']
-        ];
-
-        foreach ($caracteristicas as $key => $value) {
-
-            CarateristicassProductos::create([
-                'nombre' => $value["nombre"],
-                'capacidad' => $value["capacidad"],
-                'producto_id' => $producto->id_producto
-            ]);
-        }
+        //************************
 
         //Soporte Microsoft 365
 
@@ -1184,7 +1404,7 @@ class ProductosSeeder extends Seeder
                                         'meta_description' => 'Configuracion Inicial Microsoft 365' ,
                                         'meta_key' => 'configuracion,microsoft,365' ,
                                         'precio' => 45000,
-                                        'subcategoria_id' => 22,
+                                        'subcategoria_id' => 26,
                                         'tipo_producto_id' => 8]);
 
 
@@ -1199,7 +1419,7 @@ class ProductosSeeder extends Seeder
                                         'meta_description' => 'Google Drive 20GB' ,
                                         'meta_key' => 'google,workspace,drive' ,
                                         'precio' => 8500,
-                                        'subcategoria_id' => 23,
+                                        'subcategoria_id' => 27,
                                         'tipo_producto_id' => 9]);
 
         $producto = Productos::create(['nombre'=> 'Google Drive 50GB',
@@ -1208,7 +1428,7 @@ class ProductosSeeder extends Seeder
         'meta_description' => 'Google Drive 50GB' ,
         'meta_key' => 'google,workspace,drive' ,
         'precio' => 9500,
-        'subcategoria_id' => 22,
+        'subcategoria_id' => 27,
         'tipo_producto_id' => 9]);
 
         //********************** */
@@ -1221,7 +1441,7 @@ class ProductosSeeder extends Seeder
                                         'meta_description' => 'Housing DATACENTER TIER II' ,
                                         'meta_key' => 'housing,datacenter,tier,ii' ,
                                         'precio' => 165000,
-                                        'subcategoria_id' => 24,
+                                        'subcategoria_id' => 28,
                                         'tipo_producto_id' => 10]);
 
         $caracteristicas = [
@@ -1248,7 +1468,7 @@ class ProductosSeeder extends Seeder
                                         'meta_description' => 'Housing DATACENTER TIER III' ,
                                         'meta_key' => 'housing,datacenter,tier,iii' ,
                                         'precio' => 360000,
-                                        'subcategoria_id' => 24,
+                                        'subcategoria_id' => 28,
                                         'tipo_producto_id' => 10]);
 
         $caracteristicas = [
@@ -1279,7 +1499,7 @@ class ProductosSeeder extends Seeder
                                         'meta_description' => 'Licencia Imunify360 Ilimitada' ,
                                         'meta_key' => 'licencia,imunify360' ,
                                         'precio' => 38000,
-                                        'subcategoria_id' => 25,
+                                        'subcategoria_id' => 30,
                                         'tipo_producto_id' => 11]);
 
         $caracteristicas = [
@@ -1305,7 +1525,7 @@ class ProductosSeeder extends Seeder
                                         'meta_description' => 'Licencia Imunify AV+' ,
                                         'meta_key' => 'licencia,imunify360' ,
                                         'precio' => 24000,
-                                        'subcategoria_id' => 25,
+                                        'subcategoria_id' => 30,
                                         'tipo_producto_id' => 11]);
 
         $caracteristicas = [
@@ -1334,7 +1554,7 @@ class ProductosSeeder extends Seeder
          'meta_description' => 'Backup Recovery 50GB' ,
          'meta_key' => 'backup,recovery' ,
          'precio' => 29900,
-         'subcategoria_id' => 29,
+         'subcategoria_id' => 32,
          'tipo_producto_id' => 2]);
 
         //********************** */

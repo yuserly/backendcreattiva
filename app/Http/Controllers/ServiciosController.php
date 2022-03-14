@@ -21,6 +21,25 @@ date_default_timezone_set("America/Santiago");
 
 class ServiciosController extends Controller
 {
+    public function showpendpago($id){
+        return Servicios::where([['empresa_id',$id], ['estado_id', 1]])->with('detalleventa','detalleventa.venta', 'periodo')->get();
+    }
+
+    public function show($id, $subcategoria){
+
+        $serviciossub = [];
+        $servicios = Servicios::where([['empresa_id',$id], ['estado_id', '!=' ,1]])->with('detalleventa','detalleventa.venta', 'periodo', 'productos','productos.subcategoria')->get();
+        if(!empty($servicios)){
+            foreach ($servicios as $key => $value) {
+                if($value["productos"]["subcategoria"]["slug"] == $subcategoria){
+                    array_push($serviciossub, $value);
+                }
+            }
+        }
+
+        return $serviciossub;
+
+    }
     public function crearservicio(Request $request){
 
         $empresa = Empresas::where('email', $request->datos["email"])->first();
@@ -154,14 +173,26 @@ class ServiciosController extends Controller
 
                 $glosa = $value["producto"]["nombre"].' '.$value["dominio"];
 
+                if($value["sistemaoperativo"] == 0){
+                    $sis = null;
+                }else{
+                    $sis = $value["sistemaoperativo"];
+                }
+
+                if($value["versionsistema"] == 0){
+                    $version = null;
+                }else{
+                    $version = $value["versionsistema"];
+                }
+
                 $servicio = Servicios::create([
                                     'codigo_venta' => $venta->codigo,
                                     'glosa' => $glosa,
                                     'cantidad' => 1,
                                     'producto_id' => $value["producto"]["id_producto"],
                                     'periodo_id' => $value["periodo"],
-                                    'os_id' => $value["sistemaoperativo"],
-                                    'version_id' => $value["versionsistema"],
+                                    'os_id' => $sis,
+                                    'version_id' => $version,
                                     'administrado' => $value["administrar"],
                                     'ip' => $value["ip"],
                                     'dominio' => $value["dominio"],
@@ -255,7 +286,7 @@ class ServiciosController extends Controller
         $buy_order = $codeventa;
         $session_id = uniqid();
         $amount = $monto;
-        $return_url = "http://backendcreattiva.cp/return/token";
+        $return_url = "http://creattiva-api.cl/return/token";
 
         $response = (new Transaction)->create($buy_order, $session_id, $amount, $return_url);
 
