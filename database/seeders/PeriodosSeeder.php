@@ -14,9 +14,10 @@ class PeriodosSeeder extends Seeder
      */
     public function run()
     {
-        Periodos::create(['periodo'=> 'Mensual', 'meses' => 1, 'descuento' => 0]);
+        Periodos::create(['periodo'=> 'Mes', 'meses' => 1, 'descuento' => 0]);
         Periodos::create(['periodo'=> '1 Año', 'meses' => 12, 'descuento' => 20]);
         Periodos::create(['periodo'=> '2 Años', 'meses' => 24, 'descuento' => 40]);
         Periodos::create(['periodo'=> '3 Años', 'meses' => 36, 'descuento' => 50]);
+        Periodos::create(['periodo'=> 'Pago Único', 'meses' => 1, 'descuento' => 0]);
     }
 }

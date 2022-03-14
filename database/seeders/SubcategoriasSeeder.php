@@ -38,6 +38,7 @@ class SubcategoriasSeeder extends Seeder
         Subcategorias::create(['nombre'     => 'Google Workspace', 'slug' => 'google-workspace', 'icono' => 'fab fa-google', 'categoria_id' => 4]);
         Subcategorias::create(['nombre'     => 'Google Ads', 'slug' => 'google-ads', 'icono' => 'fab fa-google', 'categoria_id' => 4]);
         Subcategorias::create(['nombre'     => 'Licencias Microsoft', 'slug' => 'licencias-microsoft', 'icono' => 'fab fa-windows', 'categoria_id' => 4]);
+        Subcategorias::create(['nombre'     => 'Licencias Microsoft 365', 'slug' => 'licencias-microsoft-365', 'icono' => 'fab fa-windows', 'categoria_id' => 4]);
         Subcategorias::create(['nombre'     => 'Cotizar Licencias Microsoft', 'slug' => 'cotizar-licencias-microsoft', 'icono' => 'fab fa-windows', 'categoria_id' => 4]);
         Subcategorias::create(['nombre'     => 'Soporte Microsoft 365', 'slug' => 'soporte-microsoft-365', 'icono' => 'fab fa-windows', 'categoria_id' => 4]);
         Subcategorias::create(['nombre'     => 'Almacenamiento Adicional Google Workspace', 'slug' => 'almacenamiento-adicional-google-workspace', 'icono' => 'fab fa-google-drive', 'categoria_id' => 4]);

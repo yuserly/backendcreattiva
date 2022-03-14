@@ -680,7 +680,7 @@ class ProductosSeeder extends Seeder
         'meta_description' => 'cPanel Admin 5' ,
         'meta_key' => 'cpanel' ,
         'precio' => 7000,
-        'subcategoria_id' => 24,
+        'subcategoria_id' => 25,
         'tipo_producto_id' => 4]);
 
         $producto = Productos::create(['nombre'=> 'cPanel Pro 30',
@@ -689,7 +689,7 @@ class ProductosSeeder extends Seeder
         'meta_description' => 'cPanel Pro 30' ,
         'meta_key' => 'cpanel' ,
         'precio' => 10000,
-        'subcategoria_id' => 24,
+        'subcategoria_id' => 25,
         'tipo_producto_id' => 4]);
 
         $producto = Productos::create(['nombre'=> 'cPanel Premiere 100',
@@ -698,7 +698,7 @@ class ProductosSeeder extends Seeder
         'meta_description' => 'cPanel Premiere 100' ,
         'meta_key' => 'cpanel' ,
         'precio' => 15000,
-        'subcategoria_id' => 24,
+        'subcategoria_id' => 25,
         'tipo_producto_id' => 4]);
 
         $producto = Productos::create(['nombre'=> 'cPanel Premiere 125',
@@ -707,7 +707,7 @@ class ProductosSeeder extends Seeder
         'meta_description' => 'cPanel Premiere 125' ,
         'meta_key' => 'cpanel' ,
         'precio' => 20000,
-        'subcategoria_id' => 24,
+        'subcategoria_id' => 25,
         'tipo_producto_id' => 4]);
 
         $producto = Productos::create(['nombre'=> 'cPanel Premiere 150',
@@ -716,7 +716,7 @@ class ProductosSeeder extends Seeder
         'meta_description' => 'cPanel Premiere 150' ,
         'meta_key' => 'cpanel' ,
         'precio' => 25000,
-        'subcategoria_id' => 24,
+        'subcategoria_id' => 25,
         'tipo_producto_id' => 4]);
 
         $producto = Productos::create(['nombre'=> 'cPanel Premiere 175',
@@ -725,7 +725,7 @@ class ProductosSeeder extends Seeder
         'meta_description' => 'cPanel Premiere 175' ,
         'meta_key' => 'cpanel' ,
         'precio' => 30000,
-        'subcategoria_id' => 24,
+        'subcategoria_id' => 25,
         'tipo_producto_id' => 4]);
 
         $producto = Productos::create(['nombre'=> 'cPanel Premiere 200',
@@ -734,7 +734,7 @@ class ProductosSeeder extends Seeder
         'meta_description' => 'cPanel Premiere 200' ,
         'meta_key' => 'cpanel' ,
         'precio' => 35000,
-        'subcategoria_id' => 24,
+        'subcategoria_id' => 25,
         'tipo_producto_id' => 4]);
 
         $producto = Productos::create(['nombre'=> 'cPanel Premiere 225',
@@ -743,7 +743,7 @@ class ProductosSeeder extends Seeder
         'meta_description' => 'cPanel Premiere 225' ,
         'meta_key' => 'cpanel' ,
         'precio' => 40000,
-        'subcategoria_id' => 24,
+        'subcategoria_id' => 25,
         'tipo_producto_id' => 4]);
 
         $producto = Productos::create(['nombre'=> 'cPanel Premiere 250',
@@ -752,7 +752,7 @@ class ProductosSeeder extends Seeder
         'meta_description' => 'cPanel Premiere 250' ,
         'meta_key' => 'cpanel' ,
         'precio' => 45000,
-        'subcategoria_id' => 24,
+        'subcategoria_id' => 25,
         'tipo_producto_id' => 4]);
 
         // servidores dedicado hp
@@ -1061,40 +1061,89 @@ class ProductosSeeder extends Seeder
 
         //********************** */
 
-        //Soporte Microsoft 365
+        //Licencias Microsoft
+        $producto = Productos::create(['nombre'=> 'Microsoft Windows 10 Pro SNGL OLP NL Legalization GetGenuine',
+                                        'slug' => 'microsoft-windows-10-pro-sngl-olp-nl-legalization-getgenuine',
+                                        'meta_title' => 'Microsoft Windows 10 Pro SNGL OLP NL Legalization GetGenuine',
+                                        'meta_description' => 'Microsoft Windows 10 Pro SNGL OLP NL Legalization GetGenuine' ,
+                                        'meta_key' => 'microsoft,licencias' ,
+                                        'precio' => 25000,
+                                        'subcategoria_id' => 19,
+                                        'tipo_producto_id' => 8]);
 
-        $producto = Productos::create(['nombre'=> 'Configuracion Inicial Microsoft 365',
-                                        'slug' => 'configuracion-inicial-microsoft-365',
-                                        'meta_title' => 'Configuracion Inicial Microsoft 365',
-                                        'meta_description' => 'Configuracion Inicial Microsoft 365' ,
-                                        'meta_key' => 'configuracion,microsoft,365' ,
-                                        'precio' => 45000,
-                                        'subcategoria_id' => 21,
+        $producto = Productos::create(['nombre'=> 'OfficeProPlus 2019 SNGL OLP NL',
+                                        'slug' => 'officeproplus-2019-sngl-olp-nl',
+                                        'meta_title' => 'Microsoft Windows 10 Pro SNGL OLP NL Legalization GetGenuine',
+                                        'meta_description' => 'Microsoft Windows 10 Pro SNGL OLP NL Legalization GetGenuine' ,
+                                        'meta_key' => 'microsoft,licencias' ,
+                                        'precio' => 25000,
+                                        'subcategoria_id' => 19,
                                         'tipo_producto_id' => 8]);
 
 
+        //Microsoft 365
 
-        //********************** */
-
-        //Almacenamiento adicional Google Workspace
-
-        $producto = Productos::create(['nombre'=> 'Google Drive 20GB',
-                                        'slug' => 'google-drive-20gb',
-                                        'meta_title' => 'Google Drive 20GB',
-                                        'meta_description' => 'Google Drive 20GB' ,
-                                        'meta_key' => 'google,workspace,drive' ,
+        $producto = Productos::create(['nombre'=> 'Microsoft 365 Empresa Básico',
+                                        'slug' => 'microsoft-365-empresa-basico',
+                                        'meta_title' => 'Microsoft 365 Empresa Básico',
+                                        'meta_description' => 'Microsoft 365 Empresa Básico' ,
+                                        'meta_key' => 'licencia, microsoft, 365' ,
                                         'precio' => 8500,
-                                        'subcategoria_id' => 22,
-                                        'tipo_producto_id' => 9]);
+                                        'subcategoria_id' => 20,
+                                        'tipo_producto_id' => 8]);
 
-        $producto = Productos::create(['nombre'=> 'Google Drive 50GB',
-        'slug' => 'google-drive-50gb',
-        'meta_title' => 'Google Drive 50GB',
-        'meta_description' => 'Google Drive 50GB' ,
-        'meta_key' => 'google,workspace,drive' ,
-        'precio' => 9500,
-        'subcategoria_id' => 22,
-        'tipo_producto_id' => 9]);
+        $caracteristicas = [
+            ["nombre" => 'Correos', "capacidad" => 'Correo electrónico con 50 GB'],
+            ["nombre" => 'Almacenamiento', "capacidad" => '1 TB de almacenamiento en la nube de OneDrive'],
+            ["nombre" => 'Usuarios', "capacidad" => 'N° máximo de usuarios: 300.
+
+
+'],
+            ["nombre" => 'Disp. por licencia', "capacidad" => 'Sin dispositivos por licencia'],
+            ["nombre" => 'Uso', "capacidad" => 'Licencia para uso comercial.
+
+']
+        ];
+
+        foreach ($caracteristicas as $key => $value) {
+
+            CarateristicassProductos::create([
+                'nombre' => $value["nombre"],
+                'capacidad' => $value["capacidad"],
+                'producto_id' => $producto->id_producto
+            ]);
+        }
+
+        $producto = Productos::create(['nombre'=> 'Microsoft 365 Empresa Estándar',
+                                        'slug' => 'microsoft-365-empresa-estandar',
+                                        'meta_title' => 'Microsoft 365 Empresa Empresa Estándar',
+                                        'meta_description' => 'Microsoft 365 Empresa Empresa Estándar' ,
+                                        'meta_key' => 'licencia, microsoft, 365' ,
+                                        'precio' => 8500,
+                                        'subcategoria_id' => 20,
+                                        'tipo_producto_id' => 8]);
+
+        $caracteristicas = [
+            ["nombre" => 'Correos', "capacidad" => 'Correo electrónico con 50 GB'],
+            ["nombre" => 'Almacenamiento', "capacidad" => '1 TB de almacenamiento en la nube de OneDrive'],
+            ["nombre" => 'Usuarios', "capacidad" => 'N° máximo de usuarios: 300.
+
+
+'],
+            ["nombre" => 'Disp. por licencia', "capacidad" => '5 PC o MAC, 5 tablets y 5dispositivos móviles.'],
+            ["nombre" => 'Uso', "capacidad" => 'Licencia para uso comercial.
+
+']
+        ];
+
+        foreach ($caracteristicas as $key => $value) {
+
+            CarateristicassProductos::create([
+                'nombre' => $value["nombre"],
+                'capacidad' => $value["capacidad"],
+                'producto_id' => $producto->id_producto
+            ]);
+        }
 
         //********************** */
 
@@ -1127,13 +1176,79 @@ class ProductosSeeder extends Seeder
             ]);
         }
 
+        //Soporte Microsoft 365
+
+        $producto = Productos::create(['nombre'=> 'Configuracion Inicial Microsoft 365',
+                                        'slug' => 'configuracion-inicial-microsoft-365',
+                                        'meta_title' => 'Configuracion Inicial Microsoft 365',
+                                        'meta_description' => 'Configuracion Inicial Microsoft 365' ,
+                                        'meta_key' => 'configuracion,microsoft,365' ,
+                                        'precio' => 45000,
+                                        'subcategoria_id' => 22,
+                                        'tipo_producto_id' => 8]);
+
+
+
+        //********************** */
+
+        //Almacenamiento adicional Google Workspace
+
+        $producto = Productos::create(['nombre'=> 'Google Drive 20GB',
+                                        'slug' => 'google-drive-20gb',
+                                        'meta_title' => 'Google Drive 20GB',
+                                        'meta_description' => 'Google Drive 20GB' ,
+                                        'meta_key' => 'google,workspace,drive' ,
+                                        'precio' => 8500,
+                                        'subcategoria_id' => 23,
+                                        'tipo_producto_id' => 9]);
+
+        $producto = Productos::create(['nombre'=> 'Google Drive 50GB',
+        'slug' => 'google-drive-50gb',
+        'meta_title' => 'Google Drive 50GB',
+        'meta_description' => 'Google Drive 50GB' ,
+        'meta_key' => 'google,workspace,drive' ,
+        'precio' => 9500,
+        'subcategoria_id' => 22,
+        'tipo_producto_id' => 9]);
+
+        //********************** */
+
+        //Housing
+
+        $producto = Productos::create(['nombre'=> 'Housing DATACENTER TIER II',
+                                        'slug' => 'housing-datacenter-tier-ii',
+                                        'meta_title' => 'Housing DATACENTER TIER II',
+                                        'meta_description' => 'Housing DATACENTER TIER II' ,
+                                        'meta_key' => 'housing,datacenter,tier,ii' ,
+                                        'precio' => 165000,
+                                        'subcategoria_id' => 24,
+                                        'tipo_producto_id' => 10]);
+
+        $caracteristicas = [
+            ["nombre" => 'TIPO', "capacidad" => 'PROFESIONAL'],
+            ["nombre" => 'ADMINISTRACIÓN', "capacidad" => 'REMOTA PARA CLIENTES'],
+            ["nombre" => 'FORMATO SERVIDOR', "capacidad" => 'TOWER - 1U Y 2U'],
+            ["nombre" => 'SISTEMAS UPS', "capacidad" => 'UNA UPS POR RACK'],
+            ["nombre" => 'ENLACE NACIONAL', "capacidad" => '1 Gbps'],
+            ["nombre" => 'ENLACE INTERNACIONAL', "capacidad" => '100 MB']
+        ];
+
+        foreach ($caracteristicas as $key => $value) {
+
+            CarateristicassProductos::create([
+                'nombre' => $value["nombre"],
+                'capacidad' => $value["capacidad"],
+                'producto_id' => $producto->id_producto
+            ]);
+        }
+
         $producto = Productos::create(['nombre'=> 'Housing DATACENTER TIER III',
                                         'slug' => 'housing-datacenter-tier-iii',
                                         'meta_title' => 'Housing DATACENTER TIER III',
                                         'meta_description' => 'Housing DATACENTER TIER III' ,
                                         'meta_key' => 'housing,datacenter,tier,iii' ,
                                         'precio' => 360000,
-                                        'subcategoria_id' => 23,
+                                        'subcategoria_id' => 24,
                                         'tipo_producto_id' => 10]);
 
         $caracteristicas = [
@@ -1219,7 +1334,7 @@ class ProductosSeeder extends Seeder
          'meta_description' => 'Backup Recovery 50GB' ,
          'meta_key' => 'backup,recovery' ,
          'precio' => 29900,
-         'subcategoria_id' => 28,
+         'subcategoria_id' => 29,
          'tipo_producto_id' => 2]);
 
         //********************** */
