@@ -8,6 +8,7 @@ use App\Models\Empresas;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 
 date_default_timezone_set("America/Santiago");
@@ -139,7 +140,7 @@ class AuthController extends Controller
 
             $codigo = uniqid();
 
-            $upt = $user->update([
+            $upt = User::where('email',$email)->update([
                 'codigo_recuperar'=> $codigo
             ]);
 
@@ -171,6 +172,53 @@ class AuthController extends Controller
 
             return $this->successResponse($response, 'Email no existe', true);
 
+        }
+
+    }
+
+    public function getcodepassword($code){
+
+
+        $user = User::where('codigo_recuperar', $code)->first();
+
+        if($user){
+
+            $response = [
+                'ok' => true,
+                'user' => $user
+            ];
+
+            return $this->successResponse($response, 'codigo correcto', true);
+
+        }else{
+
+            $response = [
+                'ok' => false
+            ];
+
+            return $this->successResponse($response, 'codigo expirado', true);
+
+        }
+
+    }
+
+    public function cambiopassword(Request $request){
+
+        $user = User::where('email', $request->email)->update([
+                            'password' => Hash::make($request->password),
+                            'codigo_recuperar' => ''
+                            ]);
+
+        if($user){
+
+            return $this->login($request);
+
+        }else{
+            $response = [
+                'ok' => false
+            ];
+
+            return $this->successResponse($response, 'error al cambiar la password', true);
         }
 
     }
