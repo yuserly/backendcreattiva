@@ -155,7 +155,10 @@ class SubcategoriasHasPeriodosSeeder extends Seeder
         SubcategoriasHasPeriodos::create(['subcategoria_id' => 32, 'periodo_id' => 2]);
         SubcategoriasHasPeriodos::create(['preseleccionado' => 1, 'subcategoria_id' => 32, 'periodo_id' => 3]);
 
-
+        //Dominios
+        SubcategoriasHasPeriodos::create(['subcategoria_id' => 31, 'periodo_id' => 2]);
+        SubcategoriasHasPeriodos::create(['subcategoria_id' => 31, 'periodo_id' => 3]);
+        SubcategoriasHasPeriodos::create(['preseleccionado' => 31, 'subcategoria_id' => 31, 'periodo_id' => 4]);
 
 
 
