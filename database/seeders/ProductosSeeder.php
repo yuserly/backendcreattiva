@@ -944,8 +944,8 @@ class ProductosSeeder extends Seeder
         $producto = Productos::create(['nombre'=> 'cPanel Admin 5',
         'slug' => 'cpanel-admin-5',
         'meta_title' => 'cPanel Admin 5',
-        'meta_description' => 'cPanel Admin 5' ,
-        'meta_key' => 'cpanel' ,
+        'meta_description' => 'cPanel Admin 5',
+        'meta_key' => 'cpanel',
         'precio' => 7000,
         'subcategoria_id' => 29,
         'tipo_producto_id' => 4]);
