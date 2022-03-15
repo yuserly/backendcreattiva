@@ -59,7 +59,12 @@ class ProductosController extends Controller
 
         $producto = Productos::where('id_producto', $id)->first();
         //$periodos = Periodos::where('id_periodo','!=',1)->orderBy('meses','DESC')->get();
-        $periodos = Periodos::orderBy('meses','DESC')->get();
+        $periodos = Periodos::select('periodos.*','subcategorias_has_periodos.preseleccionado')
+                    ->join('subcategorias_has_periodos','periodos.id_periodo','=','subcategorias_has_periodos.periodo_id')
+                    ->where('subcategorias_has_periodos.subcategoria_id','=',$producto['subcategoria_id'])
+                    ->orderBy('periodos.meses','DESC')
+                    ->get();
+        //$periodos = Periodos::orderBy('meses','DESC')->get();
 
         foreach ($periodos as $key => $value) {
 
