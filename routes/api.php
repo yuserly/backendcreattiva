@@ -9,6 +9,7 @@ use App\Http\Controllers\ServiciosController;
 use App\Http\Controllers\SistemaOperativoController;
 use App\Http\Controllers\SubcategoriasController;
 use App\Http\Controllers\CuponesController;
+use App\Http\Controllers\VentasController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -64,6 +65,10 @@ Route::post('/solicitudcodigo', [AuthController::class,'enviarcodigorapido']);
 // servicios
 Route::get('getserviciospendpago/{id}',[ServiciosController::class,'showpendpago']);
 Route::get('getservicios/{id}/{subcategoria}',[ServiciosController::class,'show']);
+Route::post('pagarventa',[ServiciosController::class,'pagarventa']);
+// ventas
+
+Route::get('getfacturaspendpago/{id}',[VentasController::class,'showpendpago']);
 
 // login
 

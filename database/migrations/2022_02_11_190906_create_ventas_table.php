@@ -23,6 +23,8 @@ class CreateVentasTable extends Migration
             $table->float('total_usd')->nullable()->default(0);
             $table->integer('precio_usd')->nullable()->default(0);
             $table->integer('precio_uf')->nullable()->default(0);
+            $table->unsignedBigInteger('empresa_id');
+            $table->foreign('empresa_id')->references('id_empresa')->on('empresas');
             $table->unsignedBigInteger('estado_id')->default(1);
             $table->foreign('estado_id')->references('id_estado')->on('estados');
             $table->integer('estado_facturacion')->default(0);

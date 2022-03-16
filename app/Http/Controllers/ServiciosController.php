@@ -164,6 +164,7 @@ class ServiciosController extends Controller
                                 'total_usd' => $total_usd,
                                 'precio_usd' => $dolar->precio,
                                 'precio_uf' => 0,
+                                'empresa_id' => $empresa->id_empresa,
                                 'metodo_pago' => $request->datos['mediopago'],
                             ]);
 
@@ -482,6 +483,24 @@ class ServiciosController extends Controller
 
             return redirect()->away('http://localhost:4200/pago-rechazado');
 
+
+    }
+
+    public function pagarventa(Request $request){
+
+        $venta = Ventas::where('id_venta', $request->id_venta)->first();
+
+        $codeventa = $venta->codigo;
+        $mediopago = $request->mediopago;
+        if($mediopago == 1){
+        $total = $venta->total_peso;
+
+        return $this->pagowebpay($codeventa,$total,$mediopago);
+        }else{
+        $total = $venta->total_usd;
+
+        return $this->pagopaypal($codeventa,$total,$mediopago);
+        }
 
     }
 }

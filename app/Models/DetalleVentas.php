@@ -25,4 +25,11 @@ class DetalleVentas extends Model
 
         return $this->hasOne(Ventas::class,'id_venta','venta_id');
     }
+
+    public function servicios(){
+
+        return $this->hasOne(Servicios::class,'id_servicio','servicio_id');
+    }
+
+
 }
