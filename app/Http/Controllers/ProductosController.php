@@ -105,5 +105,27 @@ class ProductosController extends Controller
 
     }
 
+    public function buscarproductos ($nombre){
+
+        $productos =  Productos::where([['slug','like','%'.$nombre.'%']])->with('caracteristicas','subcategoria.categoria')->get();
+
+        $periodo = Periodos::where('id_periodo',4)->first();
+
+       foreach ($productos as $key => $value) {
+
+            $descuento = (($value["precio"] * $periodo["meses"]) * $periodo["descuento"]  ) / 100;
+
+            $precio_con_descuento = round(($value["precio"] * $periodo["meses"]) - $descuento);
+
+            $productos[$key]["precio_trienal"]  = $precio_con_descuento;
+
+            $productos[$key]["descuento"]  = $periodo["descuento"];
+
+            $productos[$key]["ahorro"]  = round(($value["precio"] * $periodo["meses"]) - $precio_con_descuento);
+       }
+
+        return $productos;
+     }
+
 
 }
