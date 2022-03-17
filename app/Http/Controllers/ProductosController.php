@@ -127,5 +127,30 @@ class ProductosController extends Controller
         return $productos;
      }
 
+    public function showslug ($slug){
+
+
+
+        $productos =  Productos::where('slug', $slug)->with('caracteristicas','subcategoria.categoria')->first();
+
+        $periodo = Periodos::where('id_periodo',4)->first();
+
+            $descuento = (($productos["precio"] * $periodo["meses"]) * $periodo["descuento"]  ) / 100;
+
+            $precio_con_descuento = round(($productos["precio"] * $periodo["meses"]) - $descuento);
+
+            $productos["precio_trienal"]  = $precio_con_descuento;
+
+            $productos["descuento"]  = $periodo["descuento"];
+
+            $productos["ahorro"]  = round(($productos["precio"] * $periodo["meses"]) - $precio_con_descuento);
+
+        return $productos;
+     }
+
+
+
+
+
 
 }

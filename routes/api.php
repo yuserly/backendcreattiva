@@ -49,7 +49,7 @@ Route::get('preciodominios',[PrecioDominiosController::class,'preciodominios']);
 Route::get('getos/{tipo}',[SistemaOperativoController::class,'show']);
 Route::get('getproductosxtipo/{id}/{tipo}',[ProductosController::class,'showxtipo']);
 Route::get('getproductosbuscados/{nombre}',[ProductosController::class,'buscarproductos']);
-
+Route::get('getproductosxslug/{slug}',[ProductosController::class,'showslug']);
 // empresa
 Route::post('crearempresa',[EmpresasController::class,'store']);
 Route::get('empresa/{email}',[EmpresasController::class,'showone']);
