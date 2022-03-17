@@ -10,6 +10,7 @@ use App\Http\Controllers\SistemaOperativoController;
 use App\Http\Controllers\SubcategoriasController;
 use App\Http\Controllers\CuponesController;
 use App\Http\Controllers\VentasController;
+use App\Http\Controllers\ContactoWebController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -62,6 +63,9 @@ Route::post('generarorder',[ServiciosController::class,'crearservicio']);
 
 // generar codigo de acceso rapido
 Route::post('/solicitudcodigo', [AuthController::class,'enviarcodigorapido']);
+
+//Formulario de contacto
+Route::post('/registrarconsulta', [ContactoWebController::class,'registrar']);
 
 // servicios
 Route::get('getserviciospendpago/{id}',[ServiciosController::class,'showpendpago']);
