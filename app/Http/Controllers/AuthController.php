@@ -147,7 +147,8 @@ class AuthController extends Controller
             if(isset($upt)){
                 $empresa = Empresas::where('user_id', $user->id)->first();
                 $nombre = $empresa->nombre;
-                $url = 'http://localhost:4200/recuperar-password/'.$codigo;
+                //$url = 'http://localhost:4200/recuperar-password/'.$codigo;
+                $url = 'https://creattiva.t2.creattivadatacenter.com/recuperar-password/'.$codigo;
 
                 Mail::to($email)->send(new RecuperarPassword($nombre,$url));
                 $response = [
