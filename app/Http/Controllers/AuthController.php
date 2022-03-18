@@ -222,4 +222,28 @@ class AuthController extends Controller
         }
 
     }
+
+
+    public function loginadmin(Request $request){
+        // return $request;
+
+        if(Auth::guard('admin')->attempt([
+            'email' => $request->email,
+            'password' => $request->password
+        ])){
+
+            $user = Auth::guard('admin')->user();
+
+            $response = [
+                'token' => $user->createToken('tahuCoding')->plainTextToken,
+            ];
+
+            return $this->successResponse($response, 'login success', true);
+
+        }else{
+            return $this->successResponse('', 'contraseña incorrecta', true);
+        }
+
+    }
+
 }
