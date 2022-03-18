@@ -183,13 +183,30 @@
 
                     <br><br>
 
-                    <h1 style="color: black  ;margin: 0px;font-weight: bold;">Recuperar contraseña</h1>
+                    @if($user=='usuario')
+
+                    <h1 style="color: black  ;margin: 0px;font-weight: bold;">Hemos recibido tu consulta</h1>
 
                     <h3>¡Hola {{$nombre}}!</h3>
 
-                    <p style="max-width: 410px;">Usa el siguiente enlace para realizar el cambio de contraseña:
-                        <br><a href="{{$url}}">click aquí</a>
-                    </p>
+                    <p style="max-width: 410px;">Pronto nos pondremos en contacto contigo.</p>
+
+                    <p style="max-width: 410px;">Detalles de tu consulta:</p>
+
+                    @else
+
+                    <h1 style="color: black  ;margin: 0px;font-weight: bold;">Nueva consulta desde creattiva.cl</h1>
+
+                    <p style="max-width: 410px;">Detalles de la consulta:</p>
+
+                    @endif
+
+                    <p style="max-width: 410px;text-align: left!important;">Nombre: {{$nombre}}</p>
+                    <p style="max-width: 410px;text-align: left!important;">Email: {{$email}}</p>
+                    <p style="max-width: 410px;text-align: left!important;">Teléfono: {{$telefono}}</p>
+                    <p style="max-width: 410px;text-align: left!important;">Mensaje: {{$mensaje}}</p>
+
+                    
 
                     </div>
 
@@ -211,12 +228,20 @@
 
                                 <td>
 
+
+
                                 <h3>Gracias por visitar Creattiva</h3>
+
+
 
                                 </td>
 
 
+
+
                             </tr>
+
+
 
                         </thead>
 
@@ -269,7 +294,7 @@
 
 
 
-                                <p>&copy; 2021 CREATTIVA DATACENTER</p>
+                                <p>&copy; {{date('Y')}} CREATTIVA DATACENTER</p>
     <p style="padding-left: 4px;padding-right: 4px;">Este correo electrónico fue enviado a usted de forma automática.</p>
 
 
