@@ -147,7 +147,8 @@ class AuthController extends Controller
             if(isset($upt)){
                 $empresa = Empresas::where('user_id', $user->id)->first();
                 $nombre = $empresa->nombre;
-                $url = 'http://localhost:4200/recuperar-password/'.$codigo;
+                //$url = 'http://localhost:4200/recuperar-password/'.$codigo;
+                $url = 'https://creattiva.t2.creattivadatacenter.com/recuperar-password/'.$codigo;
 
                 Mail::to($email)->send(new RecuperarPassword($nombre,$url));
                 $response = [
@@ -222,4 +223,28 @@ class AuthController extends Controller
         }
 
     }
+
+
+    public function loginadmin(Request $request){
+        // return $request;
+
+        if(Auth::guard('admin')->attempt([
+            'email' => $request->email,
+            'password' => $request->password
+        ])){
+
+            $user = Auth::guard('admin')->user();
+
+            $response = [
+                'token' => $user->createToken('tahuCoding')->plainTextToken,
+            ];
+
+            return $this->successResponse($response, 'login success', true);
+
+        }else{
+            return $this->successResponse('', 'contraseña incorrecta', true);
+        }
+
+    }
+
 }

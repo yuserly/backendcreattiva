@@ -187,8 +187,8 @@
 
                     <h3>¡Hola {{$nombre}}!</h3>
 
-                    <p style="max-width: 410px;">Usa el siguiente enlace para realizar el cambio de contraseña
-                        <a href="{{$url}}">click aquí</a>
+                    <p style="max-width: 410px;">Usa el siguiente enlace para realizar el cambio de contraseña:
+                        <br><a href="{{$url}}">click aquí</a>
                     </p>
 
                     </div>
@@ -211,45 +211,12 @@
 
                                 <td>
 
-
-
-                                <div style="margin-bottom: 20px;">
-
-                                    <br>
-
-                                    {{-- <center>
-                                        <a style="background-color: #f5f5f5;color: #0606a0;border-radius: 10px;padding-left: 30px;padding-right: 30px;padding-top: 15px;padding-bottom: 15px;width: 70%;font-size: 22px;">{{$code}}</a>
-                                    </center> --}}
-
-                                    <br>
-
-                                </div>
-
-                                <div style="margin-bottom: 20px;">
-
-                                    <br>
-
-                                        <div style="border:2px solid #f5f5f5;border-radius:10px;width: 350px;text-align: center;">
-                                            <img src="https://www.creattiva.cl/compra-rapida/img/alert.png" style="float: left;margin-top: 10px;" width="30">
-                                            <p>Este código expirará en 15 minutos.</p>
-                                        </div>
-
-                                    <br>
-
-                                </div>
-
                                 <h3>Gracias por visitar Creattiva</h3>
-
-
 
                                 </td>
 
 
-
-
                             </tr>
-
-
 
                         </thead>
 

@@ -2,7 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\Administradores;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -27,6 +30,12 @@ class DatabaseSeeder extends Seeder
         $this->call(TipoDescuentosSeeder::class);
         $this->call(CuponesSeeder::class);
         $this->call(SubcategoriasHasPeriodosSeeder::class);
+
+        Administradores::create([
+            'name' => 'Yuserly Bracho',
+            'email' => 'yuserlybracho@gmail.com',
+            'password' => Hash::make('12345678')
+        ]);
 
     }
 }

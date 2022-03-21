@@ -82,6 +82,7 @@ Route::post('/logincode', [AuthController::class,'logincode']);
 Route::get('/solicitudcambiopass/{email}', [AuthController::class,'solicitudrecuperarpassword']);
 Route::get('/getcodepassword/{code}', [AuthController::class,'getcodepassword']);
 Route::post('/cambiopassword', [AuthController::class,'cambiopassword']);
+Route::post('/loginadmin', [AuthController::class,'loginadmin']);
 
 Route::middleware('auth:sanctum')->group(function(){
 
@@ -90,4 +91,9 @@ Route::middleware('auth:sanctum')->group(function(){
 });
 
 
+Route::prefix('admin')->middleware('auth:sanctum')->group(function(){
 
+
+    // aqui las rutas del admin
+
+});
