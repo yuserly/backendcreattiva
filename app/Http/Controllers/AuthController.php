@@ -247,4 +247,32 @@ class AuthController extends Controller
 
     }
 
+    public function consultarip(){
+
+        $ip = '';
+
+        if (!empty($_SERVER['HTTP_CLIENT_IP'])){
+
+            $ip = $_SERVER['HTTP_CLIENT_IP'];
+
+        }elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])){
+
+            $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+
+        }else{
+
+            $ip = $_SERVER['REMOTE_ADDR'];
+
+        }
+       
+
+       $response = [
+                'ip' => $ip
+            ];
+
+        return $this->successResponse($response, 'ip', true);
+
+        
+    }
+
 }
