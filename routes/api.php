@@ -91,9 +91,24 @@ Route::middleware('auth:sanctum')->group(function(){
 });
 
 
+
+// aqui las rutas del admin
+
+
 Route::prefix('admin')->middleware('auth:sanctum')->group(function(){
 
+    Route::get('getcategorias',[CategoriasController::class,'show']);
+    Route::post('crearcategorias', [CategoriasController::class,'store']);
+    Route::get('validarnombrecategoria/{nombre}', [CategoriasController::class,'validarnombrecategoria']);
+    Route::delete('eliminarcategoria/{categoria}', [CategoriasController::class, 'destroy']);
 
-    // aqui las rutas del admin
+    Route::get('getsubcategorias',[SubcategoriasController::class,'showsub']);
+    Route::get('validarnombresubcategoria/{nombre}', [SubcategoriasController::class,'validarnombresubcategoria']);
+    Route::post('crearsubcategorias', [SubcategoriasController::class,'store']);
+    Route::delete('eliminarsubcategoria/{subcategoria}', [SubcategoriasController::class, 'destroy']);
+
+
+
+
 
 });
