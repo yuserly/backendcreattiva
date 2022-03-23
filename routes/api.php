@@ -11,6 +11,7 @@ use App\Http\Controllers\SubcategoriasController;
 use App\Http\Controllers\CuponesController;
 use App\Http\Controllers\VentasController;
 use App\Http\Controllers\ContactoWebController;
+use App\Http\Controllers\PreguntasFrecuentesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -83,6 +84,12 @@ Route::get('/solicitudcambiopass/{email}', [AuthController::class,'solicitudrecu
 Route::get('/getcodepassword/{code}', [AuthController::class,'getcodepassword']);
 Route::post('/cambiopassword', [AuthController::class,'cambiopassword']);
 Route::post('/loginadmin', [AuthController::class,'loginadmin']);
+
+//Obtener IP
+Route::get('/consultarip', [AuthController::class,'consultarip']);
+
+//preguntas frecuentes
+Route::get('/preguntasfrecuentesall', [PreguntasFrecuentesController::class,'showall']);
 
 Route::middleware('auth:sanctum')->group(function(){
 

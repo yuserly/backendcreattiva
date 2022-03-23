@@ -15,7 +15,7 @@ class SistemaOperativoController extends Controller
         foreach ($os as $key => $value) {
             if($key == 0){
 
-                $os[$key]["active"] = 1;
+                $os[$key]["active"] = 0;
 
             }else{
 
