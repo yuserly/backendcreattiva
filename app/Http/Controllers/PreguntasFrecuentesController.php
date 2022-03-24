@@ -11,7 +11,24 @@ class PreguntasFrecuentesController extends Controller
     public function showall(){
 
         $preguntas = PreguntasFrecuentes::all();
+
+        foreach($preguntas as $key=>$value){
+            $value->titulo = utf8_decode($value['TITULO_PAGINA']);
+        }
+
         return $preguntas;
+
+    }
+
+    public function getfaq($slug){
+
+        $pregunta = PreguntasFrecuentes::where('URL_PAGINA','=',$slug)->get();
+
+        foreach($pregunta as $key=>$value){
+            $value->titulo = utf8_decode($value['TITULO_PAGINA']);
+        }
+
+        return $pregunta;
 
     }
 }
