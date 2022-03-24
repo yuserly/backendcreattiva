@@ -11,6 +11,7 @@ use App\Http\Controllers\SubcategoriasController;
 use App\Http\Controllers\CuponesController;
 use App\Http\Controllers\VentasController;
 use App\Http\Controllers\ContactoWebController;
+use App\Http\Controllers\PeriodosController;
 use App\Http\Controllers\PreguntasFrecuentesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -113,6 +114,8 @@ Route::prefix('admin')->middleware('auth:sanctum')->group(function(){
     Route::get('validarnombresubcategoria/{nombre}', [SubcategoriasController::class,'validarnombresubcategoria']);
     Route::post('crearsubcategorias', [SubcategoriasController::class,'store']);
     Route::delete('eliminarsubcategoria/{subcategoria}', [SubcategoriasController::class, 'destroy']);
+
+    Route::get('getperiodos', [PeriodosController::class, 'show']);
 
 
 

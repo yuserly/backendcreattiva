@@ -20,6 +20,7 @@ class CreateSubcategoriasTable extends Migration
             $table->string('icono');
             $table->unsignedBigInteger('categoria_id');
             $table->foreign('categoria_id')->references('id_categoria')->on('categorias');
+            $table->integer('preseleccionado');
             $table->integer('visible')->nullable()->default(1);
             $table->softDeletes();
             $table->timestamps();

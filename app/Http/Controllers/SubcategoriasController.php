@@ -11,7 +11,7 @@ class SubcategoriasController extends Controller
         return Subcategorias::where('categoria_id',$id)->with('categoria')->get();
     }
     public function showsub(){
-        return Subcategorias::with('categoria')->get();
+        return Subcategorias::with('categoria','subcategoriasperiodos')->get();
     }
 
     public function showslug($slug){
@@ -40,8 +40,15 @@ class SubcategoriasController extends Controller
                                                   'nombre' => $request->nombre,
                                                   'slug' => $slug,
                                                   'icono' => $request->icono,
-                                                  'categoria_id' => $request->categoria["id_categoria"]
+                                                  'categoria_id' => $request->categoria["id_categoria"],
+                                                  'preseleccionado'=> $request->preseleccionado
                                                 ]);
+
+        $arraySubPeriodos = array();
+        foreach($request->periodo as $item){
+            array_push($arraySubPeriodos, $item['id_periodo']);
+        }
+        $subcaretgoria->subcategoriasperiodos()->sync($arraySubPeriodos);
 
         return $subcaretgoria;
 
