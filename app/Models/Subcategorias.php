@@ -14,11 +14,21 @@ class Subcategorias extends Model
         'nombre',
         'slug',
         'icono',
-        'categoria_id'
+        'categoria_id',
+        'preseleccionado',
+        'dominio',
+        'ip',
+        'sistema_operativo',
+        'administrable'
     ];
 
     public function categoria(){
 
         return $this->hasOne(Categorias::class,'id_categoria','categoria_id');
+    }
+
+    public function subcategoriasperiodos()
+    {
+        return $this->belongsToMany(Periodos::class,'subcategorias_has_periodos', 'subcategoria_id', 'periodo_id');
     }
 }

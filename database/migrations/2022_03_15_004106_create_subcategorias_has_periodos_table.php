@@ -16,8 +16,6 @@ class CreateSubcategoriasHasPeriodosTable extends Migration
         Schema::create('subcategorias_has_periodos', function (Blueprint $table) {
             $table->id('id_sub_has_periodo');
 
-            $table->integer('preseleccionado')->default(0);
-
             $table->unsignedBigInteger('subcategoria_id');
 
             $table->foreign('subcategoria_id')->references('id_subcategoria')->on('subcategorias');
@@ -25,7 +23,7 @@ class CreateSubcategoriasHasPeriodosTable extends Migration
             $table->unsignedBigInteger('periodo_id');
 
             $table->foreign('periodo_id')->references('id_periodo')->on('periodos');
-            
+
             $table->timestamps();
         });
     }
