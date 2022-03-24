@@ -41,7 +41,11 @@ class SubcategoriasController extends Controller
                                                   'slug' => $slug,
                                                   'icono' => $request->icono,
                                                   'categoria_id' => $request->categoria["id_categoria"],
-                                                  'preseleccionado'=> $request->preseleccionado
+                                                  'preseleccionado'=> $request->preseleccionado,
+                                                  'dominio'=> $request->dominio,
+                                                  'ip' => $request->ip,
+                                                  'sistema_operativo' => $request->sistema_operativo,
+                                                  'administrable' => $request->administrable
                                                 ]);
 
         $arraySubPeriodos = array();

@@ -21,6 +21,10 @@ class CreateSubcategoriasTable extends Migration
             $table->unsignedBigInteger('categoria_id');
             $table->foreign('categoria_id')->references('id_categoria')->on('categorias');
             $table->integer('preseleccionado');
+            $table->boolean('dominio')->nullable()->default(false);
+            $table->boolean('ip')->nullable()->default(false);
+            $table->boolean('sistema_operativo')->nullable()->default(false);
+            $table->boolean('administrable')->nullable()->default(false);
             $table->integer('visible')->nullable()->default(1);
             $table->softDeletes();
             $table->timestamps();

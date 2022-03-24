@@ -15,7 +15,11 @@ class Subcategorias extends Model
         'slug',
         'icono',
         'categoria_id',
-        'preseleccionado'
+        'preseleccionado',
+        'dominio',
+        'ip',
+        'sistema_operativo',
+        'administrable'
     ];
 
     public function categoria(){
