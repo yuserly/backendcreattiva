@@ -79,7 +79,7 @@ class PrecioDominiosController extends Controller
             $ext= explode(".",$value["domain"]);
             $ext = $ext[1];
             $coincidencia = 'dominios '.$ext;
-            $producto = Productos::where('nombre','like', '%' . $coincidencia . '%' )->first();
+            $producto = Productos::where('nombre','like', '%' . $coincidencia . '%' )->with('caracteristicas','subcategoria.categoria')->first();
 
             foreach ($periodos as $key2 => $value2) {
 
