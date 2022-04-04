@@ -31,4 +31,15 @@ class PreguntasFrecuentesController extends Controller
         return $pregunta;
 
     }
+
+    public function buscarpreguntasfrecuentes ($nombre){
+
+        $preguntasf =  PreguntasFrecuentes::where([['URL_PAGINA','like','%'.$nombre.'%']])->get();
+
+        foreach($preguntasf as $key=>$value){
+            $value->titulo = utf8_decode($value['TITULO_PAGINA']);
+        }
+
+        return $preguntasf;
+     }
 }

@@ -92,6 +92,7 @@ Route::get('/consultarip', [AuthController::class,'consultarip']);
 //preguntas frecuentes
 Route::get('/preguntasfrecuentesall', [PreguntasFrecuentesController::class,'showall']);
 Route::get('/getfaq/{slug}', [PreguntasFrecuentesController::class,'getfaq']);
+Route::get('/getpreguntasfrecuentesbuscadas/{nombre}',[PreguntasFrecuentesController::class,'buscarpreguntasfrecuentes']);
 
 
 Route::middleware('auth:sanctum')->group(function(){
