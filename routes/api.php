@@ -73,6 +73,7 @@ Route::post('/registrarconsulta', [ContactoWebController::class,'registrar']);
 Route::get('getserviciospendpago/{id}',[ServiciosController::class,'showpendpago']);
 Route::get('getservicios/{id}/{subcategoria}',[ServiciosController::class,'show']);
 Route::post('pagarventa',[ServiciosController::class,'pagarventa']);
+Route::get('getconsultarservicios/{id_empresa}',[ServiciosController::class,'consultarServicios']);
 // ventas
 
 Route::get('getfacturaspendpago/{id}',[VentasController::class,'showpendpago']);

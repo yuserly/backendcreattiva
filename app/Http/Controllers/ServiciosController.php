@@ -44,6 +44,7 @@ class ServiciosController extends Controller
 
         $empresa = Empresas::where('email', $request->datos["email"])->first();
         $esvalido = 0;
+        $tienehosting = $this->consultarServicios($empresa->id_empresa);
 
         if(isset($empresa)){
 
@@ -129,13 +130,39 @@ class ServiciosController extends Controller
             $total = 0;
             $descuento = 0;
             $cupondescuento = 0;
+            $contDominios = 0;
 
             foreach ($request->carro as $key => $value) {
                 $producto = Productos::where('id_producto', $value["producto"]["id_producto"])->first();
                 $periodo = Periodos::where('id_periodo', $value["periodo"])->first();
                 $descuentof = (($producto["precio"] * $periodo["meses"]) * $periodo["descuento"]) / 100;
 
-                $precio_descuento = round(($producto["precio"] * $periodo["meses"]) - $descuentof);
+                //aplicar descuento de dominio por 1 año - primera contratación hosting (subcategoria 1)
+                if(!$tienehosting){
+
+                    if($value["producto"]["subcategoria_id"]==31){
+
+                        $contDominios++;
+
+                        if($contDominios==1 && $periodo["meses"]==24 || $periodo["meses"]==36){ //aplicar descuento 1 año gratis solo para periodos 2 y 3 años
+
+                            $mesesmenos = 12;
+                            $precio_descuento = round(($producto["precio"] * ($periodo["meses"]-$mesesmenos)));
+
+                        }else{ //aplicar precio normal - sin descuento
+
+                            $precio_descuento = round(($producto["precio"] * $periodo["meses"]));
+
+                        }
+
+                    }else{
+
+                        $precio_descuento = round(($producto["precio"] * $periodo["meses"]) - $descuentof);
+
+                    }
+
+                }
+                //**************************** */
 
                 $precio_unitario = ($producto["precio"] * $periodo["meses"]);
 
@@ -145,9 +172,10 @@ class ServiciosController extends Controller
 
                 $descuento = round($descuento + $descuentof);
 
-                if($value["cupon_descuento"]>0){
+                if(isset($value["cupon_descuento"]) && $value["cupon_descuento"]>0){
                     $cupondescuento = round($value["cupon_descuento"]*-1);
                 }
+
             }
 
             $neto = $neto + $cupondescuento;
@@ -501,6 +529,23 @@ class ServiciosController extends Controller
 
         return $this->pagopaypal($codeventa,$total,$mediopago);
         }
+
+    }
+
+    public function consultarServicios($id_empresa){
+
+        $servicios = Servicios::where('empresa_id', $id_empresa)->get();
+        $existe = false;
+        foreach($servicios as $key => $value){
+
+            $producto = Productos::where('id_producto', $servicios)->first();
+            if($producto->subcategoria_id==1){ //productos hosting
+                $existe = true;
+            }
+
+        }
+
+        return ['status'=>$existe];
 
     }
 }
