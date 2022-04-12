@@ -8,6 +8,7 @@ use App\Models\Empresas;
 use App\Models\Periodos;
 use App\Models\Productos;
 use App\Models\Servicios;
+use App\Models\Cupones;
 use App\Models\User;
 use App\Models\Ventas;
 use Illuminate\Http\Request;
@@ -133,47 +134,67 @@ class ServiciosController extends Controller
             $contDominios = 0;
 
             foreach ($request->carro as $key => $value) {
+
+                //datos producto
                 $producto = Productos::where('id_producto', $value["producto"]["id_producto"])->first();
+                
+                //periodo producto
                 $periodo = Periodos::where('id_periodo', $value["periodo"])->first();
-                $descuentof = (($producto["precio"] * $periodo["meses"]) * $periodo["descuento"]) / 100;
+                
 
-                //aplicar descuento de dominio por 1 año - primera contratación hosting (subcategoria 1)
-                if(!$tienehosting){
 
-                    if($value["producto"]["subcategoria_id"]==31){
+                if($value["producto"]["subcategoria_id"]==31){ //dominios
 
-                        $contDominios++;
+                    $descuentof = 0;
 
-                        if($contDominios==1 && $periodo["meses"]==24 || $periodo["meses"]==36){ //aplicar descuento 1 año gratis solo para periodos 2 y 3 años
+                }else{
 
-                            $mesesmenos = 12;
-                            $precio_descuento = round(($producto["precio"] * ($periodo["meses"]-$mesesmenos)));
-
-                        }else{ //aplicar precio normal - sin descuento
-
-                            $precio_descuento = round(($producto["precio"] * $periodo["meses"]));
-
-                        }
-
-                    }else{
-
-                        $precio_descuento = round(($producto["precio"] * $periodo["meses"]) - $descuentof);
-
-                    }
+                    //descuento aplicable al producto
+                    $descuentof = (($producto["precio"] * $periodo["meses"]) * $periodo["descuento"]) / 100;
 
                 }
-                //**************************** */
+
 
                 $precio_unitario = ($producto["precio"] * $periodo["meses"]);
 
                 $precio_mensual = $producto["precio"];
 
-                $neto = $neto + $precio_descuento;
+                $neto += ($precio_unitario - $descuentof);
 
                 $descuento = round($descuento + $descuentof);
 
-                if(isset($value["cupon_descuento"]) && $value["cupon_descuento"]>0){
-                    $cupondescuento = round($value["cupon_descuento"]*-1);
+                if(isset($value["code_cupon_descuento"]) && $value["cupon_descuento"]>0){
+
+                    //validar cupones
+                    $cupon = Cupones::where([
+                        ['cupon','=',$value["code_cupon_descuento"]]
+                    ])->first();
+
+                    if($cupon){
+
+                        if($cupon->uso_actual<$cupon->uso_max){
+
+                            if($cupon->tipo_descuento_id==1){
+
+                                $cupondescuento = round($cupon->valor*-1);
+    
+                            }elseif($cupon->tipo_descuento_id==2){
+    
+                                $cupondescuento = round((($precio_unitario*$cupon->valor)*100)*-1);
+    
+                            }
+
+                            Cupones::where([
+                                ['cupon','=',$value["code_cupon_descuento"]]
+                            ])->update(['uso_actual' => ($cupon->uso_actual+1)]);
+
+                        }else{
+                            $cupondescuento = 0;
+                        }
+
+                    }else{
+                        $cupondescuento = 0;
+                    }
                 }
 
             }
@@ -181,6 +202,7 @@ class ServiciosController extends Controller
             $neto = $neto + $cupondescuento;
             $iva = round($neto * 0.19);
             $total = $neto + $iva;
+
             $total_usd = round($total/$dolar->precio);
 
             $venta = Ventas::create([
@@ -534,16 +556,31 @@ class ServiciosController extends Controller
 
     public function consultarServicios($id_empresa){
 
-        $servicios = Servicios::where('empresa_id', $id_empresa)->get();
-        $existe = false;
-        foreach($servicios as $key => $value){
+        /*$servicios = Servicios::where([
+                                        ['empresa_id','=',$id_empresa],
+                                        ['estado_id','=',2]
+                                        
+                                        ])->get();*/
+        $servicios = Servicios::where('empresa_id','=',$id_empresa)->where('estado_id','=',2)->get();
 
-            $producto = Productos::where('id_producto', $servicios)->first();
-            if($producto->subcategoria_id==1){ //productos hosting
-                $existe = true;
+        $existe = false;
+        if(count($servicios)>0){
+
+            foreach($servicios as $key => $value){
+
+                $producto = Productos::where('id_producto', $value['producto_id'])->first();
+                if($producto->subcategoria_id==1){ //productos hosting
+                    $existe = true;
+                }
+    
             }
 
+        }else{
+
+            $existe = false;
+
         }
+        
 
         return ['status'=>$existe];
 
