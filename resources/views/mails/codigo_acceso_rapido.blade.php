@@ -302,7 +302,7 @@
 
 
 
-                                <p>&copy; 2021 CREATTIVA DATACENTER</p>
+                                <p>&copy; {{date('Y')}} CREATTIVA DATACENTER</p>
     <p style="padding-left: 4px;padding-right: 4px;">Este correo electrónico fue enviado a usted de forma automática.</p>
 
 

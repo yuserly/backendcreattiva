@@ -13,6 +13,7 @@ use App\Http\Controllers\VentasController;
 use App\Http\Controllers\ContactoWebController;
 use App\Http\Controllers\PeriodosController;
 use App\Http\Controllers\PreguntasFrecuentesController;
+use App\Http\Controllers\BannersController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -95,6 +96,8 @@ Route::get('/preguntasfrecuentesall', [PreguntasFrecuentesController::class,'sho
 Route::get('/getfaq/{slug}', [PreguntasFrecuentesController::class,'getfaq']);
 Route::get('/getpreguntasfrecuentesbuscadas/{nombre}',[PreguntasFrecuentesController::class,'buscarpreguntasfrecuentes']);
 
+//banners
+Route::get('/getbanners', [BannersController::class,'getbanners']);
 
 Route::middleware('auth:sanctum')->group(function(){
 
