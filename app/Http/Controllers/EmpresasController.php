@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Empresas;
 use App\Models\User;
+use App\Mail\RegistroCliente;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Mail;
 
 class EmpresasController extends Controller
 {
@@ -44,6 +46,8 @@ class EmpresasController extends Controller
 
         $user = User::where('email',$request->email)->first();
 
+        $pass = Str::random(8);
+
         if($user){
             $user_id = $user->id;
         }else{
@@ -52,10 +56,13 @@ class EmpresasController extends Controller
 
             $user = User::create([
                 'email' => filter_var($request->email, FILTER_SANITIZE_EMAIL),
-                'password' => Hash::make('12345678')
+                'password' => Hash::make($pass)
             ]);
 
             $user_id = $user->id;
+
+            //enviar correo de empresa creada
+            Mail::to($request->email)->send(new RegistroCliente($request->nombre,$request->email,$pass));
         }
 
         if($request->isempresa){
@@ -87,6 +94,7 @@ class EmpresasController extends Controller
                                             ]);
 
             if($empresa){
+
                 return $this->successResponse($empresa, 'Empresa creado exitosamente', true);
             }else{
                 return $this->successResponse($empresa, 'Error al crear al Empresa', false);

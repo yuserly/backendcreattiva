@@ -31,6 +31,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CuponesSeeder::class);
         $this->call(SubcategoriasHasPeriodosSeeder::class);
         $this->call(PreguntasFrecuentesSeeder::class);
+        $this->call(BannersSeeder::class);
 
         Administradores::create([
             'name' => 'Yuserly Bracho',

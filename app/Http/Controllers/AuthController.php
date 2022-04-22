@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use DateTime;
 use App\Mail\CodigoAccesoRapido;
 use App\Mail\RecuperarPassword;
 use App\Models\Empresas;
@@ -85,7 +85,19 @@ class AuthController extends Controller
     public function enviarcodigorapido(Request $request){
 
         $user = User::where('email', $request->email)->first();
+
+        //$DataCode = new DateTime($user->fecha_codigo_rapido);
+        //$hora_creacion = $DataCode->format('H:i:s');
+        //$horahoy = date('H:i:s');
+
+        
+
+            $dateff = new DateTime($data['fechaFinal']);
+            $fechaf = $dateff->format('Y-m-d');
+            $horaf = $dateff->format('H:i:s');
+
         if(isset($user)){
+
             $empresa = Empresas::where('user_id', $user->id)->first();
             $nombre = $empresa->nombre;
             $code = $this->generateCode(6);

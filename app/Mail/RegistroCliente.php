@@ -7,23 +7,26 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class CodigoAccesoRapido extends Mailable
+class RegistroCliente extends Mailable
 {
     use Queueable, SerializesModels;
-    public $title = "Codigo Acceso Rápido";
+    public $title = "Bienvenido a Creattiva Datacenter";
     public $nombre;
-    public $code;
+    public $correo;
+    public $pass;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($nombre, $code)
+    public function __construct($nombre,$correo,$pass)
     {
+        //
         $this->title = $this->title;
         $this->nombre = $nombre;
-        $this->code = $code;
+        $this->correo = $correo;
+        $this->pass = $pass;
     }
 
     /**
@@ -35,7 +38,9 @@ class CodigoAccesoRapido extends Mailable
     {
         $title = $this->title;
         $nombre   = $this->nombre;
-        $code = $this->code;
-        return $this->view('mails.codigo_acceso_rapido', compact('nombre','code'))->subject($title);
+        $correo = $this->correo;
+        $pass = $this->pass;
+
+        return $this->view('mails.nuevo_cliente', compact('nombre','correo','pass'))->subject($title);
     }
 }
