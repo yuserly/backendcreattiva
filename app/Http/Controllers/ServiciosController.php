@@ -17,6 +17,9 @@ use Illuminate\Support\Str;
 use Transbank\Webpay\WebpayPlus;
 use Transbank\Webpay\WebpayPlus\Transaction;
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
+use Transbank\Webpay\Oneclick\MallInscription;
+use Transbank\Webpay\Oneclick;
+use Transbank\Webpay\Oneclick\MallTransaction;
 
 date_default_timezone_set("America/Santiago");
 
@@ -137,10 +140,10 @@ class ServiciosController extends Controller
 
                 //datos producto
                 $producto = Productos::where('id_producto', $value["producto"]["id_producto"])->first();
-                
+
                 //periodo producto
                 $periodo = Periodos::where('id_periodo', $value["periodo"])->first();
-                
+
 
 
                 if($value["producto"]["subcategoria_id"]==31){ //dominios
@@ -177,11 +180,11 @@ class ServiciosController extends Controller
                             if($cupon->tipo_descuento_id==1){
 
                                 $cupondescuento = round($cupon->valor*-1);
-    
+
                             }elseif($cupon->tipo_descuento_id==2){
-    
+
                                 $cupondescuento = round((($precio_unitario*$cupon->valor)*100)*-1);
-    
+
                             }
 
                             Cupones::where([
@@ -277,7 +280,11 @@ class ServiciosController extends Controller
            }else if($request->datos['mediopago'] == 2){
 
             return $this->pagopaypal($codeventa,$total_usd,$request->datos['mediopago']);
-           }else{
+           }else if($request->datos['mediopago'] == 4){
+
+            return $this->pagooneclick($request->datos, $codeventa, $total);
+           }
+           else{
             return [
                 'url' => '',
                 'token' => '',
@@ -301,7 +308,8 @@ class ServiciosController extends Controller
 
             $user = User::create([
                 'email' => filter_var($request->email, FILTER_SANITIZE_EMAIL),
-                'password' => Hash::make($random)
+                'password' => Hash::make($random),
+                'username' => trim($request->nombre)
             ]);
 
             $user_id = $user->id;
@@ -337,6 +345,89 @@ class ServiciosController extends Controller
         return $empresa;
 
     }
+
+    public function pagooneclick($datos, $codeventa, $total){
+
+        $user = User::where('email','=',$datos["email"])->first();
+
+        if(isset($user["tbkuser"])){
+
+
+            $parentBuyOrder = $codeventa;
+
+            $details = [
+                [
+                    "commerce_code" => "597055555543",
+                    "buy_order" => $codeventa, // Tu propio buyOrder
+                    "amount" => $total,
+                    "installments_number" => 1
+                ],
+            ];
+
+            $username = $user["username"];
+
+            $response = (new MallTransaction)->authorize($username, $user["tbkuser"], $parentBuyOrder, $details);
+
+            $codigoventa = $response->getBuyOrder();
+
+                $details = $response->getDetails();
+                foreach($details as $detail){
+                    $amount = $detail->getAmount();
+                    $authorizationCode =  $detail->getAuthorizationCode();
+                    $detail->getBuyOrder();
+                    $detail->getCommerceCode();
+                    $detail->getInstallmentsNumber();
+                    $paymentTypeCode = $detail->getPaymentTypeCode();
+                    $responseCode = $detail->getResponseCode();
+                    $detail->getStatus();
+                }
+
+            if($responseCode == 0){
+
+                // si es 0 fue pagado exitosamente
+
+               $this->cambiarestadoventapago($codigoventa);
+
+               return [
+                        'metodopago' => $datos['mediopago'],
+                        'pagoexitoso' => 1
+                        ];
+
+            }else{
+
+                return $this->solicitudinswebpay($user,$datos, $codeventa);
+
+            }
+
+        }else{
+
+            return $this->solicitudinswebpay($user,$datos, $codeventa);
+
+        }
+
+    }
+
+    public function solicitudinswebpay($user, $datos, $codeventa){
+
+            $username = $user["username"];
+            // Correo electrónico del usuario
+            $email = $user["email"];
+            // URL donde llegará el usuario con su token luego de finalizar la inscripción
+            $response_url = "http://backendcreattiva.cp/resultado/inscripcion";
+
+            $response = (new MallInscription)->start($username, $email, $response_url);
+
+            Ventas::where('codigo', $codeventa )->update([
+                'token_ins_tarjeta' => $response->token
+            ]);
+
+            return [
+                'token' => $response->token,
+                'url' => $response->urlWebpay,
+                'metodopago' => $datos['mediopago']
+            ];
+
+    }
     public function pagowebpay($codeventa, $monto,$metodopago){
 
         \Transbank\Webpay\WebpayPlus::configureForIntegration('597055555532', '579B532A7440BB0C9079DED94D31EA1615BACEB56610332264630D42D0A36B1C');
@@ -344,7 +435,7 @@ class ServiciosController extends Controller
         $buy_order = $codeventa;
         $session_id = uniqid();
         $amount = $monto;
-        $return_url = "http://creattiva-api.cl/return/token";
+        $return_url = "http://backendcreattiva.cp/return/token";
 
         $response = (new Transaction)->create($buy_order, $session_id, $amount, $return_url);
 
@@ -414,6 +505,78 @@ class ServiciosController extends Controller
             return redirect()->away('http://localhost:4200/pago-rechazado');
         }
 
+    }
+
+    public function validarinscripcion(Request $request){
+
+        $token = $request->TBK_TOKEN;
+
+        $response = (new MallInscription)->finish($token);
+        $tbkUser = $response->getTbkUser();
+
+        if($response->responseCode == 0){
+
+            $venta = Ventas::where('token_ins_tarjeta', $token)->with('empresa')->first();
+
+            $userid = $venta->empresa["user_id"];
+
+            User::where('id',$userid)->update([
+                'tbkuser' => $tbkUser
+            ]);
+
+            $parentBuyOrder = $venta->codigo;
+
+            $details = [
+                [
+                    "commerce_code" => "597055555543",
+                    "buy_order" => $venta->codigo, // Tu propio buyOrder
+                    "amount" => $venta->total_peso,
+                    "installments_number" => 1
+                ],
+            ];
+
+            $user = User::where('id',$userid)->first();
+            $username = $user->username;
+
+            $response = (new MallTransaction)->authorize($username, $tbkUser, $parentBuyOrder, $details);
+
+            $codigoventa = $response->getBuyOrder();
+
+                $details = $response->getDetails();
+                foreach($details as $detail){
+                    $amount = $detail->getAmount();
+                    $authorizationCode =  $detail->getAuthorizationCode();
+                    $detail->getBuyOrder();
+                    $detail->getCommerceCode();
+                    $detail->getInstallmentsNumber();
+                    $paymentTypeCode = $detail->getPaymentTypeCode();
+                    $responseCode = $detail->getResponseCode();
+                    $detail->getStatus();
+                }
+
+            if($responseCode == 0){
+
+                // si es 0 fue pagado exitosamente
+
+
+               return $this->cambiarestadoventapago($codigoventa);
+
+            }else{
+
+                $codigoventa = $response->getBuyOrder();
+
+                return $this->cambiarestadoventarechazado($codigoventa);
+
+            }
+
+        }else{
+
+            $venta = Ventas::where('token_ins_tarjeta', $token)->with('empresa')->first();
+
+            return $this->cambiarestadoventarechazado($venta->codigo);
+
+
+        }
     }
 
 
@@ -559,7 +722,7 @@ class ServiciosController extends Controller
         /*$servicios = Servicios::where([
                                         ['empresa_id','=',$id_empresa],
                                         ['estado_id','=',2]
-                                        
+
                                         ])->get();*/
         $servicios = Servicios::where('empresa_id','=',$id_empresa)->where('estado_id','=',2)->get();
 
@@ -572,7 +735,7 @@ class ServiciosController extends Controller
                 if($producto->subcategoria_id==1){ //productos hosting
                     $existe = true;
                 }
-    
+
             }
 
         }else{
@@ -580,7 +743,7 @@ class ServiciosController extends Controller
             $existe = false;
 
         }
-        
+
 
         return ['status'=>$existe];
 

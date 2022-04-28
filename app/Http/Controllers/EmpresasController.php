@@ -56,7 +56,8 @@ class EmpresasController extends Controller
 
             $user = User::create([
                 'email' => filter_var($request->email, FILTER_SANITIZE_EMAIL),
-                'password' => Hash::make($pass)
+                'password' => Hash::make($pass),
+                'username' => trim($request->nombre)
             ]);
 
             $user_id = $user->id;

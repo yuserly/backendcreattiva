@@ -32,6 +32,7 @@ class CreateVentasTable extends Migration
             $table->date('fecha_pago')->nullable();
             $table->time('hora_pago')->nullable();
             $table->string('pago_id_paypal')->nullable();
+            $table->string('token_ins_tarjeta')->nullable();
             $table->timestamps();
         });
     }

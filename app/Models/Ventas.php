@@ -31,4 +31,9 @@ class Ventas extends Model
 
         return $this->hasMany(DetalleVentas::class,'venta_id','id_venta');
     }
+
+    public function empresa(){
+
+        return $this->belongsTo(Empresas::class,'empresa_id','id_empresa');
+    }
 }

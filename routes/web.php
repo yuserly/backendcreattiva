@@ -22,3 +22,6 @@ Route::match(['get','post'],'/return/token',[ServiciosController::class,'validar
 Route::get('returnsuccess/paypal',[ServiciosController::class,'successTransaction']);
 Route::get('returncancel/paypal',[ServiciosController::class,'cancelTransaction']);
 
+
+Route::match(['get','post'],'/resultado/inscripcion',[ServiciosController::class,'validarinscripcion']);
+
