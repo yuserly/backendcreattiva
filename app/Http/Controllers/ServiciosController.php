@@ -144,11 +144,47 @@ class ServiciosController extends Controller
                 //periodo producto
                 $periodo = Periodos::where('id_periodo', $value["periodo"])->first();
 
-
-
                 if($value["producto"]["subcategoria_id"]==31){ //dominios
 
-                    $descuentof = 0;
+                    $hayhosting = false;
+                    $cumpleperiodo = false;
+
+                    foreach ($request->carro as $key1 => $value1) {
+
+                        if($value1["producto"]["subcategoria_id"]==1){
+
+                            $hayhosting = true;
+
+                            if($value1["periodo"]== 3 || $value1["periodo"]== 4){
+                                $cumpleperiodo = true;
+                            }
+
+                        }
+
+                    }
+
+
+                    if( $hayhosting && $tienehosting["status"] == false && $cumpleperiodo){
+
+                        $contDominios ++;
+
+                        if($contDominios == 1){
+
+                            foreach ($value["periodos"] as $key3 => $value3) {
+                               if($value3["id_periodo"] == 2){
+                                    $descuentof = $value3["precio"];
+                                    \Log::debug('Descuento dominio ' . $descuentof);
+                               }
+                            }
+                        }else{
+                            $descuentof = 0;
+                        }
+
+                    }else{
+
+                        $descuentof = 0;
+
+                    }
 
                 }else{
 
@@ -220,15 +256,69 @@ class ServiciosController extends Controller
                                 'empresa_id' => $empresa->id_empresa,
                                 'metodo_pago' => $request->datos['mediopago'],
                             ]);
-
+            $contDominios = 0;
             foreach ($request->carro as $key => $value) {
 
                 $producto = Productos::where('id_producto', $value["producto"]["id_producto"])->first();
                 $periodo = Periodos::where('id_periodo', $value["periodo"])->first();
-                $descuento = (($producto["precio"] * $periodo["meses"]) * $periodo["descuento"]) / 100;
-                $precio_descuento = round(($producto["precio"] * $periodo["meses"]) - $descuento);
                 $precio_unitario = ($producto["precio"] * $periodo["meses"]);
                 $precio_mensual = $producto["precio"];
+
+                // descuento para el dominio
+
+                if($value["producto"]["subcategoria_id"]==31){ //dominios
+                    
+                    $hayhosting = false;
+                    $cumpleperiodo = false;
+
+                    foreach ($request->carro as $key1 => $value1) {
+
+                        if($value1["producto"]["subcategoria_id"]==1){
+
+                            $hayhosting = true;
+
+                            if($value1["periodo"]== 3 || $value1["periodo"]== 4){
+                                $cumpleperiodo = true;
+                            }
+
+                        }
+
+                    }
+
+                    if( $hayhosting && $tienehosting["status"] == false && $cumpleperiodo){
+
+                        $contDominios ++;
+
+                        if($contDominios == 1){
+
+                            foreach ($value["periodos"] as $key3 => $value3) {
+                               if($value3["id_periodo"] == 2){
+                                    $descuento = $value3["precio"];
+                                    $precio_descuento = round(($producto["precio"] * $periodo["meses"]) - $descuento);
+
+                               }
+                            }
+                        }else{
+                            $descuento = 0;
+                            $precio_descuento = round(($producto["precio"] * $periodo["meses"]) - $descuento);
+
+                        }
+
+                    }else{
+
+                        $descuento = 0;
+                        $precio_descuento = round(($producto["precio"] * $periodo["meses"]) - $descuento);
+
+                    }
+
+
+                }else{
+
+                    //descuento aplicable al producto
+                    $descuento = (($producto["precio"] * $periodo["meses"]) * $periodo["descuento"]) / 100;
+                    $precio_descuento = round(($producto["precio"] * $periodo["meses"]) - $descuento);
+
+                }
 
                 // creamos el/los servicios
 

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ServiciosController;
+use App\Http\Controllers\VentasController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +22,14 @@ Route::get('/', function () {
 Route::match(['get','post'],'/return/token',[ServiciosController::class,'validarrpago']);
 Route::get('returnsuccess/paypal',[ServiciosController::class,'successTransaction']);
 Route::get('returncancel/paypal',[ServiciosController::class,'cancelTransaction']);
+
+Route::get('returncancel/paypal',[ServiciosController::class,'cancelTransaction']);
+
+Route::get('pago/webpayplus/{token}',[VentasController::class,'rediretpagowebpayplus']);
+Route::get('pago/oneclick/{token}',[VentasController::class,'rediretpagooneclick']);
+
+
+
 
 
 Route::match(['get','post'],'/resultado/inscripcion',[ServiciosController::class,'validarinscripcion']);
