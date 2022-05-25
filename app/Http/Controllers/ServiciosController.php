@@ -603,6 +603,7 @@ class ServiciosController extends Controller
 
         $response = (new MallInscription)->finish($token);
         $tbkUser = $response->getTbkUser();
+        $tbktarjeta = $response->getCardNumber();
 
         if($response->responseCode == 0){
 
@@ -611,7 +612,8 @@ class ServiciosController extends Controller
             $userid = $venta->empresa["user_id"];
 
             User::where('id',$userid)->update([
-                'tbkuser' => $tbkUser
+                'tbkuser' => $tbkUser,
+                'tbktarjeta' => $tbktarjeta
             ]);
 
             $parentBuyOrder = $venta->codigo;

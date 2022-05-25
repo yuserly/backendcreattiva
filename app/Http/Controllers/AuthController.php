@@ -92,9 +92,9 @@ class AuthController extends Controller
 
         
 
-            $dateff = new DateTime($data['fechaFinal']);
-            $fechaf = $dateff->format('Y-m-d');
-            $horaf = $dateff->format('H:i:s');
+            // $dateff = new DateTime($data['fechaFinal']);
+            // $fechaf = $dateff->format('Y-m-d');
+            // $horaf = $dateff->format('H:i:s');
 
         if(isset($user)){
 

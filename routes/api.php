@@ -105,7 +105,8 @@ Route::middleware('auth:sanctum')->group(function(){
 
 });
 
-
+//Registro de productos agregados al carro
+Route::post('registroscarrito',[ProductosController::class,'registroscarrito']);
 
 // aqui las rutas del admin
 

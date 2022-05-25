@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('username')->nullable();
             $table->string('tbkuser')->nullable();
+            $table->string('tbktarjeta')->nullable();
             $table->integer('codigo_rapido')->nullable();
             $table->string('codigo_recuperar')->nullable();
             $table->dateTime('fecha_codigo_rapido')->nullable();

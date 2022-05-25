@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Periodos;
 use App\Models\Productos;
+use App\Models\RegistrosCarrito;
+use App\Models\DetallesRegistrosCarrito;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+
+date_default_timezone_set("America/Santiago");
 
 class ProductosController extends Controller
 {
@@ -148,6 +152,98 @@ class ProductosController extends Controller
         return $productos;
      }
 
+     public function registroscarrito(Request $request){
+
+        $data = request();
+        $fecha = date('Y-m-d');
+        $hora = date('H:m:s');
+       
+
+        $ip = $this->consultarip();
+
+        $registros = RegistrosCarrito::where([
+            ['ip_visitante',$ip],
+            ['fecha',$fecha]
+        ])->limit(1)->get();
+
+        if($registros){
+
+            return "hay";
+
+        }else{ //si no hay registros, se guarda la info
+
+            $notificacion = 1;
+            $status_compra = 0;
+
+            $insertRegistro = RegistrosCarrito::insert([
+                'email' => 'kayla@example.com',
+                'votes' => 0,
+                'ip_visitante' => $ip, 
+                'cliente_id' => null, 
+                'fecha' => $fecha, 
+                'hora' => $hora, 
+                'notificacion' => $notificacion, 
+                'status_compra' => $status_compra
+            ]);
+
+            if($insertRegistro){
+                
+                if($data['id_producto']!==null){ 
+                //Registrar Producto en detalles del carro
+
+                    //obtener ID del carrito registrado
+                    $id = RegistrosCarrito::max('id_carrito');
+                    //**********************************
+        
+                    $insertDetalle = DetallesRegistrosCarrito::insert([
+                        'carrito_id' => $id,
+                        'subcategoria_id' => $data['subcategoria_id'],
+                        'producto_id'=> $data['id_producto'],
+                        'nombre'=> $data['nombre'],
+                        'email'=> $data['nombre'],
+                        'telefono'=>'111111111',
+                        'porcentaje_desc'=>null,
+                        'url'=>null,
+                        'dominio'=>'jesusparra.cl',
+                        'ip_server'=>null,
+                        'fecha'=>$fecha,
+                        'hora'=>$hora
+                    ]);
+
+
+                }
+
+            }
+
+        }
+
+        return $registros;
+
+
+     }
+
+     public function consultarip(){
+
+        $ip = '';
+
+        if (!empty($_SERVER['HTTP_CLIENT_IP'])){
+
+            $ip = $_SERVER['HTTP_CLIENT_IP'];
+
+        }elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])){
+
+            $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+
+        }else{
+
+            $ip = $_SERVER['REMOTE_ADDR'];
+
+        }
+
+        return $ip;
+
+        
+    }
 
 
 
