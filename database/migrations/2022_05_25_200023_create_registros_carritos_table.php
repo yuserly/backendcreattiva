@@ -19,7 +19,7 @@ class CreateRegistrosCarritosTable extends Migration
             $table->string('sitio')->nullable();;
             $table->integer('cliente_id')->nullable();;
             $table->date('fecha');
-            $table->dateTime('hora');
+            $table->time('hora');
             $table->integer('notificacion');
             $table->integer('status_compra')->nullable();;
             $table->timestamps();

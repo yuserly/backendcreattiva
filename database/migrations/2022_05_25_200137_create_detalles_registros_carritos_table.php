@@ -44,7 +44,7 @@ class CreateDetallesRegistrosCarritosTable extends Migration
 
             $table->date('fecha');
 
-            $table->dateTime('hora');
+            $table->time('hora');
 
             $table->timestamps();
         });
