@@ -46,6 +46,11 @@ class AuthController extends Controller
 
         if($user->codigo_rapido == $request->code){
 
+            User::where('email', $request->email)->update([
+                'codigo_rapido'=> '',
+                'fecha_codigo_rapido'=> ''
+            ]);
+
                 Auth::loginUsingId($user->id);
 
                 $user = Auth::user();
@@ -85,25 +90,50 @@ class AuthController extends Controller
     public function enviarcodigorapido(Request $request){
 
         $user = User::where('email', $request->email)->first();
-
-        //$DataCode = new DateTime($user->fecha_codigo_rapido);
-        //$hora_creacion = $DataCode->format('H:i:s');
-        //$horahoy = date('H:i:s');
-
-        
-
-            // $dateff = new DateTime($data['fechaFinal']);
-            // $fechaf = $dateff->format('Y-m-d');
-            // $horaf = $dateff->format('H:i:s');
+        $codigovalido = 0;
 
         if(isset($user)){
 
+            if($user->fecha_codigo_rapido){
+
+                $sumarmin = strtotime ( '+15 minute' , strtotime ($user->fecha_codigo_rapido)) ;
+    
+                $nuevafecha = date ( 'Y-m-d H:i:s' , $sumarmin); 
+
+
+                $fecha_15min =  new DateTime($nuevafecha) ;
+                $fecha_ahora = new DateTime("now");
+
+                if( $fecha_ahora < $fecha_15min ){
+                    $codigovalido = 1;
+                }
+    
+            }
+
+        
+
+            if($codigovalido == 1){
+
+                if($user->codigo_rapido){
+                    $code = $user->codigo_rapido;
+                    $fecha = $user->fecha_codigo_rapido;
+
+                }else{
+                    $code = $this->generateCode(6);
+                    $fecha = date("Y-m-d H:i:s");
+                }
+
+            }else{
+                $code = $this->generateCode(6);
+                $fecha = date("Y-m-d H:i:s");
+            }
+
             $empresa = Empresas::where('user_id', $user->id)->first();
             $nombre = $empresa->nombre;
-            $code = $this->generateCode(6);
+            
             $upt = User::where('email', $request->email)->update([
                     'codigo_rapido'=> $code,
-                    'fecha_codigo_rapido'=> date("Y-m-d H:i:s")
+                    'fecha_codigo_rapido'=> $fecha
                 ]);
 
                 if(isset($upt)){
