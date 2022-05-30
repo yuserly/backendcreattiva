@@ -145,7 +145,7 @@
 
 
 .myDiv{
-    background-image: url('https://www.creattiva.cl/compra-rapida/img/fondo-mail.jpg');
+    background-image: url('https://www.creattiva.cl/images/fondo-mail.jpg');
     background-size: cover;
     background-position: center top;
 }
@@ -169,7 +169,7 @@
 
             <td>
 
-            <center><a href=""><img src="https://www.creattiva.cl/compra-rapida/img/logo-blanco.jpg" width="350" alt="Logo" title="Logo"></a></center>
+            <center><a href=""><img src="https://www.creattiva.cl/images/logo-blanco.jpg" width="350" alt="Logo" title="Logo"></a></center>
 
             <div class="webkit" style="border-radius: 5px; border: 1px solid #eeeeee; background:#fff">
 
@@ -263,7 +263,7 @@
 
 
 
-                            <img src="https://www.creattiva.cl/compra-rapida/img/iconos.png" width="180">
+                            <img src="https://www.creattiva.cl/images/iconos.png" width="180">
 
 
                         </div>
