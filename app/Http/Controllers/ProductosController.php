@@ -6,6 +6,7 @@ use App\Models\Periodos;
 use App\Models\Productos;
 use App\Models\Empresas;
 use App\Models\RegistrosCarrito;
+use App\Models\SolicitudesJumpseller;
 use App\Models\DetallesRegistrosCarrito;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
@@ -484,7 +485,42 @@ class ProductosController extends Controller
 
     }
 
+    public function solicitudjumpseller(Request $request){
 
+        $data = request();
+
+        if($data['tipocontrato']==1){
+            $tipoc = 'persona';
+        }elseif($data['tipocontrato']==2){
+            $tipoc = 'empresa';
+        }else{
+            $tipoc = 'persona';
+        }
+
+        $ip = $this->consultarip();
+
+        $ecommerces = SolicitudesJumpseller::where('ip',$ip)->first();
+
+        $ecommerce = SolicitudesJumpseller::updateOrCreate([
+
+            'email' => $data['email'],
+            'tipocliente' => $tipoc,
+            'nombrecliente' => $data['nombre'],
+            'rut' => $data['rut'],
+            'telefono' => $data['telefono'],
+            'giro' => $data['giro'],
+            'direccion' => $data['direccion'],
+            'nombretienda' => $data['nombretienda'],
+            'idproducto' => $data['idproducto'],
+            'idperiodo' => $data['periodo_select'],
+            'ip' => $ip,
+            'status' => 0
+
+        ]);
+
+        return $ecommerce;
+
+    }
 
 
 

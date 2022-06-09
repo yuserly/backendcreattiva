@@ -91,6 +91,9 @@ Route::post('/loginadmin', [AuthController::class,'loginadmin']);
 //Obtener IP
 Route::get('/consultarip', [AuthController::class,'consultarip']);
 
+//registros tipo de producto ecommerce
+Route::post('solicitudjumpseller',[ProductosController::class,'solicitudjumpseller']);
+
 //preguntas frecuentes
 Route::get('/preguntasfrecuentesall', [PreguntasFrecuentesController::class,'showall']);
 Route::get('/getfaq/{slug}', [PreguntasFrecuentesController::class,'getfaq']);

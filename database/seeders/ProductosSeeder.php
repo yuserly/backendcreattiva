@@ -31,11 +31,6 @@ class ProductosSeeder extends Seeder
             ["nombre" => 'Base de Datos', "capacidad" => '1'],
             ["nombre" => 'Subdominios', "capacidad" => '1'],
             ["nombre" => 'Dominio en Parking', "capacidad" => '1'],
-            ["nombre" => 'Cuentas de correo electrónico', "capacidad" => '10'],
-            ["nombre" => 'Almacenaminto Backup', "capacidad" => '30 GB'],
-            ["nombre" => 'Correos permitidos', "capacidad" => '600 por hora'],
-            ["nombre" => 'Certificado SSL Gratuito', "capacidad" => ''],
-            ["nombre" => 'Transferencia ilimitada', "capacidad" => ''],
         ];
 
         foreach ($caracteristicas as $key => $value) {
@@ -62,11 +57,56 @@ class ProductosSeeder extends Seeder
             ["nombre" => 'Base de Datos', "capacidad" => 'Ilimitado'],
             ["nombre" => 'Subdominios', "capacidad" => '3'],
             ["nombre" => 'Dominio en Parking', "capacidad" => '3'],
-            ["nombre" => 'Cuentas de correo electrónico', "capacidad" => 'Ilimitado'],
-            ["nombre" => 'Almacenaminto Backup', "capacidad" => '75 GB'],
-            ["nombre" => 'Correos permitidos', "capacidad" => '800 por hora'],
-            ["nombre" => 'Certificado SSL Gratuito', "capacidad" => ''],
-            ["nombre" => 'Transferencia ilimitada', "capacidad" => ''],
+        ];
+
+        foreach ($caracteristicas as $key => $value) {
+
+            CarateristicassProductos::create([
+                'nombre' => $value["nombre"],
+                'capacidad' => $value["capacidad"],
+                'producto_id' => $producto->id_producto
+            ]);
+        }
+
+        $producto = Productos::create(['nombre'=> 'Hosting Negocios',
+                                    'slug' => 'hosting-negocios',
+                                    'meta_title' => 'Hosting Negocios',
+                                    'meta_description' => 'Hosting Negocios' ,
+                                    'meta_key' => 'Hosting' ,
+                                    'precio' => 5900,
+                                    'subcategoria_id' => 1,
+                                    'tipo_producto_id' => 1]);
+
+        $caracteristicas = [
+            ["nombre" => 'Almacenaminto SSD', "capacidad" => '10 GB'],
+            ["nombre" => 'Base de Datos', "capacidad" => '1'],
+            ["nombre" => 'Subdominios', "capacidad" => '1'],
+            ["nombre" => 'Dominio en Parking', "capacidad" => '1'],
+        ];
+
+        foreach ($caracteristicas as $key => $value) {
+
+            CarateristicassProductos::create([
+                'nombre' => $value["nombre"],
+                'capacidad' => $value["capacidad"],
+                'producto_id' => $producto->id_producto
+            ]);
+        }
+
+        $producto = Productos::create(['nombre'=> 'Hosting Empresa',
+                                    'slug' => 'hosting-empresa',
+                                    'meta_title' => 'Hosting Empresa',
+                                    'meta_description' => 'Hosting Empresa' ,
+                                    'meta_key' => 'Hosting' ,
+                                    'precio' => 5900,
+                                    'subcategoria_id' => 1,
+                                    'tipo_producto_id' => 1]);
+
+        $caracteristicas = [
+            ["nombre" => 'Almacenaminto SSD', "capacidad" => '10 GB'],
+            ["nombre" => 'Base de Datos', "capacidad" => '1'],
+            ["nombre" => 'Subdominios', "capacidad" => '1'],
+            ["nombre" => 'Dominio en Parking', "capacidad" => '1'],
         ];
 
         foreach ($caracteristicas as $key => $value) {
@@ -97,9 +137,6 @@ class ProductosSeeder extends Seeder
             ["nombre" => 'Dominios', "capacidad" => '1'],
             ["nombre" => 'Cuentas de correo electrónico', "capacidad" => '10'],
             ["nombre" => 'Almacenaminto Backup', "capacidad" => '75 GB'],
-            ["nombre" => 'Correos permitidos', "capacidad" => '800 por hora'],
-            ["nombre" => 'Certificado SSL Gratuito', "capacidad" => ''],
-            ["nombre" => 'Transferencia ilimitada', "capacidad" => ''],
         ];
 
         foreach ($caracteristicas as $key => $value) {
@@ -125,9 +162,56 @@ class ProductosSeeder extends Seeder
         ["nombre" => 'Dominios', "capacidad" => '1'],
         ["nombre" => 'Cuentas de correo electrónico', "capacidad" => '20'],
         ["nombre" => 'Almacenaminto Backup', "capacidad" => '75 GB'],
-        ["nombre" => 'Correos permitidos', "capacidad" => '800 por hora'],
-        ["nombre" => 'Certificado SSL Gratuito', "capacidad" => ''],
-        ["nombre" => 'Transferencia ilimitada', "capacidad" => ''],
+        ];
+
+        foreach ($caracteristicas as $key => $value) {
+
+            CarateristicassProductos::create([
+                'nombre' => $value["nombre"],
+                'capacidad' => $value["capacidad"],
+                'producto_id' => $producto->id_producto
+            ]);
+        }
+
+        $producto = Productos::create(['nombre'=> 'Hosting Wordpress 20G',
+         'slug' => 'hosting-wordpressIlimitado0g',
+         'meta_title' => 'Hosting Wordpress 20G',
+         'meta_description' => 'Hosting Wordpress 20G' ,
+         'meta_key' => 'Hosting, wordpress' ,
+         'precio' => 20000,
+         'subcategoria_id' => 4,
+         'tipo_producto_id' => 1]);
+
+        $caracteristicas = [
+        ["nombre" => 'Almacenaminto SSD', "capacidad" => '10 GB'],
+        ["nombre" => 'Dominios', "capacidad" => '1'],
+        ["nombre" => 'Cuentas de correo electrónico', "capacidad" => '20'],
+        ["nombre" => 'Almacenaminto Backup', "capacidad" => '75 GB'],
+        ];
+
+        foreach ($caracteristicas as $key => $value) {
+
+            CarateristicassProductos::create([
+                'nombre' => $value["nombre"],
+                'capacidad' => $value["capacidad"],
+                'producto_id' => $producto->id_producto
+            ]);
+        }
+
+        $producto = Productos::create(['nombre'=> 'Hosting Wordpress 50G',
+         'slug' => 'hosting-wordpressIlimitado0g',
+         'meta_title' => 'Hosting Wordpress 50G',
+         'meta_description' => 'Hosting Wordpress 50G' ,
+         'meta_key' => 'Hosting, wordpress' ,
+         'precio' => 20000,
+         'subcategoria_id' => 4,
+         'tipo_producto_id' => 1]);
+
+        $caracteristicas = [
+        ["nombre" => 'Almacenaminto SSD', "capacidad" => '10 GB'],
+        ["nombre" => 'Dominios', "capacidad" => '1'],
+        ["nombre" => 'Cuentas de correo electrónico', "capacidad" => '20'],
+        ["nombre" => 'Almacenaminto Backup', "capacidad" => '75 GB'],
         ];
 
         foreach ($caracteristicas as $key => $value) {
@@ -158,8 +242,7 @@ class ProductosSeeder extends Seeder
        ["nombre" => 'Almacenaminto', "capacidad" => '16 GB'],
        ["nombre" => 'Base de Datos', "capacidad" => 'Ilimitado'],
        ["nombre" => 'Dominios', "capacidad" => '1'],
-       ["nombre" => 'Almacenaminto Backup', "capacidad" => '48 GB'],
-       ["nombre" => 'Transferencia mensual', "capacidad" => '100GB']
+       ["nombre" => 'Almacenaminto Backup', "capacidad" => '48 GB']
        ];
 
        foreach ($caracteristicas as $key => $value) {
@@ -187,8 +270,57 @@ class ProductosSeeder extends Seeder
       ["nombre" => 'Almacenaminto', "capacidad" => '32 GB'],
       ["nombre" => 'Base de Datos', "capacidad" => 'Ilimitado'],
       ["nombre" => 'Dominios', "capacidad" => '5'],
-      ["nombre" => 'Almacenaminto Backup', "capacidad" => '96 GB'],
-      ["nombre" => 'Transferencia mensual', "capacidad" => '200GB']
+      ["nombre" => 'Almacenaminto Backup', "capacidad" => '96 GB']
+      ];
+
+      foreach ($caracteristicas as $key => $value) {
+
+          CarateristicassProductos::create([
+              'nombre' => $value["nombre"],
+              'capacidad' => $value["capacidad"],
+              'producto_id' => $producto->id_producto
+          ]);
+      }
+
+      $producto = Productos::create(['nombre'=> 'Hosting en Amazon 64GB SSD',
+       'slug' => 'hosting-en-amazon-64gb-ssd',
+       'meta_title' => 'Hosting en Amazon 64GB SSD',
+       'meta_description' => 'Hosting en Amazon 64GB SSD' ,
+       'meta_key' => 'Hosting, amazon' ,
+       'precio' => 40000,
+       'subcategoria_id' => 2,
+       'tipo_producto_id' => 1]);
+
+      $caracteristicas = [
+      ["nombre" => 'Almacenaminto', "capacidad" => '64 GB'],
+      ["nombre" => 'Base de Datos', "capacidad" => 'Ilimitado'],
+      ["nombre" => 'Dominios', "capacidad" => '5'],
+      ["nombre" => 'Almacenaminto Backup', "capacidad" => '96 GB']
+      ];
+
+      foreach ($caracteristicas as $key => $value) {
+
+          CarateristicassProductos::create([
+              'nombre' => $value["nombre"],
+              'capacidad' => $value["capacidad"],
+              'producto_id' => $producto->id_producto
+          ]);
+      }
+
+      $producto = Productos::create(['nombre'=> 'Hosting en Amazon 80GB SSD',
+       'slug' => 'hosting-en-amazon-80gb-ssd',
+       'meta_title' => 'Hosting en Amazon 80GB SSD',
+       'meta_description' => 'Hosting en Amazon 80GB SSD' ,
+       'meta_key' => 'Hosting, amazon' ,
+       'precio' => 40000,
+       'subcategoria_id' => 2,
+       'tipo_producto_id' => 1]);
+
+      $caracteristicas = [
+      ["nombre" => 'Almacenaminto', "capacidad" => '80 GB'],
+      ["nombre" => 'Base de Datos', "capacidad" => 'Ilimitado'],
+      ["nombre" => 'Dominios', "capacidad" => '5'],
+      ["nombre" => 'Almacenaminto Backup', "capacidad" => '96 GB']
       ];
 
       foreach ($caracteristicas as $key => $value) {
@@ -556,6 +688,60 @@ class ProductosSeeder extends Seeder
 
         $caracteristicas = [
             ["nombre" => 'Memoria RAM', "capacidad" => '2 GB'],
+            ["nombre" => 'Enlace Nacional', "capacidad" => '1 Gbps'],
+            ["nombre" => 'CPU', "capacidad" => '1 Core'],
+            ["nombre" => 'Enlace Internacional', "capacidad" => '50 MB'],
+            ["nombre" => 'Transferencia Mensual', "capacidad" => 'Ilimitado'],
+            ["nombre" => 'Acceso ROOT', "capacidad" => 'Si']
+        ];
+
+        foreach ($caracteristicas as $key => $value) {
+
+            CarateristicassProductos::create([
+                'nombre' => $value["nombre"],
+                'capacidad' => $value["capacidad"],
+                'producto_id' => $producto->id_producto
+            ]);
+        }
+
+        $producto = Productos::create(['nombre'=> 'Servidor VPS Linux 1 GB',
+    'slug' => 'servidor-vps-linuxIlimitadogb',
+    'meta_title' => 'Servidor VPS Linux 1 GB',
+    'meta_description' => 'Servidor VPS Linux 1 GB' ,
+    'meta_key' => 'servidor, vps, linux' ,
+    'precio' => 50000,
+    'subcategoria_id' => 9,
+    'tipo_producto_id' => 2]);
+
+        $caracteristicas = [
+            ["nombre" => 'Memoria RAM', "capacidad" => '1 GB'],
+            ["nombre" => 'Enlace Nacional', "capacidad" => '1 Gbps'],
+            ["nombre" => 'CPU', "capacidad" => '1 Core'],
+            ["nombre" => 'Enlace Internacional', "capacidad" => '50 MB'],
+            ["nombre" => 'Transferencia Mensual', "capacidad" => 'Ilimitado'],
+            ["nombre" => 'Acceso ROOT', "capacidad" => 'Si']
+        ];
+
+        foreach ($caracteristicas as $key => $value) {
+
+            CarateristicassProductos::create([
+                'nombre' => $value["nombre"],
+                'capacidad' => $value["capacidad"],
+                'producto_id' => $producto->id_producto
+            ]);
+        }
+
+        $producto = Productos::create(['nombre'=> 'Servidor VPS Linux 1 GB',
+    'slug' => 'servidor-vps-linuxIlimitadogb',
+    'meta_title' => 'Servidor VPS Linux 1 GB',
+    'meta_description' => 'Servidor VPS Linux 1 GB' ,
+    'meta_key' => 'servidor, vps, linux' ,
+    'precio' => 50000,
+    'subcategoria_id' => 9,
+    'tipo_producto_id' => 2]);
+
+        $caracteristicas = [
+            ["nombre" => 'Memoria RAM', "capacidad" => '1 GB'],
             ["nombre" => 'Enlace Nacional', "capacidad" => '1 Gbps'],
             ["nombre" => 'CPU', "capacidad" => '1 Core'],
             ["nombre" => 'Enlace Internacional', "capacidad" => '50 MB'],
