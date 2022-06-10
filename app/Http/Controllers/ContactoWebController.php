@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ContactoWeb;
+use App\Models\RegistrosNewsletter;
 use App\Mail\ConsultaWeb;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
@@ -29,6 +30,30 @@ class ContactoWebController extends Controller
 
                 //mail admin creattiva
                 Mail::to('jesus@creattiva.cl')->send(new ConsultaWeb($data['nombre'],$data['email'],$data['telefono'],$data['mensaje'],'admin'));
+                return 1;
+            }else{
+                return 0;
+            }
+        }
+
+    }
+
+    public function insertNewsletter(Request $request){
+        $data = request();
+
+        if($data!='[]'){
+            $registro = RegistrosNewsletter::updateOrCreate([
+                'email' => $data['email'],
+                'ip' => $this->obtenerip(),
+                'estado' => 0
+            ]);
+            if($registro){
+                //enviar correo
+                //mail usuario
+                //Mail::to($data['email'])->send(new ConsultaWeb($data['nombre'],$data['email'],$data['telefono'],$data['mensaje'],'usuario'));
+
+                //mail admin creattiva
+                //Mail::to('jesus@creattiva.cl')->send(new ConsultaWeb($data['nombre'],$data['email'],$data['telefono'],$data['mensaje'],'admin'));
                 return 1;
             }else{
                 return 0;

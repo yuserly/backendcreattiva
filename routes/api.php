@@ -70,6 +70,9 @@ Route::post('/solicitudcodigo', [AuthController::class,'enviarcodigorapido']);
 //Formulario de contacto
 Route::post('/registrarconsulta', [ContactoWebController::class,'registrar']);
 
+//newsletter
+Route::post('/registrarnewsletter', [ContactoWebController::class,'insertNewsletter']);
+
 // servicios
 Route::get('getserviciospendpago/{id}',[ServiciosController::class,'showpendpago']);
 Route::get('getservicios/{id}/{subcategoria}',[ServiciosController::class,'show']);
