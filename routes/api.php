@@ -70,6 +70,9 @@ Route::post('/solicitudcodigo', [AuthController::class,'enviarcodigorapido']);
 //Formulario de contacto
 Route::post('/registrarconsulta', [ContactoWebController::class,'registrar']);
 
+//Postulacion
+Route::post('/registrarpostulacion', [ContactoWebController::class,'registrarpostulacion']);
+
 //newsletter
 Route::post('/registrarnewsletter', [ContactoWebController::class,'insertNewsletter']);
 

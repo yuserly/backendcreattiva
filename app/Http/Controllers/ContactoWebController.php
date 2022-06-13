@@ -71,4 +71,9 @@ class ContactoWebController extends Controller
     
         return $_SERVER['REMOTE_ADDR'];
     }
+
+    public function registrarpostulacion(Request $request){
+        $data = request();
+        return $data;
+    }
 }
