@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\ContactoWeb;
 use App\Models\RegistrosNewsletter;
+use App\Models\PostulacionesCreattiva;
 use App\Mail\ConsultaWeb;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Http\File;
+use Illuminate\Support\Facades\Storage;
 
 class ContactoWebController extends Controller
 {
@@ -73,7 +76,45 @@ class ContactoWebController extends Controller
     }
 
     public function registrarpostulacion(Request $request){
+        
         $data = request();
-        return $data;
+
+        $registro = PostulacionesCreattiva::create([
+            'nombre'=>$data['nombre'],
+            'telefono'=>$data['telefono'],
+            'email'=>$data['email'],
+            'cargo'=>$data['cargo'],
+            'ip'=>$this->obtenerip()
+        ]);
+        
+
+        if($registro){
+            return 1;
+        }else{
+            return 0;
+        }
+
+    }
+
+    public function registrarpdfpostulacion(Request $request){
+
+        $pdf = '';
+
+        if($request->hasFile('pdf')){
+
+            $pdf = Storage::disk('public')->putFile('/postulaciones', new file($request->file("pdf")));
+
+        }
+
+        $id = PostulacionesCreattiva::max('id');
+
+        $registro = PostulacionesCreattiva::where('id', $id)->update(['pdf' => $pdf]);
+
+        if($registro){
+            return 1;
+        }else{
+            return 0;
+        }
+
     }
 }

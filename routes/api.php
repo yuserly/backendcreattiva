@@ -72,6 +72,7 @@ Route::post('/registrarconsulta', [ContactoWebController::class,'registrar']);
 
 //Postulacion
 Route::post('/registrarpostulacion', [ContactoWebController::class,'registrarpostulacion']);
+Route::post('/registrarpdfpostulacion', [ContactoWebController::class,'registrarpdfpostulacion']);
 
 //newsletter
 Route::post('/registrarnewsletter', [ContactoWebController::class,'insertNewsletter']);
