@@ -72,9 +72,15 @@ class AuthController extends Controller
 
     public function logout(Request $request){
 
-        $user = Auth::user();
-        $user->tokens()->delete();
-        return 1;
+        $user = User::where('email', $request->email)->first();
+
+        if($userId = Auth::loginUsingId($user->id)){
+            $userId->tokens()->delete();
+        }
+
+        return $this->successResponse(true, 'logout success', true);
+        
+
     }
 
     public function validartoken(){
@@ -287,6 +293,26 @@ class AuthController extends Controller
             return $this->successResponse('', 'contraseña incorrecta', true);
         }
 
+    }
+
+    // public function logout(Request $request){
+
+    //     $user = Auth::user();
+    //     $user->tokens()->delete();
+    //     return 1;
+        
+   
+    // }
+
+    public function logoutUser(Request $request){
+
+        if ($user = Auth::guard('admin')->user()) { 
+            $user->tokens()->delete();
+        }
+        //$user =  Auth::guard('admin')->user();
+        //$user->tokens()->delete();
+        return $this->successResponse(1, 'logout success', true);
+   
     }
 
     public function consultarip(){

@@ -89,11 +89,14 @@ Route::get('getfacturaspendpago/{id}',[VentasController::class,'showpendpago']);
 // login
 
 Route::post('/login', [AuthController::class,'login']);
+Route::post('/logout', [AuthController::class,'logout']);
 Route::post('/logincode', [AuthController::class,'logincode']);
 Route::get('/solicitudcambiopass/{email}', [AuthController::class,'solicitudrecuperarpassword']);
 Route::get('/getcodepassword/{code}', [AuthController::class,'getcodepassword']);
 Route::post('/cambiopassword', [AuthController::class,'cambiopassword']);
+
 Route::post('/loginadmin', [AuthController::class,'loginadmin']);
+Route::post('logoutadmin',[AuthController::class,'logoutUser']);
 
 //Obtener IP
 Route::get('/consultarip', [AuthController::class,'consultarip']);
