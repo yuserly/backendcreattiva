@@ -18,6 +18,12 @@ class SubcategoriasController extends Controller
             return Subcategorias::where('slug',$slug)->first();
     }
 
+    public function showxid($id){
+
+        return Subcategorias::where('subcategorias.id_subcategoria',$id)->with('categoria','subcategoriasperiodos')->get();
+
+    }
+
     public function validarnombresubcategoria($nombre){
 
         $subcategoria =  Subcategorias::where('nombre', $nombre)->first();
@@ -91,6 +97,11 @@ class SubcategoriasController extends Controller
     public function destroy(Subcategorias $subcategoria){
 
         return $subcategoria->delete();
+    }
+
+    public function showall(){
+        $subcategorias = Subcategorias::all();
+        return $subcategorias;
     }
 
 }

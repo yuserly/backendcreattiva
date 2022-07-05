@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoriasController;
+use App\Http\Controllers\CarateristicassProductosController;
 use App\Http\Controllers\EmpresasController;
 use App\Http\Controllers\PrecioDominiosController;
 use App\Http\Controllers\ProductosController;
@@ -131,7 +132,13 @@ Route::prefix('admin')->middleware('auth:sanctum')->group(function(){
     Route::get('validarnombrecategoria/{nombre}', [CategoriasController::class,'validarnombrecategoria']);
     Route::delete('eliminarcategoria/{categoria}', [CategoriasController::class, 'destroy']);
 
+    //productos
+    Route::get('getproductos',[ProductosController::class,'showall']);
+    Route::get('getcaracteristicas',[CarateristicassProductosController::class,'showall']);
+    //********/
+
     Route::get('getsubcategorias',[SubcategoriasController::class,'showsub']);
+    Route::get('getsubcategorias/{id}',[SubcategoriasController::class,'showxid']);
     Route::get('validarnombresubcategoria/{nombre}', [SubcategoriasController::class,'validarnombresubcategoria']);
     Route::post('crearsubcategorias', [SubcategoriasController::class,'store']);
     Route::delete('eliminarsubcategoria/{subcategoria}', [SubcategoriasController::class, 'destroy']);

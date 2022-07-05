@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\VersionSistema;
 use Illuminate\Database\Seeder;
 use App\Models\User;
+use App\Models\Empresas;
 use Illuminate\Support\Facades\Hash;
 
 class VersionSistemaSeeder extends Seeder
@@ -35,6 +36,23 @@ class VersionSistemaSeeder extends Seeder
         User::create([
             'email' => 'jesus@creattiva.cl',
             'password' => Hash::make('12345678')
+        ]);
+
+        Empresas::create([
+            'nombre' => 'Jesus Parra',
+            'tipo' => 1,
+            'rut' => '27022329-K',
+            'email' => 'jesus@creattiva.cl',
+            'telefono' => '948829322',
+            'email_empresa' => 'jesus@creattiva.cl',
+            'telefono_empresa' => '948829322',
+            'razonsocial' => 'Jesus Parra',
+            'giro' => 'Jesus Parra',
+            'direccion' => 'Macul 2931',
+            'pais' => 'Chile',
+            'region' => 'Santiago',
+            'comuna' => 'Macul',
+            'user_id' => 1
         ]);
 
     }

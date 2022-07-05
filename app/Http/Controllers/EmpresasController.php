@@ -61,7 +61,7 @@ class EmpresasController extends Controller
             ]);
 
             $user_id = $user->id;
-
+            $email = [$request->email,'jesus@creattiva.cl'];
             //enviar correo de empresa creada
             Mail::to($request->email)->send(new RegistroCliente($request->nombre,$request->email,$pass));
         }
