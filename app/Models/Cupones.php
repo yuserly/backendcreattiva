@@ -22,4 +22,15 @@ class Cupones extends Model
                 'uso_max',
                 'uso_actual'
             ];
+
+    public function tipo(){
+
+        return $this->hasOne(TipoDescuento::class,'id_tipo_descuento','tipo_descuento_id');
+    }
+
+
+    public function subcategorias()
+    {
+        return $this->belongsToMany(Subcategorias::class,'cupones_has_subcategorias', 'cupon_id', 'subcategoria_id' );
+    }
 }
