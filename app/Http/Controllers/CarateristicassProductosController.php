@@ -14,5 +14,9 @@ class CarateristicassProductosController extends Controller
         $caracteristicas = CarateristicassProductos::all();
         return $caracteristicas;
     }
+    public function getcaracteristicasproducto($id){
+        $caract = CarateristicassProductos::where('producto_id',$id)->get();
+        return $caract;
+    }
     
 }

@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Periodos;
 use App\Models\Productos;
+use App\Models\TipoProducto;
 use App\Models\Empresas;
 use App\Models\RegistrosCarrito;
 use App\Models\SolicitudesJumpseller;
 use App\Models\DetallesRegistrosCarrito;
+use App\Models\SubcategoriasHasPeriodos;
+use App\Models\CaracteristicassProductos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -522,6 +525,20 @@ class ProductosController extends Controller
 
     }
 
+    public function showalltipoproductos(){
+
+        $data = TipoProducto::all();
+        return $data;
+
+    }
+
+    public function getTipoProducto($id){
+
+        $producto = TipoProducto::where('id_tipo_producto',$id)->first();
+
+        return $producto;
+    }
+
     public function showall (){
         $productos =  Productos::with('caracteristicas','subcategoria.subcategoriasperiodos')->orderBy('productos.id_producto', 'asc')->get();
 
@@ -544,6 +561,123 @@ class ProductosController extends Controller
  
         return $productos;
      }
+
+     public function store(Request $request){
+
+        $data = request();
+
+        if($data['opcion']==='update'){
+
+            $producto =  Productos::
+            where('id_producto',$data['producto_id'])
+            ->update([
+                'nombre' => $data['nombre'],
+                'slug' => $data['slug'],
+                'meta_title' => $data['meta_title'],
+                'meta_description' => $data['meta_description'],
+                'meta_key' => $data['meta_key'],
+                'precio' => $data['precio'],
+                'visible' => $data['visible']['id'],
+                'subcategoria_id' => $data['subcategoria_id'],
+                'tipo_producto_id' => $data['tipo_producto_id']
+            ]);
+
+        }elseif($data['opcion']==='create'){
+            
+            $slug = $this->GenerarSlug($data['nombre']);
+
+            $producto =  Productos::
+            create([
+                'nombre' => $data['nombre'],
+                'slug' => $slug,
+                'meta_title' => $data['meta_title'],
+                'meta_description' => $data['meta_description'],
+                'meta_key' => $data['meta_key'],
+                'precio' => $data['precio'],
+                'visible' => $data['visible']['id'],
+                'subcategoria_id' => $data['subcategoria_id'],
+                'tipo_producto_id' => $data['tipo_producto_nombre']['id_tipo_producto']
+            ]);
+
+        }
+
+        return $producto;
+
+    }
+
+    public function GenerarSlug($name, $id = null){
+        $max = 100;
+        $out = iconv('UTF-8', 'ASCII//TRANSLIT', $name);
+        $out = substr(preg_replace("/[^-\/+|\w ]/", '', $out), 0, $max);
+        $out = strtolower(trim($out, '-'));
+        $out = preg_replace("/[\/_| -]+/", '-', $out);
+
+        $equal = 0;
+        if($id == null){
+            $prod = Productos::where('slug', $out)->first();
+        }else{
+            $prod = Productos::where('slug', $out)->where('id_producto', '!=', $id)->first();
+        }
+
+        while(!empty($prod))
+        {
+            $equal++;
+            $outprueba = $out.'-'.$equal;
+            $prod = Productos::where('slug', $outprueba)->first();
+
+            if(empty($prod))
+            {
+                $out = $out.'-'.$equal;
+                return $out;
+            }
+        }
+
+        return $out;
+    }
+
+    public function prevslug(Request $request){
+
+        $data = request();
+
+        $max = 100;
+        $out = iconv('UTF-8', 'ASCII//TRANSLIT', $data['nombre']);
+        $out = substr(preg_replace("/[^-\/+|\w ]/", '', $out), 0, $max);
+        $out = strtolower(trim($out, '-'));
+        $out = preg_replace("/[\/_| -]+/", '-', $out);
+
+        $equal = 0;
+        if($data['id_subcategoria'] == null){
+            $prod = Productos::where('slug', $out)->first();
+        }else{
+            $prod = Productos::where('slug', $out)->where('subcategoria_id', $data['id_subcategoria'])->first();
+        }
+
+        while(!empty($prod))
+        {
+            $equal++;
+            $outprueba = $out.'-'.$equal;
+            $prod = Productos::where('slug', $outprueba)->first();
+
+            if(empty($prod))
+            {
+                $out = $out.'-'.$equal;
+                return $out;
+            }
+        }
+
+        return $out;
+
+    }
+
+    public function desactivarproducto($id){
+
+        $producto = Productos::where('id_producto',$id)
+                ->update([
+                    'visible' => 0
+                ]);
+        return $producto;
+
+    }
 
 
 }

@@ -134,7 +134,13 @@ Route::prefix('admin')->middleware('auth:sanctum')->group(function(){
 
     //productos
     Route::get('getproductos',[ProductosController::class,'showall']);
+    Route::get('gettipoproductos',[ProductosController::class,'showalltipoproductos']);
+    Route::get('gettipoproducto/{id}',[ProductosController::class,'getTipoProducto']);
+    Route::post('crearproducto', [ProductosController::class,'store']);
     Route::get('getcaracteristicas',[CarateristicassProductosController::class,'showall']);
+    Route::post('prevslug', [ProductosController::class,'prevslug']);
+    Route::get('eliminarproducto/{id}', [ProductosController::class, 'desactivarproducto']);
+    Route::get('getcaracteristicas/{id}', [CarateristicassProductosController::class, 'getcaracteristicasproducto']);
     //********/
 
     Route::get('getsubcategorias',[SubcategoriasController::class,'showsub']);

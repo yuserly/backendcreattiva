@@ -765,6 +765,7 @@ class ServiciosController extends Controller
                     ]);
 
              return redirect()->away('http://localhost:4200/pago-exitoso');
+             //return redirect()->away('https://creattiva.t2.creattivadatacenter.com/pago-exitoso');
 
     }
 
@@ -787,6 +788,7 @@ class ServiciosController extends Controller
             ]);
 
             return redirect()->away('http://localhost:4200/pago-rechazado');
+            //return redirect()->away('https://creattiva.t2.creattivadatacenter.com/pago-rechazado');
 
 
     }
