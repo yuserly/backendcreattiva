@@ -143,6 +143,8 @@ Route::prefix('admin')->middleware('auth:sanctum')->group(function(){
     Route::get('getcaracteristicas/{id}', [CarateristicassProductosController::class, 'getcaracteristicasproducto']);
     //********/
 
+    // categoria y subcategorias
+
     Route::get('getsubcategorias',[SubcategoriasController::class,'showsub']);
     Route::get('getsubcategorias/{id}',[SubcategoriasController::class,'showxid']);
     Route::get('validarnombresubcategoria/{nombre}', [SubcategoriasController::class,'validarnombresubcategoria']);
@@ -151,7 +153,26 @@ Route::prefix('admin')->middleware('auth:sanctum')->group(function(){
 
     Route::get('getperiodos', [PeriodosController::class, 'show']);
 
+    // banner
 
+    Route::get('showabanner', [BannersController::class, 'showabanner']);
+    Route::post('crearbanner', [BannersController::class, 'store']);
+    Route::get('showabanner', [BannersController::class, 'showabanner']);
+    Route::delete('eliminarbanner/{banner}', [BannersController::class, 'destroy']);
+    Route::get('actbanner/{id_banner}/{estado}', [BannersController::class, 'actbanner']);
+
+
+    //  cupones
+
+    Route::get('showcupones', [CuponesController::class, 'showcupones']);
+    Route::post('crearcupon', [CuponesController::class, 'store']);
+    Route::delete('eliminarcupon/{cupon}', [CuponesController::class, 'destroy']);
+
+
+
+    // tipo descueto
+
+    Route::get('showtipodescuento', [CuponesController::class, 'showtipodescuento']);
 
 
 

@@ -6,6 +6,7 @@ use App\Models\Cupones;
 use App\Models\CuponesHasSubcategorias;
 use App\Models\TipoDescuento;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class CuponesController extends Controller
 {
@@ -25,7 +26,7 @@ class CuponesController extends Controller
 
                 switch ($tipoDescuento['id_tipo_descuento']) {
                     case '1': //monto fijo
-                        
+
                         return [
                             "monto" => $cupon['valor'],
                             "tipo_descuento" => 1,
@@ -33,7 +34,7 @@ class CuponesController extends Controller
                         ];
 
                         break;
-                    
+
                     case '2': //porcentaje
                         return [
                             "monto" => $cupon['valor'],
@@ -59,5 +60,46 @@ class CuponesController extends Controller
             ];
         }
 
+    }
+
+    public function showcupones(){
+
+        return Cupones::with('tipo','subcategorias')->orderBy('created_at', 'DESC')->get();
+    }
+
+    public function showtipodescuento(){
+
+        return TipoDescuento::all();
+    }
+
+    public function store(Request $request){
+
+        $cupon = Str::random(6);
+
+       $newcupon = Cupones::create([
+            'cupon' => $cupon,
+            'valor' => $request->valor,
+            'fecha_vec' => $request->fecha_vec,
+            'tipo_descuento_id' => $request->tipo_descuento_id["id_tipo_descuento"],
+            'estado_id' => 4,
+            'uso_max' => $request->uso_max
+        ]);
+
+            $arraySub = array();
+                foreach($request->subcategoria_id as $item){
+
+                    array_push($arraySub, $item['id_subcategoria']);
+                }
+                $newcupon->subcategorias()->sync($arraySub);
+
+        return $newcupon;
+
+    }
+
+    public function destroy(Cupones $cupon){
+
+        CuponesHasSubcategorias::where('cupon_id', $cupon->id_cupon)->delete();
+
+        return $cupon->delete();
     }
 }
