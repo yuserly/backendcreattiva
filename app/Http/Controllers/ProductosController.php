@@ -727,10 +727,24 @@ class ProductosController extends Controller
 
     public function desactivarproducto($id){
 
-        $producto = Productos::where('id_producto',$id)
+        $item = Productos::where('id_producto',$id)->first();
+
+        if($item->visible==1){
+
+            $producto = Productos::where('id_producto',$id)
                 ->update([
                     'visible' => 0
                 ]);
+
+        }else{
+
+            $producto = Productos::where('id_producto',$id)
+                ->update([
+                    'visible' => 1
+                ]);
+
+        }
+
         return $producto;
 
     }

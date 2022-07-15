@@ -49,24 +49,19 @@ class CarateristicassProductosController extends Controller
     }
     public function store(Request $request){
 
-       
-        //$slug = $this->GenerarSlug($request->nombre,$request->id_subcategoria);
-
         $caracte = CarateristicassProductos::updateOrCreate(['id_carateristica_producto' => $request->id_carateristica_producto],
         [
             'nombre' => $request->nombre,
             'capacidad' => $request->capacidad,
             'producto_id' => $request->producto_id['id_producto']
         ]);
-
-        // $arraySubPeriodos = array();
-        // foreach($request->periodo as $item){
-        //     array_push($arraySubPeriodos, $item['id_periodo']);
-        // }
-        // $subcaretgoria->subcategoriasperiodos()->sync($arraySubPeriodos);
-
         return $caracte;
 
+    }
+
+    public function destroy(CarateristicassProductos $caracteristica){
+
+        return $caracteristica->delete();
     }
     
 }
