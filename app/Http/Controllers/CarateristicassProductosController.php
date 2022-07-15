@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Models\CarateristicassProductos;
+use App\Models\CaracteristicasHasProducto;
+use App\Models\Productos;
 
 use Illuminate\Http\Request;
 
@@ -17,6 +19,54 @@ class CarateristicassProductosController extends Controller
     public function getcaracteristicasproducto($id){
         $caract = CarateristicassProductos::where('producto_id',$id)->get();
         return $caract;
+    }
+    public function getcaracteristica($id){
+        $caract = CarateristicassProductos::where('id_carateristica_producto',$id)->first();
+        
+        if($caract){
+            $producto = Productos::where('id_producto',$caract->producto_id)->first();
+            return $producto;
+        }
+
+    }
+    public function addcaract(Request $request){
+        $data = request();
+
+        $caract = CarateristicassProductos::create([
+            'nombre' => $data['nombre'],
+            'capacidad' => $data['capacidad'],
+            'producto_id' => $data['producto_id']
+        ]);
+
+        $id = CarateristicassProductos::max('id_carateristica_producto');
+
+        CaracteristicasHasProducto::create([
+            'producto_id' => $data['producto_id'],
+            'carateristica_producto_id' => $id
+        ]);
+
+        return $caract;
+    }
+    public function store(Request $request){
+
+       
+        //$slug = $this->GenerarSlug($request->nombre,$request->id_subcategoria);
+
+        $caracte = CarateristicassProductos::updateOrCreate(['id_carateristica_producto' => $request->id_carateristica_producto],
+        [
+            'nombre' => $request->nombre,
+            'capacidad' => $request->capacidad,
+            'producto_id' => $request->producto_id['id_producto']
+        ]);
+
+        // $arraySubPeriodos = array();
+        // foreach($request->periodo as $item){
+        //     array_push($arraySubPeriodos, $item['id_periodo']);
+        // }
+        // $subcaretgoria->subcategoriasperiodos()->sync($arraySubPeriodos);
+
+        return $caracte;
+
     }
     
 }

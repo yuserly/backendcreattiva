@@ -10,7 +10,8 @@ use App\Models\RegistrosCarrito;
 use App\Models\SolicitudesJumpseller;
 use App\Models\DetallesRegistrosCarrito;
 use App\Models\SubcategoriasHasPeriodos;
-use App\Models\CaracteristicassProductos;
+use App\Models\CarateristicassProductos;
+use App\Models\CaracteristicasHasProducto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -566,6 +567,8 @@ class ProductosController extends Controller
 
         $data = request();
 
+        //
+
         if($data['opcion']==='update'){
 
             $producto =  Productos::
@@ -581,6 +584,37 @@ class ProductosController extends Controller
                 'subcategoria_id' => $data['subcategoria_id'],
                 'tipo_producto_id' => $data['tipo_producto_id']
             ]);
+
+            if($producto){
+                $options = CaracteristicasHasProducto::where('producto_id',$data['producto_id'])->delete();
+                $options2 = CarateristicassProductos::where('producto_id',$data['producto_id'])->delete();
+
+                if($data['caracteristicas']){
+
+                    if(count($data['caracteristicas'])>0){
+                
+                        foreach($data['caracteristicas'] as $key => $value){
+
+                            CarateristicassProductos::create([
+                                'nombre' => $value['nombre'],
+                                'capacidad' => $value['capacidad'],
+                                'producto_id' => $data['producto_id']
+                            ]);
+
+                            $id = CarateristicassProductos::max('id_carateristica_producto');
+
+                            CaracteristicasHasProducto::create([
+                                'producto_id' => $data['producto_id'],
+                                'carateristica_producto_id' => $id
+                            ]);
+    
+                        }
+    
+                    }
+
+                }
+
+            }
 
         }elseif($data['opcion']==='create'){
             
@@ -598,6 +632,28 @@ class ProductosController extends Controller
                 'subcategoria_id' => $data['subcategoria_id'],
                 'tipo_producto_id' => $data['tipo_producto_nombre']['id_tipo_producto']
             ]);
+
+            $producto_id = Productos::max('id_producto');
+
+            if($producto){
+
+                if($data['caracteristicas']){
+
+                    if(count($data['caracteristicas'])>0){
+                
+                        foreach($data['caracteristicas'] as $key => $value){
+                            CarateristicassProductos::create([
+                                'nombre' => $value['nombre'],
+                                'capacidad' => $value['capacidad'],
+                                'producto_id' => $producto_id
+                            ]);
+                        }
+    
+                    }
+
+                }
+
+            }
 
         }
 

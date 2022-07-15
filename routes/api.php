@@ -140,9 +140,13 @@ Route::prefix('admin')->middleware('auth:sanctum')->group(function(){
     Route::get('getcaracteristicas',[CarateristicassProductosController::class,'showall']);
     Route::post('prevslug', [ProductosController::class,'prevslug']);
     Route::get('eliminarproducto/{id}', [ProductosController::class, 'desactivarproducto']);
-    Route::get('getcaracteristicas/{id}', [CarateristicassProductosController::class, 'getcaracteristicasproducto']);
     //********/
 
+    //caracteristicas
+    Route::post('addcaracteristica', [CarateristicassProductosController::class,'addcaract']);
+    Route::get('getcaracteristicas/{id}', [CarateristicassProductosController::class, 'getcaracteristicasproducto']);
+    Route::get('getcaracteristica/{id}', [CarateristicassProductosController::class,'getcaracteristica']);
+    Route::post('crearcaracteristica', [CarateristicassProductosController::class,'store']);
     // categoria y subcategorias
 
     Route::get('getsubcategorias',[SubcategoriasController::class,'showsub']);
