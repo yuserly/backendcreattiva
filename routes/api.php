@@ -127,6 +127,7 @@ Route::post('registroscarrito',[ProductosController::class,'registroscarrito']);
 
 Route::prefix('admin')->middleware('auth:sanctum')->group(function(){
 
+    Route::post('updateordenmenu', [CategoriasController::class,'updateordenmenu']);
     Route::get('getcategorias',[CategoriasController::class,'show']);
     Route::post('crearcategorias', [CategoriasController::class,'store']);
     Route::get('validarnombrecategoria/{nombre}', [CategoriasController::class,'validarnombrecategoria']);

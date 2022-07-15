@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class CategoriasController extends Controller
 {
     public function show (){
-        return Categorias::with('subcategoria')->get();
+        return Categorias::with('subcategoria')->orderBy('posicion', 'asc')->get();
     }
 
     public function showregiones (){
@@ -82,6 +82,33 @@ class CategoriasController extends Controller
     public function destroy(Categorias $categoria){
 
         return $categoria->delete();
+    }
+
+    public function updateordenmenu(Request $request){
+
+        $data = request();
+
+        $items = Categorias::all();
+
+        foreach($data['data'] as $key=>$value){
+
+            foreach($items as $key2=>$value2){
+
+                if($value['id_categoria']==$value2['id_categoria']){
+
+                    Categorias::where('id_categoria',$value2['id_categoria'])
+                    ->update([
+                        'posicion' => $key
+                    ]);
+
+                }
+
+            }
+
+        }
+
+        return $data;
+
     }
 
 
