@@ -285,6 +285,7 @@ class AuthController extends Controller
 
             $response = [
                 'token' => $user->createToken('tahuCoding')->plainTextToken,
+                'name' => $user->name
             ];
 
             return $this->successResponse($response, 'login success', true);

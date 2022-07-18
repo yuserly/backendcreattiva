@@ -13,7 +13,8 @@ class Categorias extends Model
 
     protected $fillable = [
         'nombre',
-        'slug'
+        'slug',
+        'posicion'
     ];
 
     public function subcategoria(){

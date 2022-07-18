@@ -38,11 +38,24 @@ class CategoriasController extends Controller
 
     public function store(Request $request){
 
+        
         $slug = $this->GenerarSlug($request->nombre,$request->id_categoria);
+
+        if(trim($request->posicion)!=''){
+
+            $posicion = $request->posicion;
+        
+        }else{
+
+            $posicionFinal = Categorias::orderBy('posicion','desc')->first();
+            $posicion = $posicionFinal->posicion+1;
+
+        }
 
         $caretgoria =  Categorias::updateOrCreate(['id_categoria' => $request->id_categoria],[
                                                   'nombre' => $request->nombre,
-                                                  'slug' => $slug
+                                                  'slug' => $slug,
+                                                  'posicion' => $posicion
                                                 ]);
 
         return $caretgoria;

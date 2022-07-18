@@ -167,7 +167,6 @@ Route::prefix('admin')->middleware('auth:sanctum')->group(function(){
     Route::delete('eliminarbanner/{banner}', [BannersController::class, 'destroy']);
     Route::get('actbanner/{id_banner}/{estado}', [BannersController::class, 'actbanner']);
 
-
     //  cupones
 
     Route::get('showcupones', [CuponesController::class, 'showcupones']);
