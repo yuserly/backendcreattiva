@@ -179,6 +179,10 @@ Route::prefix('admin')->middleware('auth:sanctum')->group(function(){
 
     Route::get('showtipodescuento', [CuponesController::class, 'showtipodescuento']);
 
-
+    //preguntas frecuentes
+    Route::get('/getfaq', [PreguntasFrecuentesController::class,'showall']);
+    Route::post('crearfaq', [PreguntasFrecuentesController::class,'store']);
+    Route::post('prevslugFaq', [PreguntasFrecuentesController::class,'prevslug']);
+    Route::get('eliminarfaq/{id}', [PreguntasFrecuentesController::class, 'destroy']);
 
 });
