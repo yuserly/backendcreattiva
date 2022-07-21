@@ -18,6 +18,7 @@ class CreateCategoriasTable extends Migration
             $table->string('nombre');
             $table->string('slug');
             $table->integer('visible')->nullable()->default(1);
+            $table->integer('posicion')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

@@ -185,4 +185,8 @@ Route::prefix('admin')->middleware('auth:sanctum')->group(function(){
     Route::post('prevslugFaq', [PreguntasFrecuentesController::class,'prevslug']);
     Route::get('eliminarfaq/{id}', [PreguntasFrecuentesController::class, 'destroy']);
 
+    //Usuarios administradores
+    Route::get('/getusers', [AuthController::class,'showall']);
+    Route::post('crearusuario', [AuthController::class, 'store']);
+    Route::get('eliminaruser/{id}', [AuthController::class, 'destroy']);
 });

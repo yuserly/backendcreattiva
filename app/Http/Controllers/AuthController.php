@@ -6,10 +6,12 @@ use App\Mail\CodigoAccesoRapido;
 use App\Mail\RecuperarPassword;
 use App\Models\Empresas;
 use App\Models\User;
+use App\Models\Administradores;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 date_default_timezone_set("America/Santiago");
 
@@ -342,6 +344,42 @@ class AuthController extends Controller
         return $this->successResponse($response, 'ip', true);
 
         
+    }
+
+    public function showall(){
+
+        $usuarios = Administradores::all();
+        return $usuarios;
+
+    }
+
+    public function store(Request $request){
+
+        $user =  Administradores::updateOrCreate(['id' => $request->id],[
+                    'name' => trim($request->nombre),
+                    'email' => trim($request->email),
+                    'password' => Hash::make($request->password)
+                ]);
+
+
+        return $user;
+
+    }
+
+    public function destroy($id){
+
+        $alluser = Administradores::all();
+
+        if(count($alluser)>1){
+
+            $user = Administradores::where('id', $id)->delete();
+            return $user;
+
+        }else{
+
+            return 0;
+        }
+
     }
 
 }
