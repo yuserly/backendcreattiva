@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Subcategorias;
+use App\Models\SubcategoriasHasPeriodos;
 use Illuminate\Http\Request;
 
 class SubcategoriasController extends Controller
@@ -96,7 +97,22 @@ class SubcategoriasController extends Controller
 
     public function destroy(Subcategorias $subcategoria){
 
-        return $subcategoria->delete();
+        $subcategoriasall = SubcategoriasHasPeriodos::where('subcategoria_id',$subcategoria->id_subcategoria)->get();
+
+        if($subcategoriasall){
+
+            $subs = SubcategoriasHasPeriodos::where('subcategoria_id',$subcategoria->id_subcategoria)->delete();
+            
+            if($subs){
+
+                return $subcategoria->delete();
+    
+            }
+
+        }else{
+            return $subcategoria->delete();
+        }
+
     }
 
     public function showall(){
