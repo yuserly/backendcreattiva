@@ -55,6 +55,7 @@ class CategoriasController extends Controller
         $caretgoria =  Categorias::updateOrCreate(['id_categoria' => $request->id_categoria],[
                                                   'nombre' => $request->nombre,
                                                   'slug' => $slug,
+                                                  'visible' => $request->visible['id'],
                                                   'posicion' => $posicion
                                                 ]);
 
@@ -94,7 +95,31 @@ class CategoriasController extends Controller
 
     public function destroy(Categorias $categoria){
 
+        
         return $categoria->delete();
+    }
+
+    public function desactivarcategoria($id){
+
+        $item = Categorias::where('id_categoria',$id)->first();
+
+        if($item->visible==1){
+
+            $estado = 0;
+
+        }else{
+
+            $estado = 1;
+
+        }
+
+        $categoria = Categorias::where('id_categoria',$id)
+                ->update([
+                    'visible' => $estado
+                ]);
+
+        return $categoria;
+
     }
 
     public function updateordenmenu(Request $request){

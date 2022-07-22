@@ -14,6 +14,7 @@ class Categorias extends Model
     protected $fillable = [
         'nombre',
         'slug',
+        'visible',
         'posicion'
     ];
 

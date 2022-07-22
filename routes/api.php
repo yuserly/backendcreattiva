@@ -132,6 +132,7 @@ Route::prefix('admin')->middleware('auth:sanctum')->group(function(){
     Route::post('crearcategorias', [CategoriasController::class,'store']);
     Route::get('validarnombrecategoria/{nombre}', [CategoriasController::class,'validarnombrecategoria']);
     Route::delete('eliminarcategoria/{categoria}', [CategoriasController::class, 'destroy']);
+    Route::get('desactivarcategoria/{id}', [CategoriasController::class, 'desactivarcategoria']);
 
     //productos
     Route::get('getproductos',[ProductosController::class,'showall']);

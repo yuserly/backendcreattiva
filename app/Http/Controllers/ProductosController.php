@@ -731,19 +731,18 @@ class ProductosController extends Controller
 
         if($item->visible==1){
 
-            $producto = Productos::where('id_producto',$id)
-                ->update([
-                    'visible' => 0
-                ]);
+            $estado = 0;
 
         }else{
 
-            $producto = Productos::where('id_producto',$id)
-                ->update([
-                    'visible' => 1
-                ]);
+            $estado = 1;
 
         }
+
+        $producto = Productos::where('id_producto',$id)
+                ->update([
+                    'visible' => $estado
+                ]);
 
         return $producto;
 
