@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class CategoriasController extends Controller
 {
     public function show (){
-        return Categorias::with('subcategoria')->orderBy('posicion', 'asc')->get();
+        return Categorias::with('subcategoria')->where('visible',1)->orderBy('posicion', 'asc')->get();
     }
 
     public function showregiones (){
