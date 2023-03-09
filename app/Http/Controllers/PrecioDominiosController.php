@@ -20,7 +20,6 @@ class PrecioDominiosController extends Controller
     public function dominios($dominio,$extension){
 
 
-
         $periodos = Periodos::where('id_periodo','!=',1)->orderBy('meses','DESC')->get();
 
         $extensiones =[
@@ -76,34 +75,49 @@ class PrecioDominiosController extends Controller
 
 
         foreach ($dominiosarray["data"]["results"] as $key => $value) {
+
             $ext= explode(".",$value["domain"]);
             $ext = $ext[1];
             $coincidencia = 'dominios '.$ext;
-            $producto = Productos::where('nombre','like', '%' . $coincidencia . '%' )->with('caracteristicas','subcategoria.categoria')->first();
 
-            foreach ($periodos as $key2 => $value2) {
+            foreach($precio as $keyp => $valuep){
+
+                if($valuep['extension']===$ext){ //extension registrada y precio asignado
+
+                    if($valuep['precio_manual_pesos']!==null){
+                        $precioextfinal = $valuep['precio_manual_pesos'];
+                    }else{
+                        $precioextfinal = $valuep['precio'];
+                    }
+
+                    $producto = Productos::where('nombre','like', '%' . $coincidencia . '%' )->with('caracteristicas','subcategoria.categoria')->first();
+
+                    $producto["precio"] = $precioextfinal;
+                    
+                    foreach ($periodos as $key2 => $value2) {
 
 
-                $descuento = (($producto["precio"] * $value2["meses"]) * $value2["descuento"]) / 100;
+                        $descuento = (($producto["precio"] * $value2["meses"]) * $value2["descuento"]) / 100;
 
-                $periodos[$key2]["precio_descuento"] = round(($producto["precio"] * $value2["meses"]) - $descuento);
+                        $periodos[$key2]["precio_descuento"] = round(($producto["precio"] * $value2["meses"]) - $descuento);
 
-                $periodos[$key2]["precio"] = ($producto["precio"] * $value2["meses"]);
+                        $periodos[$key2]["precio"] = ($producto["precio"] * $value2["meses"]);
 
-                $periodos[$key2]["precio_mensual"] = $producto["precio"];
+                        $periodos[$key2]["precio_mensual"] = $producto["precio"];
 
-                $periodos[$key2]["ahorro"] = ($producto["precio"] * $value2["meses"]) - round(($producto["precio"] * $value2["meses"]) - $descuento);
+                        $periodos[$key2]["ahorro"] = ($producto["precio"] * $value2["meses"]) - round(($producto["precio"] * $value2["meses"]) - $descuento);
 
+
+                    }
+
+                    $dominiosarray["data"]["results"][$key]["precio_bd"] = $producto["precio"];
+                    $dominiosarray["data"]["results"][$key]["producto"] = $producto;
+                    $dominiosarray["data"]["results"][$key]["periodos"] = $periodos;
+                    $dominiosarray["data"]["results"][$key]["agregado"] = false;
+
+                }
 
             }
-
-            $dominiosarray["data"]["results"][$key]["precio_bd"] = $producto["precio"];
-            $dominiosarray["data"]["results"][$key]["producto"] = $producto;
-            $dominiosarray["data"]["results"][$key]["periodos"] = $periodos;
-            $dominiosarray["data"]["results"][$key]["agregado"] = false;
-
-
-
 
         }
 
