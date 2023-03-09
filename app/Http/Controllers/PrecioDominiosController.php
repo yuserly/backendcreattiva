@@ -26,6 +26,8 @@ class PrecioDominiosController extends Controller
 
             "$extension",
 
+            "com",
+
             "net",
 
             "org",
@@ -93,7 +95,7 @@ class PrecioDominiosController extends Controller
                     $producto = Productos::where('nombre','like', '%' . $coincidencia . '%' )->with('caracteristicas','subcategoria.categoria')->first();
 
                     $producto["precio"] = $precioextfinal;
-                    
+
                     foreach ($periodos as $key2 => $value2) {
 
 
