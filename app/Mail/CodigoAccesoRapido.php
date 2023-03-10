@@ -10,7 +10,7 @@ use Illuminate\Queue\SerializesModels;
 class CodigoAccesoRapido extends Mailable
 {
     use Queueable, SerializesModels;
-    public $title = "Codigo Acceso Rápido";
+    public $title = "Código Acceso Rápido";
     public $nombre;
     public $code;
 

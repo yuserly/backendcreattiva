@@ -429,6 +429,7 @@ class ServiciosController extends Controller
                                                 'pais' => filter_var($request->pais, FILTER_SANITIZE_STRING),
                                                 'region' => $request->region,
                                                 'comuna' => $request->comuna,
+                                                'numerodireccion' => $request->numerodireccion,
                                                 'user_id' => $user_id
                                             ]);
 
@@ -503,7 +504,8 @@ class ServiciosController extends Controller
             // Correo electrónico del usuario
             $email = $user["email"];
             // URL donde llegará el usuario con su token luego de finalizar la inscripción
-            $response_url = "http://backendcreattiva.cp/resultado/inscripcion";
+            //$response_url = "http://backendcreattiva.cp/resultado/inscripcion";
+            $response_url = "https://desarrollo.local/resultado/inscripcion";
 
             $response = (new MallInscription)->start($username, $email, $response_url);
 
@@ -525,14 +527,17 @@ class ServiciosController extends Controller
         $buy_order = $codeventa;
         $session_id = uniqid();
         $amount = $monto;
-        $return_url = "http://backendcreattiva.cp/return/token";
+        //$return_url = "http://backendcreattiva.cp/return/token";
+        $return_url = "https://desarrollo.local/return/token";
 
         $response = (new Transaction)->create($buy_order, $session_id, $amount, $return_url);
 
+
+
         if($response->url){
 
-            $url = $response->url;
-            $token = $response->token;
+            $url = $response->getUrl();
+            $token = $response->getToken();
 
             return [
                 'url' => $url,
@@ -556,8 +561,8 @@ class ServiciosController extends Controller
         $response = $provider->createOrder([
             "intent" => "CAPTURE",
             "application_context" => [
-                "return_url" => "http://backendcreattiva.cp/returnsuccess/paypal",
-                "cancel_url" => "http://backendcreattiva.cp/returncancel/paypal",
+                "return_url" => "https://desarrollo.local/returnsuccess/paypal",
+                "cancel_url" => "https://desarrollo.local/returncancel/paypal",
             ],
             "purchase_units" => [
                 0 => [
@@ -681,6 +686,8 @@ class ServiciosController extends Controller
         }
 
         $response = (new Transaction)->commit($token);
+
+        return $response;
 
         if($response->responseCode == 0){
 

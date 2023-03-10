@@ -28,6 +28,7 @@ class CreateEmpresasTable extends Migration
             $table->string('pais')->nullable();
             $table->string('region')->nullable();
             $table->string('comuna')->nullable();
+            $table->biginteger('numerodireccion')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();

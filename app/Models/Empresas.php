@@ -25,6 +25,7 @@ class Empresas extends Model
                 'pais',
                 'region',
                 'comuna',
+                'numerodireccion',
                 'user_id'
             ];
 

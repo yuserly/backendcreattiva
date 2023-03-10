@@ -49,8 +49,8 @@ class AuthController extends Controller
         if($user->codigo_rapido == $request->code){
 
             User::where('email', $request->email)->update([
-                'codigo_rapido'=> '',
-                'fecha_codigo_rapido'=> ''
+                'codigo_rapido'=> null,
+                'fecha_codigo_rapido'=> null
             ]);
 
                 Auth::loginUsingId($user->id);

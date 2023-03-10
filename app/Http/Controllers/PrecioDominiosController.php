@@ -7,13 +7,18 @@ use App\Models\PrecioDominios;
 use App\Models\Productos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\DB;
 
 class PrecioDominiosController extends Controller
 {
 
     public function preciodominios(){
 
+        //$preciodominios = DB::connection('mysql_facturacion')->table('precio_dominio_comprarapida')->get();
+
         return PrecioDominios::all();
+
+        //return $preciodominios;
 
     }
 

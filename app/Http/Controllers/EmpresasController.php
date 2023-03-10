@@ -91,6 +91,7 @@ class EmpresasController extends Controller
                                                 'pais' => filter_var($request->pais, FILTER_SANITIZE_STRING),
                                                 'region' => $request->region,
                                                 'comuna' => $request->comuna,
+                                                'numerodireccion' => $request->numerodireccion,
                                                 'user_id' => $user_id
                                             ]);
 
