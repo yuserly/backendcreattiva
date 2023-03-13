@@ -687,8 +687,6 @@ class ServiciosController extends Controller
 
         $response = (new Transaction)->commit($token);
 
-        return $response;
-
         if($response->responseCode == 0){
 
             // si es 0 fue pagado exitosamente
@@ -703,12 +701,16 @@ class ServiciosController extends Controller
 
            return $this->cambiarestadoventapago($codigoventa);
 
-        }else{
+        }elseif($response==null){
 
             $codigoventa = $response->getBuyOrder();
 
             return $this->cambiarestadoventarechazado($codigoventa);
 
+        }else{
+            $codigoventa = $response->getBuyOrder();
+
+            return $this->cambiarestadoventarechazado($codigoventa);
         }
     }
 
